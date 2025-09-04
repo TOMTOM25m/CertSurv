@@ -1,0 +1,47 @@
+﻿{
+  "Version": "v09.00.05",
+  "RunMode": "PRODto",
+  "Language": "EN",
+  "DebugMode": true,
+  "LastModuleCheck": "2025-07-15T15:30:54.1843565+02:00",
+  "Paths": {
+    "ConfigFile": "C:\\Script\\Zertifikate\\Config\\Config-seekCertReNewDay.json",
+    "PathTo7Zip": "C:\\Program Files\\7-Zip\\7z.exe",
+    "LogoDirectory": "\\\\itscmgmt03.srv.meduniwien.ac.at\\iso\\MUWLogo",
+    "ReportDirectory": "reports",
+    "LogDirectory": "LOG"
+  },
+  "Excel": {
+    "ExcelPath": "\\\\itscmgmt03\\iso\\WIndowsServerListe\\WinServerliste-03.02.2025.xlsx",
+    "SheetName": "Serverliste2025",
+    "HeaderRow": 1,
+    "CertificateColumnName": "Zertifikat",
+    "AlwaysUseConfigPath": true
+  },
+  "Network": {
+    "DnsServer": "149.148.55.55",
+    "TlsVersion": "SystemDefault"
+  },
+  "Intervals": {
+    "DaysUntilUrgent": 10,
+    "DaysUntilCritical": 30,
+    "DaysUntilWarning": 60,
+    "ArchiveLogsOlderThanDays": 30,
+    "DeleteZipArchivesOlderThanDays": 90
+  },
+  "Mail": {
+    "Enabled": true,
+    "SmtpServer": "smtpi.meduniwien.ac.at",
+    "SmtpPort": 25,
+    "UseSsl": false,
+    "SenderAddress": "ITSCMGMT03@meduniwien.ac.at",
+    "DevTo": "thomas.garnreiter@meduniwien.ac.at",
+    "ProdTo": "win-admin@meduniwien.ac.at",
+    "SubjectPrefix": "[Zertifikats-Report]",
+    "CredentialFilePath": "C:\\Script\\Zertifikate\\Config\\secure.smtp.cred.xml"
+  },
+  "CorporateDesign": {
+    "PrimaryColor": "#111d4e",
+    "HoverColor": "#5fb4e5"
+  }
+}

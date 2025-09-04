@@ -1,0 +1,49 @@
+{
+    "Version": "v1.0.0",
+    "RunMode": "DEV",
+    "Language": "de-DE",
+    "DebugMode": true,
+    "LastModuleCheck": "",
+    "MainDomain": "meduniwien.ac.at",
+    "Paths": {
+        "ConfigFile": "F:\\DEV\\repositories\\CertSurv\\Config\\Config-Cert-Surveillance.json",
+        "PathTo7Zip": "C:\\Program Files\\7-Zip\\7z.exe",
+        "LogoDirectory": "\\\\itscmgmt03.srv.meduniwien.ac.at\\iso\\MUWLogo",
+        "ReportDirectory": "reports",
+        "LogDirectory": "LOG"
+    },
+    "Excel": {
+        "ExcelPath": "\\\\itscmgmt03.srv.meduniwien.ac.at\\iso\\WIndowsServerListe\\Serverliste2025FQDN.xlsx",
+        "SheetName": "Serverliste2025",
+        "HeaderRow": 1,
+        "FqdnColumnName": "FQDN",
+        "ServerNameColumnName": "Server Name",
+        "AlwaysUseConfigPath": true
+    },
+    "Network": {
+        "DnsServer": "149.148.55.55",
+        "TlsVersion": "SystemDefault"
+    },
+    "Intervals": {
+        "DaysUntilUrgent": 10,
+        "DaysUntilCritical": 30,
+        "DaysUntilWarning": 60,
+        "ArchiveLogsOlderThanDays": 30,
+        "DeleteZipArchivesOlderThanDays": 90
+    },
+    "Mail": {
+        "Enabled": true,
+        "SmtpServer": "smtpi.meduniwien.ac.at",
+        "SmtpPort": 25,
+        "UseSsl": false,
+        "SenderAddress": "ITSCMGMT03@meduniwien.ac.at",
+        "DevTo": "thomas.garnreiter@meduniwien.ac.at",
+        "ProdTo": "win-admin@meduniwien.ac.at",
+        "SubjectPrefix": "[Zertifikats-Report]",
+        "CredentialFilePath": "C:\\Script\\Zertifikate\\Config\\secure.smtp.cred.xml"
+    },
+    "CorporateDesign": {
+        "PrimaryColor": "#111d4e",
+        "HoverColor": "#5fb4e5"
+    }
+}

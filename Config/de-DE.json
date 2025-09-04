@@ -1,0 +1,22 @@
+{
+    "script_loaded": "Skript {0} v{1} (Regelwerk: {2}) wurde geladen.",
+    "config_loaded": "Konfigurations- und Sprachdateien wurden erfolgreich geladen.",
+    "log_initialized": "Log-Datei initialisiert: {0}",
+    "modules_ok": "Alle erforderlichen Module sind verfügbar.",
+    "modules_missing": "FEHLER: Die folgenden PowerShell-Module fehlen: {0}. Bitte installieren Sie diese und starten Sie das Skript erneut.",
+    "excel_opening": "Öffne Excel-Datei: {0}",
+    "excel_not_found": "FEHLER: Die Excel-Datei konnte nicht gefunden werden: {0}",
+    "processing_server": "Verarbeite Server: {0}",
+    "fqdn_constructed": "FQDN für {0} konstruiert: {1}",
+    "fqdn_updated": "FQDN in Excel für {0} aktualisiert.",
+    "cert_check_start": "Beginne Zertifikatsprüfung für {0}...",
+    "cert_found": "Zertifikat gefunden: {0}, Gültig bis: {1}",
+    "cert_additional_found": "Zusätzliche Zertifikate gefunden: {0}",
+    "cert_no_certs_found": "Keine Zertifikate für {0} gefunden.",
+    "cert_error": "FEHLER bei der Zertifikatsabfrage für {0}: {1}",
+    "report_generation_start": "Erstelle HTML-Report...",
+    "report_generation_complete": "HTML-Report erfolgreich erstellt: {0}",
+    "email_sending": "Sende E-Mail-Benachrichtigung...",
+    "email_sent": "E-Mail-Benachrichtigung erfolgreich gesendet.",
+    "script_finished": "Skript-Ausführung beendet."
+}

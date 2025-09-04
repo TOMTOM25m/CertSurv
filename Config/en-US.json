@@ -1,0 +1,22 @@
+{
+    "script_loaded": "Script {0} v{1} (Rulebook: {2}) loaded.",
+    "config_loaded": "Configuration and language files loaded successfully.",
+    "log_initialized": "Log file initialized: {0}",
+    "modules_ok": "All required modules are available.",
+    "modules_missing": "ERROR: The following PowerShell modules are missing: {0}. Please install them and restart the script.",
+    "excel_opening": "Opening Excel file: {0}",
+    "excel_not_found": "ERROR: Excel file not found: {0}",
+    "processing_server": "Processing server: {0}",
+    "fqdn_constructed": "Constructed FQDN for {0}: {1}",
+    "fqdn_updated": "FQDN updated in Excel for {0}.",
+    "cert_check_start": "Starting certificate check for {0}...",
+    "cert_found": "Certificate found: {0}, Valid until: {1}",
+    "cert_additional_found": "Additional certificates found: {0}",
+    "cert_no_certs_found": "No certificates found for {0}.",
+    "cert_error": "ERROR during certificate query for {0}: {1}",
+    "report_generation_start": "Generating HTML report...",
+    "report_generation_complete": "HTML report generated successfully: {0}",
+    "email_sending": "Sending email notification...",
+    "email_sent": "Email notification sent successfully.",
+    "script_finished": "Script execution finished."
+}
