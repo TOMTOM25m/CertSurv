@@ -1,90 +1,104 @@
-#requires -Version 5.1
-
-<#
-.SYNOPSIS
-    Test Header Processing für Domain/Workgroup-Klassifizierung
-.DESCRIPTION
-    Testet die neue Header-Verarbeitung die (Domain|Workgroup|Domain-ADsync|)$Subdomain Format erkennt
-#>
-
-# Set up paths
-$ScriptDirectory = "F:\DEV\repositories\CertSurv"
-$ModulesPath = Join-Path -Path $ScriptDirectory -ChildPath "Modules"
+# Test script for Excel header processing
+param(
+    [string]$LogLevel = "DEBUG"
+)
 
 # Import required modules
-Import-Module (Join-Path -Path $ModulesPath -ChildPath "FL-Logging.psm1") -Force
-Import-Module (Join-Path -Path $ModulesPath -ChildPath "FL-Config.psm1") -Force
-Import-Module (Join-Path -Path $ModulesPath -ChildPath "FL-DataProcessing.psm1") -Force
+$modules = @(
+    ".\Modules\FL-Config.psm1",
+    ".\Modules\FL-Logging.psm1", 
+    ".\Modules\FL-DataProcessing.psm1"
+)
+
+foreach ($module in $modules) {
+    if (Test-Path $module) {
+        Import-Module $module -Force
+        Write-Host "✓ Imported: $module" -ForegroundColor Green
+    } else {
+        Write-Host "✗ Missing: $module" -ForegroundColor Red
+        exit 1
+    }
+}
 
 # Load configuration
-$ScriptConfig = Get-ScriptConfiguration -ScriptDirectory $ScriptDirectory
-$Config = $ScriptConfig.Config
+$configPath = ".\Config\Config-Cert-Surveillance.json"
+if (-not (Test-Path $configPath)) {
+    Write-Host "✗ Configuration file not found: $configPath" -ForegroundColor Red
+    exit 1
+}
 
-# Set up logging
-$logPath = Join-Path -Path $ScriptDirectory -ChildPath "LOG"
-$logFile = Join-Path -Path $logPath -ChildPath "TEST_HeaderProcessing_$(Get-Date -Format 'yyyy-MM-dd').log"
+$config = Get-ConfigFromFile -ConfigPath $configPath
+Write-Host "✓ Configuration loaded" -ForegroundColor Green
 
-Write-Host "Testing Header Processing..." -ForegroundColor Cyan
-Write-Host "Log file: $logFile" -ForegroundColor Gray
+# Create log file
+$logFile = ".\LOG\TEST_Header-Processing_$(Get-Date -Format 'yyyy-MM-dd').log"
+New-Item -Path $logFile -ItemType File -Force | Out-Null
+
+Write-Log "=== Testing Extract-HeaderContext Function ===" -LogFile $logFile
+Write-Log "Test started: $(Get-Date)" -LogFile $logFile
+Write-Log "Log Level: $LogLevel" -LogFile $logFile
+
+# Test Excel path
+$excelPath = $config.Excel.FilePath
+if (-not (Test-Path $excelPath)) {
+    Write-Log "ERROR: Excel file not found: $excelPath" -LogFile $logFile
+    Write-Host "✗ Excel file not found: $excelPath" -ForegroundColor Red
+    exit 1
+}
+
+Write-Log "Excel file found: $excelPath" -LogFile $logFile
+Write-Host "✓ Excel file: $excelPath" -ForegroundColor Green
 
 try {
-    # Test Excel import with header context
-    Write-Host "`nStep 1: Testing Excel import with header context..." -ForegroundColor Yellow
-    $excelResult = Import-ExcelData -ExcelPath $Config.Excel.ExcelPath -WorksheetName $Config.Excel.SheetName -Config $Config -LogFile $logFile
+    # Test the Extract-HeaderContext function
+    Write-Host "`n--- Testing Extract-HeaderContext ---" -ForegroundColor Yellow
+    Write-Log "Calling Extract-HeaderContext function..." -LogFile $logFile
     
-    Write-Host "Excel import results:" -ForegroundColor Green
-    Write-Host "  - Original rows: $($excelResult.OriginalCount)" -ForegroundColor Gray
-    Write-Host "  - Filtered rows: $($excelResult.FilteredCount)" -ForegroundColor Gray
-    Write-Host "  - Header context entries: $($excelResult.HeaderContext.Count)" -ForegroundColor Gray
+    $headerContext = Extract-HeaderContext -ExcelPath $excelPath -WorksheetName $config.Excel.WorksheetName -HeaderRow $config.Excel.HeaderRow -Config $config -LogFile $logFile
     
-    # Check specific servers
-    Write-Host "`nStep 2: Checking specific servers..." -ForegroundColor Yellow
+    Write-Host "✓ Extract-HeaderContext completed successfully" -ForegroundColor Green
+    Write-Log "Extract-HeaderContext function completed successfully" -LogFile $logFile
     
-    $testServers = @("na0fs1bkp", "UVWDC001", "UVWDC002", "UVWDC003")
+    # Analyze results
+    Write-Host "`n--- Results Analysis ---" -ForegroundColor Yellow
+    Write-Host "Total servers processed: $($headerContext.Count)" -ForegroundColor Cyan
     
-    foreach ($serverName in $testServers) {
-        Write-Host "`nChecking server: $serverName" -ForegroundColor Cyan
-        
-        # Find server in data
-        $serverRow = $excelResult.Data | Where-Object { $_.$($Config.Excel.ServerNameColumnName) -eq $serverName }
-        
-        if ($serverRow) {
-            $domainContext = if ($serverRow.PSObject.Properties['_DomainContext']) { $serverRow._DomainContext } else { "Not set" }
-            $subdomainContext = if ($serverRow.PSObject.Properties['_SubdomainContext']) { $serverRow._SubdomainContext } else { "Not set" }
-            $isDomainServer = if ($serverRow.PSObject.Properties['_IsDomainServer']) { $serverRow._IsDomainServer } else { "Not set" }
-            
-            Write-Host "  - Found in data: YES" -ForegroundColor Green
-            Write-Host "  - Domain Context: $domainContext" -ForegroundColor Gray
-            Write-Host "  - Subdomain Context: $subdomainContext" -ForegroundColor Gray
-            Write-Host "  - Is Domain Server: $isDomainServer" -ForegroundColor Gray
-            
-            # Check header context
-            $headerInfo = $excelResult.HeaderContext[$serverName]
-            if ($headerInfo) {
-                Write-Host "  - Header Context: Domain=$($headerInfo.Domain), Subdomain=$($headerInfo.Subdomain), IsDomain=$($headerInfo.IsDomain)" -ForegroundColor Gray
-            } else {
-                Write-Host "  - Header Context: NOT FOUND" -ForegroundColor Red
-            }
-        } else {
-            Write-Host "  - Found in data: NO" -ForegroundColor Red
+    $domainServers = @($headerContext.Values | Where-Object { $_.IsDomain })
+    $workgroupServers = @($headerContext.Values | Where-Object { -not $_.IsDomain })
+    
+    Write-Host "Domain servers: $($domainServers.Count)" -ForegroundColor Green
+    Write-Host "Workgroup servers: $($workgroupServers.Count)" -ForegroundColor Yellow
+    
+    # Show first few domain servers
+    if ($domainServers.Count -gt 0) {
+        Write-Host "`nFirst 5 Domain servers:" -ForegroundColor Green
+        $domainServers | Select-Object -First 5 | ForEach-Object {
+            $serverName = ($headerContext.GetEnumerator() | Where-Object { $_.Value -eq $_ }).Key
+            Write-Host "  $serverName -> Domain: $($_.Domain), Subdomain: $($_.Subdomain), Block: $($_.BlockNumber)" -ForegroundColor Green
         }
     }
     
-    # Show some header context entries
-    Write-Host "`nStep 3: Sample header context entries..." -ForegroundColor Yellow
-    $sampleCount = 0
-    foreach ($key in $excelResult.HeaderContext.Keys) {
-        if ($sampleCount -ge 5) { break }
-        $context = $excelResult.HeaderContext[$key]
-        Write-Host "  $key -> Domain: '$($context.Domain)', Subdomain: '$($context.Subdomain)', IsDomain: $($context.IsDomain)" -ForegroundColor Gray
-        $sampleCount++
+    # Check specific server na0fs1bkp
+    if ($headerContext.ContainsKey("na0fs1bkp")) {
+        $na0Context = $headerContext["na0fs1bkp"]
+        Write-Host "`nSpecific check - na0fs1bkp:" -ForegroundColor Magenta
+        Write-Host "  Domain: $($na0Context.Domain)" -ForegroundColor Cyan
+        Write-Host "  Subdomain: $($na0Context.Subdomain)" -ForegroundColor Cyan
+        Write-Host "  IsDomain: $($na0Context.IsDomain)" -ForegroundColor Cyan
+        Write-Host "  Block: $($na0Context.BlockNumber)" -ForegroundColor Cyan
+        
+        Write-Log "na0fs1bkp classification: Domain=$($na0Context.Domain), Subdomain=$($na0Context.Subdomain), IsDomain=$($na0Context.IsDomain), Block=$($na0Context.BlockNumber)" -LogFile $logFile
+    } else {
+        Write-Host "`nWARNING: na0fs1bkp not found in results!" -ForegroundColor Red
+        Write-Log "WARNING: na0fs1bkp not found in header context results" -LogFile $logFile
     }
     
-    Write-Host "`nHeader processing test completed!" -ForegroundColor Green
-    
 } catch {
-    Write-Host "ERROR: $($_.Exception.Message)" -ForegroundColor Red
-    Write-Log "Test failed: $($_.Exception.Message)" -Level ERROR -LogFile $logFile
+    Write-Host "✗ Error during testing: $($_.Exception.Message)" -ForegroundColor Red
+    Write-Log "ERROR: $($_.Exception.Message)" -LogFile $logFile
+    Write-Log "Stack trace: $($_.ScriptStackTrace)" -LogFile $logFile
+    exit 1
 }
 
-Write-Host "`nCheck log file for details: $logFile" -ForegroundColor Cyan
+Write-Log "Test completed: $(Get-Date)" -LogFile $logFile
+Write-Host "`n✓ Test completed successfully. Check log: $logFile" -ForegroundColor Green

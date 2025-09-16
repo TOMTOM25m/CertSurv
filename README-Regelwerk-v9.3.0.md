@@ -1,4 +1,5 @@
 # Certificate Surveillance System v1.0.0
+
 ## Regelwerk v9.3.0 Compliance Implementation
 
 ### Übersicht / Overview
@@ -13,7 +14,29 @@ Das Certificate Surveillance System wurde vollständig auf das MUW-Regelwerk v9.
 
 ### Architektur / Architecture
 
+Certificate Surveillance System
+├── Cert-Surveillance.ps1          # Main orchestration script (strict modularity)
+├── Setup-CertSurv.ps1            # Standalone setup GUI application
+├── Config/
+│   ├── Config-Cert-Surveillance.json  # Central configuration
+│   ├── de-DE.json                     # German localization
+│   └── en-US.json                     # English localization
+└── Modules/                       # FL-* Specialized modules
+    ├── FL-Certificate.psm1        # SSL/TLS certificate operations
+    ├── FL-Config.psm1             # Configuration management
+    ├── FL-CoreLogic.psm1          # Main workflow orchestration
+    ├── FL-Compatibility.psm1      # PowerShell version compatibility
+    ├── FL-ActiveDirectory.psm1    # AD integration functions
+    ├── FL-DataProcessing.psm1     # Excel/CSV data processing
+    ├── FL-Gui.psm1                # WPF setup GUI interface
+    ├── FL-Logging.psm1            # Structured logging
+    ├── FL-Maintenance.psm1        # System maintenance
+    ├── FL-NetworkOperations.psm1  # Network connectivity
+    ├── FL-Reporting.psm1          # Report generation
+    ├── FL-Security.psm1           # Security functions
+    └── FL-Utils.psm1              # Utility functions
 ```
+
 Certificate Surveillance System
 ├── Cert-Surveillance.ps1          # Main orchestration script (strict modularity)
 ├── Setup-CertSurv.ps1            # Standalone setup GUI application
@@ -42,24 +65,28 @@ Certificate Surveillance System
 ### Regelwerk v9.3.0 Compliance Features
 
 #### 1. **Strict Modularity Implementation**
+
 - ✅ Hauptskript unter 100 Zeilen
 - ✅ Universelles Hauptskript ohne spezifische Logik
 - ✅ Alle Funktionen in spezialisierte FL-* Module ausgelagert
 - ✅ Klare Trennung zwischen Orchestrierung und Implementierung
 
 #### 2. **PowerShell Version Compatibility**
+
 - ✅ Automatische PowerShell-Versionserkennung
 - ✅ Kompatibilität für PowerShell 5.1 und 7+
 - ✅ Cross-Platform-Support (Windows/Linux/macOS für PS7+)
 - ✅ Version-spezifische Funktionen in FL-Compatibility
 
 #### 3. **Configuration Management**
+
 - ✅ Vollständig externalisierte Konfiguration in JSON
 - ✅ Keine Hard-coded-Werte im Code
 - ✅ Mehrsprachige Lokalisierung (DE/EN)
 - ✅ Validierung aller Konfigurationsparameter
 
 #### 4. **Setup GUI Interface**
+
 - ✅ Eigenständige WPF-basierte Setup-Anwendung
 - ✅ Alle Konfigurationsoptionen grafisch editierbar
 - ✅ Integrierte Validierung und Test-Funktionen
@@ -83,7 +110,8 @@ Certificate Surveillance System
 
 ### Anwendung / Usage
 
-#### Setup und Konfiguration:
+#### Setup und Konfiguration
+
 ```powershell
 # Setup GUI starten
 .\Setup-CertSurv.ps1
@@ -92,7 +120,8 @@ Certificate Surveillance System
 .\Cert-Surveillance.ps1 -Setup
 ```
 
-#### Produktionsausführung:
+#### Produktionsausführung
+
 ```powershell
 # Standard-Modus
 .\Cert-Surveillance.ps1
@@ -121,7 +150,7 @@ Cert-Surveillance.ps1
     └── FL-Logging → Structured logging
 ```
 
----
+---PowerShell
 
 ### PowerShell Compatibility Matrix
 
@@ -158,12 +187,14 @@ Cert-Surveillance.ps1
 
 ### Wartung und Updates / Maintenance and Updates
 
-#### Automatic Maintenance:
+#### Automatic Maintenance
+
 - Log-Rotation mit konfigurierbarer Aufbewahrung
 - Temporäre Datei-Bereinigung
 - Performance-Metriken-Sammlung
 
-#### Manual Maintenance:
+#### Manual Maintenance
+
 ```powershell
 # Module-Update
 Import-Module .\Modules\FL-Maintenance.psm1
