@@ -70,7 +70,7 @@ function Invoke-NetworkOperations {
                         $blockSuccess++
                         $totalSuccessful++
                     } else {
-                        Write-Host " ✗ ($($result.Reason))" -ForegroundColor Red
+                        Write-Host (" ✗ ({0})" -f $result.Reason) -ForegroundColor Red
                         $blockFailed++
                         $totalFailed++
                     }
@@ -107,7 +107,7 @@ function Invoke-NetworkOperations {
                     $blockSuccess++
                     $totalSuccessful++
                 } else {
-                    Write-Host " ✗ ($($result.Reason))" -ForegroundColor Red
+                    Write-Host (" ✗ ({0})" -f $result.Reason) -ForegroundColor Red
                     $blockFailed++
                     $totalFailed++
                 }
