@@ -4,7 +4,7 @@ Function Send-MailNotification {
     [CmdletBinding()]
     Param(
         [Parameter(Mandatory = $true)]
-        [hashtable]$MailConfig,
+        [object]$MailConfig,
         [Parameter(Mandatory = $true)]
         [string]$Subject,
         [Parameter(Mandatory = $true)]
@@ -63,19 +63,12 @@ Function Get-Certificates {
         $sslStream = New-Object System.Net.Security.SslStream($tcpClient.GetStream(), $false)
         $sslStream.AuthenticateAsClient($FQDN)
         $cert = $sslStream.RemoteCertificate
-        $tcpClient.Close()
-
-        $allCerts = @($cert)
         
-        # This is a simplified way to get more certs. A more robust solution might involve Invoke-Command
-        try {
-            $otherCerts = Invoke-Command -ComputerName $FQDN -ScriptBlock { Get-ChildItem -Path Cert:\\LocalMachine\\My } -ErrorAction SilentlyContinue
-            if($otherCerts) {
-                $allCerts += $otherCerts
-            }
-        } catch {
-            Write-Log "Could not connect to '$FQDN' via remote PowerShell to find additional certificates. Error: $($_.Exception.Message)" -Level WARN
-        }
+        $chain = New-Object System.Security.Cryptography.X509Certificates.X509Chain
+        $chain.Build($cert)
+        $allCerts = $chain.ChainElements | ForEach-Object { $_.Certificate }
+        
+        $tcpClient.Close()
 
         return $allCerts | Select-Object -Unique
     }

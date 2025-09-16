@@ -1,6 +1,35 @@
-#Requires -version 5.1
+#requires -Version 5.1
+
+<#
+.SYNOPSIS
+    [DE] FL-Logging Modul - Strukturiertes Logging für Cert-Surveillance
+    [EN] FL-Logging Module - Structured logging for Cert-Surveillance
+.DESCRIPTION
+    [DE] Stellt Funktionen für strukturiertes und levelbezogenes Logging bereit.
+         Unterstützt Console- und Datei-Output mit konfigurierbaren Log-Levels.
+    [EN] Provides functions for structured and level-based logging.
+         Supports console and file output with configurable log levels.
+.NOTES
+    Author:         Flecki (Tom) Garnreiter
+    Created on:     2025.09.04
+    Last modified:  2025.09.04
+    Version:        v1.0.0
+    MUW-Regelwerk:  v9.3.0
+    Copyright:      © 2025 Flecki Garnreiter
+    License:        MIT License
+#>
+
+$ModuleName = "FL-Logging"
+$ModuleVersion = "v1.0.0"
+
+#----------------------------------------------------------[Functions]----------------------------------------------------------
 
 Function Write-Log {
+    <#
+    .SYNOPSIS
+        [DE] Schreibt strukturierte Log-Einträge.
+        [EN] Writes structured log entries.
+    #>
     [CmdletBinding()]
     Param(
         [Parameter(Mandatory = $true)]
@@ -24,4 +53,10 @@ Function Write-Log {
     }
 }
 
+#----------------------------------------------------------[Module Exports]--------------------------------------------------------
+
 Export-ModuleMember -Function Write-Log
+
+Write-Verbose "FL-Logging module v$ModuleVersion loaded successfully"
+
+# --- End of module --- v1.0.0 ; Regelwerk: v9.3.0 ---

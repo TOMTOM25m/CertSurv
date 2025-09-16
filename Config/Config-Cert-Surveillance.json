@@ -1,0 +1,77 @@
+{
+  "ScriptVersion": "v1.0.3",
+  "RulebookVersion": "v9.3.0",
+  "Version": "v1.0.3",
+  "RunMode": "DEV",
+  "Language": "de-DE",
+  "DebugMode": true,
+  "LastModuleCheck": "",
+  "MainDomain": "meduniwien.ac.at",
+  "Paths": {
+    "ConfigFile": "F:\\DEV\\repositories\\CertSurv\\Config\\Config-Cert-Surveillance.json",
+    "PathTo7Zip": "C:\\Program Files\\7-Zip\\7z.exe",
+    "LogoDirectory": "\\\\itscmgmt03.srv.meduniwien.ac.at\\iso\\MUWLogo",
+    "ReportDirectory": "reports",
+    "LogDirectory": "LOG"
+  },
+  "Excel": {
+    "ExcelPath": "\\\\itscmgmt03.srv.meduniwien.ac.at\\iso\\WIndowsServerListe\\Serverliste2025FQDN.xlsx",
+    "SheetName": "Serverliste2025",
+    "HeaderRow": 2,
+    "FqdnColumnName": "FQDN",
+    "ServerNameColumnName": "ServerName",
+    "DomainStatusColumnName": "OS_Name",
+    "AlwaysUseConfigPath": true
+  },
+  "Network": {
+    "DnsServer": "149.148.55.55",
+    "TlsVersion": "SystemDefault"
+  },
+  "Certificate": {
+    "Port": 443,
+    "WarningDays": 30,
+    "Timeout": 10000,
+    "RetryAttempts": 3,
+    "Method": "Socket",
+    "EnableBrowserCheck": true,
+    "EnableComparison": true,
+    "EnableAutoPortDetection": true,
+    "CommonSSLPorts": [
+      443,
+      9443,
+      8443,
+      4443,
+      10443,
+      8080,
+      8081
+    ],
+    "UserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Certificate-Surveillance/1.0",
+    "EnableSslProtocols": [
+      "Tls12",
+      "Tls13"
+    ],
+    "ReportPath": "Reports\\Certificate-Reports"
+  },
+  "Intervals": {
+    "DaysUntilUrgent": 10,
+    "DaysUntilCritical": 30,
+    "DaysUntilWarning": 60,
+    "ArchiveLogsOlderThanDays": 30,
+    "DeleteZipArchivesOlderThanDays": 90
+  },
+  "Mail": {
+    "Enabled": true,
+    "SmtpServer": "smtpi.meduniwien.ac.at",
+    "SmtpPort": 25,
+    "UseSsl": false,
+    "SenderAddress": "ITSCMGMT03@meduniwien.ac.at",
+    "DevTo": "thomas.garnreiter@meduniwien.ac.at",
+    "ProdTo": "win-admin@meduniwien.ac.at",
+    "SubjectPrefix": "[Zertifikats-Report]",
+    "CredentialFilePath": "C:\\Script\\Zertifikate\\Config\\secure.smtp.cred.xml"
+  },
+  "CorporateDesign": {
+    "PrimaryColor": "#111d4e",
+    "HoverColor": "#5fb4e5"
+  }
+}

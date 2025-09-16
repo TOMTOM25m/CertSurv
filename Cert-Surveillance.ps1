@@ -1,232 +1,256 @@
 #Requires -version 5.1
 #Requires -RunAsAdministrator
+
 <#
 .SYNOPSIS
-    Monitors SSL certificates on servers listed in an Excel file, generates a report,
-    and updates the Excel file with discovered FQDNs and certificate details.
+    [DE] Certificate Surveillance Script - Umfassende SSL/TLS-Zertifikatsüberwachung für Server-Infrastrukturen
+    [EN] Certificate Surveillance Script - Comprehensive SSL/TLS certificate monitoring for server infrastructures
 .DESCRIPTION
-    This script adheres to Regelwerk9.0.9 and performs the following actions:
-    1. Loads configuration from JSON files.
-    2. Checks for required PowerShell modules.
-    3. Reads a list of servers from a specified Excel file.
-    4. Constructs the FQDN for each server based on a defined logic.
-    5. Queries each server for SSL certificates on port 443 and in the local certificate store.
-    6. Writes the discovered FQDNs and additional certificate names back to the Excel file.
-    7. Generates an HTML report detailing certificate statuses (Valid, Warning, Critical, Urgent).
-    8. Sends the report via email.
-    9. Performs log file cleanup (archiving and deleting old logs).
+    [DE] Ein minimalistisches PowerShell-Skript zur Überwachung von SSL/TLS-Zertifikaten nach Regelwerk v9.3.0.
+         Das Hauptskript ist universal und minimalistisch - ALLE spezifische Logik wird von spezialisierten FL-*-Modulen behandelt.
+         Strikte Modularität: Excel-Verarbeitung, AD-Abfragen, Zertifikatsabruf, Berichtserstellung - alles ausgelagert.
+    [EN] A minimalistic PowerShell script for SSL/TLS certificate monitoring according to Rulebook v9.3.0.
+         The main script is universal and minimalistic - ALL specific logic is handled by specialized FL-* modules.
+         Strict modularity: Excel processing, AD queries, certificate retrieval, reporting - all externalized.
 .PARAMETER ExcelPath
-    Overrides the Excel file path specified in the configuration file.
+    [DE] Optional: Überschreibt den Excel-Dateipfad aus der Konfiguration. Ermöglicht die Verwendung einer alternativen Serverliste.
+    [EN] Optional: Override Excel file path from configuration. Allows using an alternative server list.
+.PARAMETER Setup
+    [DE] Startet die WPF-Konfigurations-GUI, um die Einstellungen zu bearbeiten.
+    [EN] Starts the WPF configuration GUI to edit the settings.
 .EXAMPLE
     .\Cert-Surveillance.ps1
-    Runs the script using the configuration defined in Config-Cert-Surveillance.ps1.json.
+    [DE] Führt das Skript mit der Standardkonfiguration aus. Verwendet die in Config-Cert-Surveillance.json definierte Excel-Datei.
+    [EN] Runs the script with default configuration. Uses the Excel file defined in Config-Cert-Surveillance.json.
 .EXAMPLE
-    .\Cert-Surveillance.ps1 -ExcelPath "C:\temp\MyServerList.xlsx"
-    Runs the script, but uses a different Excel file than the one in the config.
+    .\Cert-Surveillance.ps1 -ExcelPath "C:\Custom\Servers.xlsx"
+    [DE] Führt das Skript mit einer benutzerdefinierten Excel-Datei aus, überschreibt die Konfiguration temporär.
+    [EN] Runs the script with a custom Excel file, temporarily overriding the configuration.
+.EXAMPLE
+    .\Cert-Surveillance.ps1 -Setup
+    [DE] Öffnet die Konfigurations-GUI, um die aktuellen Einstellungen zu ändern.
+    [EN] Opens the configuration GUI to change the current settings.
 .NOTES
-    Author: GitHub Copilot
-    Version: 1.0.0
-    Rulebook: 9.0.9
+    Author:         Flecki (Tom) Garnreiter
+    Created on:     2025.09.04
+    Last modified:  2025.09.04
+    Version:        v1.0.3
+    MUW-Regelwerk:  v9.3.0
+    Copyright:      © 2025 Flecki Garnreiter
+    License:        MIT License
+    Architecture:   Strict Modularity (FL-* modules only)
 .DISCLAIMER
-    This script is provided as-is. Use at your own risk.
+    [DE] Die bereitgestellten Skripte und die zugehörige Dokumentation werden "wie besehen" ("as is")
+    ohne ausdrückliche oder stillschweigende Gewährleistung jeglicher Art zur Verfügung gestellt.
+    Insbesondere wird keinerlei Gewähr übernommen für die Marktgängigkeit, die Eignung für einen bestimmten Zweck
+    oder die Nichtverletzung von Rechten Dritter.
+    Es besteht keine Verpflichtung zur Wartung, Aktualisierung oder Unterstützung der Skripte. Jegliche Nutzung erfolgt auf eigenes Risiko.
+    In keinem Fall haften Herr Flecki Garnreiter, sein Arbeitgeber oder die Mitwirkenden an der Erstellung,
+    Entwicklung oder Verbreitung dieser Skripte für direkte, indirekte, zufällige, besondere oder Folgeschäden - einschließlich,
+    aber nicht beschränkt auf entgangenen Gewinn, Betriebsunterbrechungen, Datenverlust oder sonstige wirtschaftliche Verluste -,
+    selbst wenn sie auf die Möglichkeit solcher Schäden hingewiesen wurden.
+    Durch die Nutzung der Skripte erklären Sie sich mit diesen Bedingungen einverstanden.
+    
+    [EN] The scripts and accompanying documentation are provided "as is," without warranty of any kind, either express or implied.
+    Flecki Garnreiter and his employer disclaim all warranties, including but not limited to the implied warranties of merchantability,
+    fitness for a particular purpose, and non-infringement.
+    There is no obligation to provide maintenance, support, updates, or enhancements for the scripts.
+    Use of these scripts is at your own risk. Under no circumstances shall Flecki Garnreiter, his employer, the authors,
+    or any party involved in the creation, production, or distribution of the scripts be held liable for any damages whatever,
+    including but not limited to direct, indirect, incidental, consequential, or special damages
+    (such as loss of profits, business interruption, or loss of business data), even if advised of the possibility of such damages.
+    By using these scripts, you agree to be bound by the above terms.
 #>
 
-#---------------------------------------------------------[Script Parameters]------------------------------------------------------
 [CmdletBinding()]
-Param
-(
+param(
     [Parameter(Mandatory = $false)]
-    [string]$ExcelPath
+    [string]$ExcelPath,
+    
+    [Parameter(Mandatory = $false)]
+    [switch]$Setup
 )
 
-#---------------------------------------------------------[Initialisations]--------------------------------------------------------
-
-#region ####################### [1. Global Variables & Modules] ##############################
+#----------------------------------------------------------[Declarations / Deklarationen]----------------------------------------------------------
 $Global:ScriptName = $MyInvocation.MyCommand.Name
-$Global:ScriptVersion = "v1.0.0"
-$Global:RulebookVersion = "v9.0.9"
-$Global:ScriptDirectory = $PSScriptRoot
-$ErrorActionPreference = 'SilentlyContinue'
+$Global:ScriptVersion = "v1.0.3"
+$Global:RulebookVersion = "v9.3.0"
+$Global:ScriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
-# Import internal modules
+#----------------------------------------------------------[PowerShell Version Detection / PowerShell Versionserkennung]----------------------------------------
+# Detect PowerShell version and set compatibility flags / PowerShell-Version erkennen und Kompatibilitäts-Flags setzen
+$Global:PowerShellVersion = $PSVersionTable.PSVersion
+$Global:IsPowerShell5 = $PSVersionTable.PSVersion.Major -eq 5
+$Global:IsPowerShell7Plus = $PSVersionTable.PSVersion.Major -ge 7
+$Global:IsWindowsPowerShell = $PSVersionTable.PSEdition -eq 'Desktop'
+$Global:IsPowerShellCore = $PSVersionTable.PSEdition -eq 'Core'
+
+Write-Verbose "PowerShell Version: $($Global:PowerShellVersion)"
+Write-Verbose "Edition: $($PSVersionTable.PSEdition)"
+if ($Global:IsPowerShell7Plus) {
+    Write-Verbose "Platform: $($PSVersionTable.Platform)"
+}
+
+#----------------------------------------------------------[Module Loading / Modul-Laden]--------------------------------------------------------
+# Internal Modules / Interne Module
+
+# Add FL-Certificate module for remote certificate checks / FL-Certificate Modul für Remote-Zertifikatsprüfungen hinzufügen
+$internalModules = @(
+    'FL-Compatibility',
+    'FL-Config',
+    'FL-Logging',
+    'FL-Maintenance',
+    'FL-Utils',
+    'FL-ActiveDirectory',
+    'FL-DataProcessing',
+    'FL-NetworkOperations',
+    'FL-Security',
+    'FL-Reporting',
+    'FL-CoreLogic',
+    'FL-Certificate'
+)
+
+$modulesPath = Join-Path -Path $Global:ScriptDirectory -ChildPath "Modules"
+
+foreach ($module in $internalModules) {
+    $modulePath = Join-Path -Path $modulesPath -ChildPath "$module.psm1"
+    try {
+        Import-Module $modulePath -Force -ErrorAction Stop
+        Write-Verbose "Loaded module: $module"
+    }
+    catch {
+        Write-Host "FATAL: Failed to load internal module '$module': $($_.Exception.Message)" -ForegroundColor Red
+        exit 1
+    }
+}
+
+# External Modules / Externe Module
 try {
-    Import-Module (Join-Path -Path $Global:ScriptDirectory -ChildPath "Modules\FL-Config.psm1") -Force
-    Import-Module (Join-Path -Path $Global:ScriptDirectory -ChildPath "Modules\FL-Logging.psm1") -Force
-    Import-Module (Join-Path -Path $Global:ScriptDirectory -ChildPath "Modules\FL-Maintenance.psm1") -Force
-    Import-Module (Join-Path -Path $Global:ScriptDirectory -ChildPath "Modules\FL-Utils.psm1") -Force
+    Import-Module ImportExcel -ErrorAction Stop
+    Write-Verbose "Loaded module: ImportExcel"
 }
 catch {
-    Write-Host "FATAL: Could not import internal modules. Error: $($_.Exception.Message)"
+    Write-Host "FATAL: Failed to load module 'ImportExcel'. Please ensure it is installed from the PowerShell Gallery (Install-Module -Name ImportExcel)." -ForegroundColor Red
     exit 1
 }
 
-# Load Configuration and Localization
+#----------------------------------------------------------[Configuration & Initialization / Konfiguration & Initialisierung]----------------------------------------
 try {
+    # Load configuration / Konfiguration laden
     $ScriptConfig = Get-ScriptConfiguration -ScriptDirectory $Global:ScriptDirectory
     $Global:Config = $ScriptConfig.Config
     $Global:Localization = $ScriptConfig.Localization
-    # Override Excel path if provided as a parameter
-    if ($PSBoundParameters.ContainsKey('ExcelPath')) {
+    
+    # Check if Setup GUI should be launched / Prüfen ob Setup-GUI gestartet werden soll
+    if ($Setup) {
+        Write-Host "Starting Setup GUI / Setup-GUI wird gestartet..." -ForegroundColor Yellow
+        try {
+            # Import GUI module / GUI-Modul importieren
+            $guiModulePath = Join-Path -Path $modulesPath -ChildPath "FL-Gui.psm1"
+            Import-Module $guiModulePath -Force -ErrorAction Stop
+            
+            # Launch Setup GUI / Setup-GUI starten
+            $setupResult = Show-CertSurvSetupGUI -Config $Global:Config -Localization $Global:Localization -ScriptDirectory $Global:ScriptDirectory
+            
+            if ($setupResult) {
+                Write-Host "Configuration saved successfully! / Konfiguration erfolgreich gespeichert!" -ForegroundColor Green
+                # Reload configuration after changes / Konfiguration nach Änderungen neu laden
+                $ScriptConfig = Get-ScriptConfiguration -ScriptDirectory $Global:ScriptDirectory
+                $Global:Config = $ScriptConfig.Config
+                $Global:Localization = $ScriptConfig.Localization
+            } else {
+                Write-Host "Setup cancelled by user / Setup vom Benutzer abgebrochen" -ForegroundColor Yellow
+                exit 0
+            }
+        } catch {
+            Write-Host "Error launching Setup GUI: $($_.Exception.Message)" -ForegroundColor Red
+            exit 1
+        }
+    }
+    
+    # Override Excel path if provided / Excel-Pfad überschreiben falls angegeben
+    if ($ExcelPath) {
         $Global:Config.Excel.ExcelPath = $ExcelPath
     }
+    
+    # Initialize logging / Logging initialisieren
+    $logPath = Join-Path -Path $Global:ScriptDirectory -ChildPath $Global:Config.Paths.LogDirectory
+    if (!(Test-Path $logPath)) {
+        New-Item -Path $logPath -ItemType Directory -Force | Out-Null
+    }
+    
+    $scriptBaseName = $Global:ScriptName -replace '\.ps1$', ''
+    $logName = "$($Global:Config.RunMode)_${scriptBaseName}_$(Get-Date -Format 'yyyy-MM-dd').log"
+    $Global:sLogFile = Join-Path -Path $logPath -ChildPath $logName
+    
+    Write-Log "=== Certificate Surveillance Script v$Global:ScriptVersion Started ===" -LogFile $Global:sLogFile
+    Write-Log "Rulebook Version: $Global:RulebookVersion" -LogFile $Global:sLogFile
+    Write-Log "PowerShell Version: $($Global:PowerShellVersion)" -LogFile $Global:sLogFile
+    
+    # Validate prerequisites / Voraussetzungen validieren
+    if (!(Test-WorkflowPrerequisites -Config $Global:Config -LogFile $Global:sLogFile)) {
+        throw "Prerequisites validation failed. Check log for details."
+    }
+    
 }
 catch {
-    Write-Host "FATAL: Could not load configuration. Error: $($_.Exception.Message)"
-    exit 1
-}
-#endregion
-
-#region ####################### [2. Log File Initialization] ##############################
-$sLogPath = Join-Path -Path $Global:ScriptDirectory -ChildPath $Global:Config.Paths.LogDirectory
-If (!(Test-Path $sLogPath)) {
-    New-Item -Path $sLogPath -ItemType Directory | Out-Null
-}
-
-$scriptBaseName = $Global:ScriptName.trimend('.ps1')
-$sLogName = "$($Global:Config.RunMode)_${scriptBaseName}_$(Get-Date -Format 'yyyy-MM-dd').log"
-$Global:sLogFile = Join-Path -Path $sLogPath -ChildPath $sLogName
-Write-Log -Message ($Global:Localization.log_initialized -f $Global:sLogFile) -LogFile $Global:sLogFile
-
-Write-Log ($Global:Localization.script_loaded -f $Global:ScriptName, $Global:ScriptVersion, $Global:RulebookVersion) -LogFile $Global:sLogFile
-Write-Log $Global:Localization.config_loaded -LogFile $Global:sLogFile
-#endregion
-
-#region ####################### [3. Module Management] ##############################
-[ARRAY]$ModuleArray = @('ImportExcel')
-$modulesMissing = $false
-foreach ($Module in $ModuleArray) {
-    if (-not (Get-Module -ListAvailable -Name $Module)) {
-        Write-Log "Module '$Module' is missing." -Level WARN -LogFile $Global:sLogFile
-        $modulesMissing = $true
+    Write-Host "FATAL: Initialization failed: $($_.Exception.Message)" -ForegroundColor Red
+    if ($Global:sLogFile) {
+        Write-Log "FATAL: Initialization failed: $($_.Exception.Message)" -Level ERROR -LogFile $Global:sLogFile
     }
-}
-
-if ($modulesMissing) {
-    $missingModules = $ModuleArray | Where-Object { -not (Get-Module -ListAvailable -Name $_) } | Join-String -Separator ', '
-    Write-Log ($Global:Localization.modules_missing -f $missingModules) -Level ERROR -LogFile $Global:sLogFile
     exit 1
-} else {
-    Write-Log $Global:Localization.modules_ok -LogFile $Global:sLogFile
 }
-#endregion
 
-#----------------------------------------------------------[Main Logic]------------------------------------------------------------
-
+#----------------------------------------------------------[Main Execution / Hauptausführung]--------------------------------------------------------
 try {
-    #region ####################### [4. Excel Data Processing] ##############################
-    Write-Log ($Global:Localization.excel_opening -f $Global:Config.Excel.ExcelPath) -LogFile $Global:sLogFile
-    if (-not (Test-Path $Global:Config.Excel.ExcelPath)) {
-        throw ($Global:Localization.excel_not_found -f $Global:Config.Excel.ExcelPath)
+    # Execute main workflow (all logic delegated to modules) / Hauptworkflow ausführen (alle Logik an Module delegiert)
+    $workflowResult = Invoke-MainWorkflow -Config $Global:Config -Parameters $PSBoundParameters -ScriptDirectory $Global:ScriptDirectory -LogFile $Global:sLogFile
+
+    Write-Log "=== Script completed successfully ===" -LogFile $Global:sLogFile
+    Write-Log "Workflow result: $($workflowResult | ConvertTo-Json -Depth 2)" -LogFile $Global:sLogFile
+
+    if ($workflowResult.EmailSent) {
+        Write-Host "SUCCESS: Report generated and email sent." -ForegroundColor Green
+    } else {
+        Write-Host "SUCCESS: Report generated (email disabled)." -ForegroundColor Green
     }
-
-    $excelData = Import-Excel -Path $Global:Config.Excel.ExcelPath -WorksheetName $Global:Config.Excel.SheetName -HeaderRow $Global:Config.Excel.HeaderRow
-    $currentDomain = ""
-    $allServerCertificates = @()
-
-    for ($i = 0; $i -lt $excelData.Count; $i++) {
-        $row = $excelData[$i]
-        $serverNameValue = $row.$($Global:Config.Excel.ServerNameColumnName)
-
-        if ($serverNameValue -like "*(Domain)*") {
-            $currentDomain = ($serverNameValue -replace "\(Domain\)", "").Trim()
-            continue
-        }
-
-        if (-not ([string]::IsNullOrWhiteSpace($serverNameValue)) -and -not ([string]::IsNullOrWhiteSpace($currentDomain))) {
-            $fqdn = "$serverNameValue.$currentDomain.$($Global:Config.MainDomain)"
-            Write-Log ($Global:Localization.processing_server -f $serverNameValue) -LogFile $Global:sLogFile
-            Write-Log ($Global:Localization.fqdn_constructed -f $serverNameValue, $fqdn) -LogFile $Global:sLogFile
-
-            # Update Excel file in memory
-            $row.$($Global:Config.Excel.FqdnColumnName) = $fqdn
-            
-            # Get Certificates
-            Write-Log ($Global:Localization.cert_check_start -f $fqdn) -LogFile $Global:sLogFile
-            $certs = Get-Certificates -FQDN $fqdn
-            
-            if ($certs) {
-                $certInfo = $certs | ForEach-Object {
-                    $allServerCertificates += [PSCustomObject]@{
-                        ServerName = $serverNameValue
-                        FQDN = $fqdn
-                        CertificateSubject = $_.Subject
-                        NotAfter = $_.NotAfter
-                        DaysRemaining = ($_.NotAfter - (Get-Date)).Days
-                    }
-                    Write-Log ($Global:Localization.cert_found -f $_.Subject, $_.NotAfter) -LogFile $Global:sLogFile
-                    $_.Subject # Return subject for joining
-                }
-
-                $additionalCerts = ($certInfo | Select-Object -Skip 1) -join "; "
-                if ($additionalCerts) {
-                    $row.$($Global:Config.Excel.FqdnColumnName) += "; $additionalCerts"
-                    Write-Log ($Global:Localization.cert_additional_found -f $additionalCerts) -LogFile $Global:sLogFile
-                }
-            } else {
-                 Write-Log ($Global:Localization.cert_no_certs_found -f $fqdn) -Level WARN -LogFile $Global:sLogFile
-            }
-        }
-    }
-
-    # Save changes back to Excel
-    $excelData | Export-Excel -Path $Global:Config.Excel.ExcelPath -WorksheetName $Global:Config.Excel.SheetName -Clear -Force
-    Write-Log "Excel file has been updated with constructed FQDNs and certificate information." -LogFile $Global:sLogFile
-    #endregion
-
-    #region ####################### [5. HTML Report Generation] ##############################
-    Write-Log $Global:Localization.report_generation_start -LogFile $Global:sLogFile
-    
-    $reportPath = Join-Path -Path (Join-Path -Path $Global:ScriptDirectory -ChildPath $Global:Config.Paths.ReportDirectory) -ChildPath "Cert-Report-$(Get-Date -format 'yyyy-MM-dd').html"
-    
-    $htmlHead = @"
-    <style>
-        body { font-family: Arial, sans-serif; }
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid #dddddd; text-align: left; padding: 8px; }
-        th { background-color: $($Global:Config.CorporateDesign.PrimaryColor); color: white; }
-        .status-urgent { background-color: red; color: white; }
-        .status-critical { background-color: orange; }
-        .status-warning { background-color: yellow; }
-    </style>
-"@
-
-    $htmlBody = "<h1>Certificate Expiration Report - $(Get-Date)</h1>"
-    
-    $categorizedCerts = $allServerCertificates | Sort-Object DaysRemaining
-    
-    $htmlBody += "<h2>Certificates</h2>"
-    $htmlBody += $categorizedCerts | ConvertTo-Html -Head $htmlHead -Property ServerName, FQDN, CertificateSubject, NotAfter, DaysRemaining | ForEach-Object {
-        $line = $_
-        if ($line -match '<td>(\d+)</td>') {
-            $days = [int]$matches[1]
-            if ($days -le $Global:Config.Intervals.DaysUntilUrgent) {
-                $line = $line -replace '<tr>', '<tr class="status-urgent">'
-            } elseif ($days -le $Global:Config.Intervals.DaysUntilCritical) {
-                $line = $line -replace '<tr>', '<tr class="status-critical">'
-            } elseif ($days -le $Global:Config.Intervals.DaysUntilWarning) {
-                $line = $line -replace '<tr>', '<tr class="status-warning">'
-            }
-        }
-        $line
-    } | Out-String
-
-    $htmlBody | Out-File -FilePath $reportPath -Encoding UTF8
-    Write-Log ($Global:Localization.report_generation_complete -f $reportPath) -LogFile $Global:sLogFile
-    #endregion
-
-    #region ####################### [6. Email Notification] ##############################
-    Write-Log $Global:Localization.email_sending -LogFile $Global:sLogFile
-    Send-MailNotification -MailConfig $Global:Config.Mail -Subject "Certificate Surveillance Report" -Body $htmlBody -Attachments $reportPath
-    #endregion
 }
 catch {
-    Write-Log "An unhandled error occurred: $($_.Exception.Message)" -Level ERROR -LogFile $Global:sLogFile
-    # Optionally send an error email
-    Send-MailNotification -MailConfig $Global:Config.Mail -Subject "SCRIPT FAILED: $($Global:ScriptName)" -Body "The script failed with the following error: <br><pre>$($_.Exception.ToString())</pre>"
+    Write-Log "=== SCRIPT FAILED ===" -Level ERROR -LogFile $Global:sLogFile
+    Write-Log "Error: $($_.Exception.Message)" -Level ERROR -LogFile $Global:sLogFile
+    
+    # Send error notification using Utils implementation if available / Fehlerbenachrichtigung senden wenn Utils-Implementierung verfügbar
+    try {
+        if (Get-Command -Name Send-MailNotification -Module FL-Utils -ErrorAction SilentlyContinue) {
+            # Only attempt if a recipient can be resolved / Nur versuchen wenn ein Empfänger aufgelöst werden kann
+            $toCandidate = if ($Global:Config.RunMode -eq 'PROD') { $Global:Config.Mail.ProdTo } else { $Global:Config.Mail.DevTo }
+            if ($Global:Config.Mail.Enabled -and $toCandidate) {
+                Send-MailNotification -MailConfig $Global:Config.Mail -Subject "SCRIPT FAILED: $($Global:ScriptName)" -Body "<h2>Script Execution Failed</h2><p>Error: $($_.Exception.Message)</p><p>Check log file for details.</p>"
+            } else {
+                Write-Log "Skipping error email: Mail disabled or no recipient configured" -Level WARN -LogFile $Global:sLogFile
+            }
+        }
+        else {
+            Write-Log "No Send-MailNotification command available from FL-Utils; skipping error email" -Level WARN -LogFile $Global:sLogFile
+        }
+    }
+    catch {
+        Write-Log "Failed to send error notification: $($_.Exception.Message)" -Level ERROR -LogFile $Global:sLogFile
+    }
+    
+    Write-Host "FAILED: $($_.Exception.Message)" -ForegroundColor Red
+    exit 1
 }
 finally {
-    #region ####################### [7. Cleanup] ##############################
-    Invoke-LogCleanup -LogDirectory $sLogPath -ArchiveLogsOlderThanDays $Global:Config.Intervals.ArchiveLogsOlderThanDays -DeleteZipArchivesOlderThanDays $Global:Config.Intervals.DeleteZipArchivesOlderThanDays -PathTo7Zip $Global:Config.Paths.PathTo7Zip
-    Write-Log $Global:Localization.script_finished -LogFile $Global:sLogFile
-    #endregion
+    # Cleanup operations / Aufräumoperationen
+    try {
+        Invoke-LogCleanup -LogDirectory $logPath -ArchiveLogsOlderThanDays $Global:Config.Intervals.ArchiveLogsOlderThanDays -DeleteZipArchivesOlderThanDays $Global:Config.Intervals.DeleteZipArchivesOlderThanDays -PathTo7Zip $Global:Config.Paths.PathTo7Zip
+        Write-Log "Cleanup completed" -LogFile $Global:sLogFile
+    }
+    catch {
+        Write-Log "Cleanup failed: $($_.Exception.Message)" -Level WARN -LogFile $Global:sLogFile
+    }
 }
+
+#----------------------------------------------------------[End of Script]----------------------------------------------------------
+# --- End of Script --- v1.0.3 ; Regelwerk: v9.3.0 ; PowerShell: $($Global:PowerShellVersion) ---
