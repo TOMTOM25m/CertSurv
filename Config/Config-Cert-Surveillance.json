@@ -2,6 +2,8 @@
   "ScriptVersion": "v1.1.0",
   "RulebookVersion": "v9.3.1",
   "Version": "v1.1.0",
+  "ConfigurationUpdated": "2025-09-04T15:30:00Z",
+  "ConfigurationNotes": "Enhanced with decentralized WebService support for parallel multi-server certificate collection",
   "RunMode": "PROD",
   "Language": "de-DE",
   "DebugMode": false,
@@ -12,7 +14,9 @@
     "PathTo7Zip": "C:\\Program Files\\7-Zip\\7z.exe",
     "LogoDirectory": "\\\\itscmgmt03.srv.meduniwien.ac.at\\iso\\MUWLogo",
     "ReportDirectory": "reports",
-    "LogDirectory": "LOG"
+    "LogDirectory": "LOG",
+    "JsonDataDirectory": "LOG",
+    "JsonDataRetentionDays": 90
   },
   "Excel": {
     "ExcelPath": "\\\\itscmgmt03.srv.meduniwien.ac.at\\iso\\WIndowsServerListe\\Serverliste2025FQDN.xlsx",
@@ -44,6 +48,7 @@
     },
     "WebService": {
       "Enabled": true,
+      "Mode": "Decentralized",
       "PrimaryServer": "itscmgmt03.srv.meduniwien.ac.at",
       "HttpPort": 9080,
       "HttpsPort": 9443,
@@ -52,10 +57,33 @@
       "Timeout": 5000,
       "MaxRetries": 2,
       "CacheEnabled": true,
+      "ParallelProcessing": {
+        "Enabled": true,
+        "MaxConcurrent": 20,
+        "BatchSize": 10,
+        "EnableProgressDisplay": true
+      },
+      "Authentication": {
+        "Method": "Windows",
+        "UseDefaultCredentials": true,
+        "RequireAuthentication": false
+      },
+      "HealthCheck": {
+        "Enabled": true,
+        "TimeoutSeconds": 3,
+        "RetryCount": 1
+      },
       "Endpoints": {
         "Certificates": "/certificates.json",
         "Summary": "/summary.json",
         "Health": "/health.json"
+      },
+      "Deployment": {
+        "DeployToAllServers": true,
+        "StandardPorts": [9080, 9443],
+        "ConfigurationTemplate": "CertWebService-Template.json",
+        "AutoUpdate": false,
+        "MonitoringEnabled": true
       }
     },
     "CommonSSLPorts": [
@@ -90,7 +118,15 @@
     "DevTo": "thomas.garnreiter@meduniwien.ac.at",
     "ProdTo": "win-admin@meduniwien.ac.at",
     "SubjectPrefix": "[Zertifikats-Report]",
-    "CredentialFilePath": "C:\\Script\\Zertifikate\\Config\\secure.smtp.cred.xml"
+    "CredentialFilePath": "C:\\Script\\Zertifikate\\Config\\secure.smtp.cred.xml",
+    "DailyReport": {
+      "Enabled": true,
+      "ScheduledTime": "06:00",
+      "TimeWindowMinutes": 30,
+      "IncludeStatuses": ["Expired", "Urgent", "Critical", "Warning"],
+      "SuppressIfNoIssues": false,
+      "MaxCertificatesInEmail": 100
+    }
   },
   "CorporateDesign": {
     "PrimaryColor": "#111d4e",

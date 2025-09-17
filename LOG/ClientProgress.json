@@ -1,0 +1,1066 @@
+﻿{
+    "Servers":  [
+                    {
+                        "ServerName":  "SUCCESSXPROD01",
+                        "FQDN":  "SUCCESSXPROD01.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  1
+                    },
+                    {
+                        "ServerName":  "UVWDC001",
+                        "FQDN":  "UVWDC001.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  2
+                    },
+                    {
+                        "ServerName":  "C-SQL01",
+                        "FQDN":  "C-SQL01.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  3
+                    },
+                    {
+                        "ServerName":  "C-Lic01",
+                        "FQDN":  "C-Lic01.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  4
+                    },
+                    {
+                        "ServerName":  "C-LIC02",
+                        "FQDN":  "C-LIC02.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  5
+                    },
+                    {
+                        "ServerName":  "UVW-FINANZ02",
+                        "FQDN":  "UVW-FINANZ02.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  6
+                    },
+                    {
+                        "ServerName":  "C-APP01",
+                        "FQDN":  "C-APP01.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  7
+                    },
+                    {
+                        "ServerName":  "C-APP02",
+                        "FQDN":  "C-APP02.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  8
+                    },
+                    {
+                        "ServerName":  "adonisnpappprod",
+                        "FQDN":  "adonisnpappprod.ad.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (AD)",
+                        "Index":  9
+                    },
+                    {
+                        "ServerName":  "adonisnpapptst",
+                        "FQDN":  "adonisnpapptst.ad.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (AD)",
+                        "Index":  10
+                    },
+                    {
+                        "ServerName":  "COORAPPPROD01",
+                        "FQDN":  "COORAPPPROD01.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  11
+                    },
+                    {
+                        "ServerName":  "UVWDC003",
+                        "FQDN":  "UVWDC003.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  12
+                    },
+                    {
+                        "ServerName":  "C-FS01",
+                        "FQDN":  "C-FS01.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  13
+                    },
+                    {
+                        "ServerName":  "proman",
+                        "FQDN":  "proman.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  14
+                    },
+                    {
+                        "ServerName":  "COORAPPTEST01",
+                        "FQDN":  "COORAPPTEST01.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  15
+                    },
+                    {
+                        "ServerName":  "UVWPRINT01",
+                        "FQDN":  "UVWPRINT01.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  16
+                    },
+                    {
+                        "ServerName":  "UVWDC002",
+                        "FQDN":  "UVWDC002.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  17
+                    },
+                    {
+                        "ServerName":  "ZGAAPP01",
+                        "FQDN":  "ZGAAPP01.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  18
+                    },
+                    {
+                        "ServerName":  "ZGASQL01",
+                        "FQDN":  "ZGASQL01.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  19
+                    },
+                    {
+                        "ServerName":  "DAGOBERT",
+                        "FQDN":  "DAGOBERT.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  20
+                    },
+                    {
+                        "ServerName":  "UVW-FINANZ01",
+                        "FQDN":  "UVW-FINANZ01.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  21
+                    },
+                    {
+                        "ServerName":  "UVWmgmt01",
+                        "FQDN":  "UVWmgmt01.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  22
+                    },
+                    {
+                        "ServerName":  "uvwlex01",
+                        "FQDN":  "uvwlex01.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  23
+                    },
+                    {
+                        "ServerName":  "MUWDC",
+                        "FQDN":  "MUWDC.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  24
+                    },
+                    {
+                        "ServerName":  "na0fs1bkp",
+                        "FQDN":  "na0fs1bkp.uvw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (UVW)",
+                        "Index":  25
+                    },
+                    {
+                        "ServerName":  "contactcenter-1",
+                        "FQDN":  "contactcenter-1.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  26
+                    },
+                    {
+                        "ServerName":  "NEURODC01",
+                        "FQDN":  "NEURODC01.neuro.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (NEURO)",
+                        "Index":  27
+                    },
+                    {
+                        "ServerName":  "NEURODC02",
+                        "FQDN":  "NEURODC02.neuro.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (NEURO)",
+                        "Index":  28
+                    },
+                    {
+                        "ServerName":  "NEUROFS01",
+                        "FQDN":  "NEUROFS01.neuro.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (NEURO)",
+                        "Index":  29
+                    },
+                    {
+                        "ServerName":  "EXDC01",
+                        "FQDN":  "EXDC01.ex.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (EX)",
+                        "Index":  30
+                    },
+                    {
+                        "ServerName":  "EXDC02",
+                        "FQDN":  "EXDC02.ex.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (EX)",
+                        "Index":  31
+                    },
+                    {
+                        "ServerName":  "EXDC03",
+                        "FQDN":  "EXDC03.ex.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (EX)",
+                        "Index":  32
+                    },
+                    {
+                        "ServerName":  "EX01",
+                        "FQDN":  "EX01.ex.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (EX)",
+                        "Index":  33
+                    },
+                    {
+                        "ServerName":  "EX02",
+                        "FQDN":  "EX02.ex.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (EX)",
+                        "Index":  34
+                    },
+                    {
+                        "ServerName":  "EX03",
+                        "FQDN":  "EX03.ex.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (EX)",
+                        "Index":  35
+                    },
+                    {
+                        "ServerName":  "EX05",
+                        "FQDN":  "EX05.ex.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (EX)",
+                        "Index":  36
+                    },
+                    {
+                        "ServerName":  "veeam-ex-bkp",
+                        "FQDN":  "veeam-ex-bkp.ex.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (EX)",
+                        "Index":  37
+                    },
+                    {
+                        "ServerName":  "EXMGMT02",
+                        "FQDN":  "EXMGMT02.ex.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (EX)",
+                        "Index":  38
+                    },
+                    {
+                        "ServerName":  "EXMGMT03",
+                        "FQDN":  "EXMGMT03.ex.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (EX)",
+                        "Index":  39
+                    },
+                    {
+                        "ServerName":  "DGMWDC001",
+                        "FQDN":  "DGMWDC001.dgmw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (DGMW)",
+                        "Index":  40
+                    },
+                    {
+                        "ServerName":  "DGMWDC002",
+                        "FQDN":  "DGMWDC002.dgmw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (DGMW)",
+                        "Index":  41
+                    },
+                    {
+                        "ServerName":  "DGMWAPP001",
+                        "FQDN":  "DGMWAPP001.dgmw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (DGMW)",
+                        "Index":  42
+                    },
+                    {
+                        "ServerName":  "DGMWFS001",
+                        "FQDN":  "DGMWFS001.dgmw.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (DGMW)",
+                        "Index":  43
+                    },
+                    {
+                        "ServerName":  "kyserv",
+                        "FQDN":  "kyserv.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  44
+                    },
+                    {
+                        "ServerName":  "ADDC01P",
+                        "FQDN":  "ADDC01P.ad.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (AD)",
+                        "Index":  45
+                    },
+                    {
+                        "ServerName":  "ADDC02P",
+                        "FQDN":  "ADDC02P.ad.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (AD)",
+                        "Index":  46
+                    },
+                    {
+                        "ServerName":  "ADDC03P",
+                        "FQDN":  "ADDC03P.ad.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (AD)",
+                        "Index":  47
+                    },
+                    {
+                        "ServerName":  "ADDC04P",
+                        "FQDN":  "ADDC04P.ad.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (AD)",
+                        "Index":  48
+                    },
+                    {
+                        "ServerName":  "mgmtad01p",
+                        "FQDN":  "mgmtad01p.ad.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (AD)",
+                        "Index":  49
+                    },
+                    {
+                        "ServerName":  "adunifl01p",
+                        "FQDN":  "adunifl01p.ad.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (AD)",
+                        "Index":  50
+                    },
+                    {
+                        "ServerName":  "aduniflmgmt01p",
+                        "FQDN":  "aduniflmgmt01p.ad.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (AD)",
+                        "Index":  51
+                    },
+                    {
+                        "ServerName":  "aduniflrpsf01p",
+                        "FQDN":  "aduniflrpsf01p.ad.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (AD)",
+                        "Index":  52
+                    },
+                    {
+                        "ServerName":  "aduniflrpsc01p",
+                        "FQDN":  "aduniflrpsc01p.ad.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (AD)",
+                        "Index":  53
+                    },
+                    {
+                        "ServerName":  "aduniflrpsc02p",
+                        "FQDN":  "aduniflrpsc02p.ad.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (AD)",
+                        "Index":  54
+                    },
+                    {
+                        "ServerName":  "aduniflscan01p",
+                        "FQDN":  "aduniflscan01p.ad.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (AD)",
+                        "Index":  55
+                    },
+                    {
+                        "ServerName":  "syncad",
+                        "FQDN":  "syncad.ad.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (AD)",
+                        "Index":  56
+                    },
+                    {
+                        "ServerName":  "DCSYNC01P",
+                        "FQDN":  "DCSYNC01P.ad.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (AD)",
+                        "Index":  57
+                    },
+                    {
+                        "ServerName":  "DCSYNC02P",
+                        "FQDN":  "DCSYNC02P.ad.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (AD)",
+                        "Index":  58
+                    },
+                    {
+                        "ServerName":  "webexconnector1",
+                        "FQDN":  "webexconnector1.ex.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (EX)",
+                        "Index":  59
+                    },
+                    {
+                        "ServerName":  "diawindc01",
+                        "FQDN":  "diawindc01.diawin.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (DIAWIN)",
+                        "Index":  60
+                    },
+                    {
+                        "ServerName":  "diawindc02",
+                        "FQDN":  "diawindc02.diawin.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (DIAWIN)",
+                        "Index":  61
+                    },
+                    {
+                        "ServerName":  "winlimsfs01",
+                        "FQDN":  "winlimsfs01.diawin.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (DIAWIN)",
+                        "Index":  62
+                    },
+                    {
+                        "ServerName":  "winngsfs01",
+                        "FQDN":  "winngsfs01.diawin.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (DIAWIN)",
+                        "Index":  63
+                    },
+                    {
+                        "ServerName":  "diawinprint01",
+                        "FQDN":  "diawinprint01.diawin.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (DIAWIN)",
+                        "Index":  64
+                    },
+                    {
+                        "ServerName":  "SRV",
+                        "FQDN":  "SRV.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  65
+                    },
+                    {
+                        "ServerName":  "inteum01",
+                        "FQDN":  "inteum01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  66
+                    },
+                    {
+                        "ServerName":  "msr-bt01-01",
+                        "FQDN":  "msr-bt01-01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  67
+                    },
+                    {
+                        "ServerName":  "admanager",
+                        "FQDN":  "admanager.ad.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Domain (AD)",
+                        "Index":  68
+                    },
+                    {
+                        "ServerName":  "campus-script01",
+                        "FQDN":  "campus-script01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  69
+                    },
+                    {
+                        "ServerName":  "edmterm01",
+                        "FQDN":  "edmterm01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  70
+                    },
+                    {
+                        "ServerName":  "tenem",
+                        "FQDN":  "tenem.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  71
+                    },
+                    {
+                        "ServerName":  "FACMAlert01",
+                        "FQDN":  "FACMAlert01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  72
+                    },
+                    {
+                        "ServerName":  "FACMAlert02",
+                        "FQDN":  "FACMAlert02.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  73
+                    },
+                    {
+                        "ServerName":  "itscmgmt03",
+                        "FQDN":  "itscmgmt03.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  74
+                    },
+                    {
+                        "ServerName":  "overwatch",
+                        "FQDN":  "overwatch.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  75
+                    },
+                    {
+                        "ServerName":  "isdz01",
+                        "FQDN":  "isdz01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  76
+                    },
+                    {
+                        "ServerName":  "itsclic01",
+                        "FQDN":  "itsclic01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  77
+                    },
+                    {
+                        "ServerName":  "itsclic02",
+                        "FQDN":  "itsclic02.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  78
+                    },
+                    {
+                        "ServerName":  "itsclic03",
+                        "FQDN":  "itsclic03.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  79
+                    },
+                    {
+                        "ServerName":  "itsclic04",
+                        "FQDN":  "itsclic04.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  80
+                    },
+                    {
+                        "ServerName":  "itsclic05",
+                        "FQDN":  "itsclic05.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  81
+                    },
+                    {
+                        "ServerName":  "itsclic06",
+                        "FQDN":  "itsclic06.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  82
+                    },
+                    {
+                        "ServerName":  "itsclic07",
+                        "FQDN":  "itsclic07.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  83
+                    },
+                    {
+                        "ServerName":  "syscanval01",
+                        "FQDN":  "syscanval01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  84
+                    },
+                    {
+                        "ServerName":  "rmsapp01",
+                        "FQDN":  "rmsapp01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  85
+                    },
+                    {
+                        "ServerName":  "sophos01",
+                        "FQDN":  "sophos01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  86
+                    },
+                    {
+                        "ServerName":  "sophos03",
+                        "FQDN":  "sophos03.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  87
+                    },
+                    {
+                        "ServerName":  "studprint01",
+                        "FQDN":  "studprint01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  88
+                    },
+                    {
+                        "ServerName":  "studprintweb01",
+                        "FQDN":  "studprintweb01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  89
+                    },
+                    {
+                        "ServerName":  "Zaida",
+                        "FQDN":  "Zaida.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  90
+                    },
+                    {
+                        "ServerName":  "Zenzi",
+                        "FQDN":  "Zenzi.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  91
+                    },
+                    {
+                        "ServerName":  "zara",
+                        "FQDN":  "zara.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  92
+                    },
+                    {
+                        "ServerName":  "EVAEXPROD01",
+                        "FQDN":  "EVAEXPROD01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  93
+                    },
+                    {
+                        "ServerName":  "EVAEXTEST01",
+                        "FQDN":  "EVAEXTEST01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  94
+                    },
+                    {
+                        "ServerName":  "cafm-prod",
+                        "FQDN":  "cafm-prod.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  95
+                    },
+                    {
+                        "ServerName":  "cafm-test",
+                        "FQDN":  "cafm-test.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  96
+                    },
+                    {
+                        "ServerName":  "gsizas-prod01",
+                        "FQDN":  "gsizas-prod01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  97
+                    },
+                    {
+                        "ServerName":  "gsizas-test01",
+                        "FQDN":  "gsizas-test01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  98
+                    },
+                    {
+                        "ServerName":  "bpc-win12",
+                        "FQDN":  "bpc-win12.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  99
+                    },
+                    {
+                        "ServerName":  "Doxis4aswprod12",
+                        "FQDN":  "Doxis4aswprod12.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  100
+                    },
+                    {
+                        "ServerName":  "Doxis4aswdev12",
+                        "FQDN":  "Doxis4aswdev12.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  101
+                    },
+                    {
+                        "ServerName":  "Doxis4aswtst12",
+                        "FQDN":  "Doxis4aswtst12.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  102
+                    },
+                    {
+                        "ServerName":  "doxis4dcesprod12",
+                        "FQDN":  "doxis4dcesprod12.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  103
+                    },
+                    {
+                        "ServerName":  "doxis4dcesdev12",
+                        "FQDN":  "doxis4dcesdev12.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  104
+                    },
+                    {
+                        "ServerName":  "doxis4dcestst12",
+                        "FQDN":  "doxis4dcestst12.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  105
+                    },
+                    {
+                        "ServerName":  "inteumtest01",
+                        "FQDN":  "inteumtest01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  106
+                    },
+                    {
+                        "ServerName":  "sherlock",
+                        "FQDN":  "sherlock.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  107
+                    },
+                    {
+                        "ServerName":  "M42MASTER",
+                        "FQDN":  "M42MASTER.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  108
+                    },
+                    {
+                        "ServerName":  "M42DEPOT",
+                        "FQDN":  "M42DEPOT.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  109
+                    },
+                    {
+                        "ServerName":  "M42TEST",
+                        "FQDN":  "M42TEST.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  110
+                    },
+                    {
+                        "ServerName":  "RMS-G2",
+                        "FQDN":  "RMS-G2.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  111
+                    },
+                    {
+                        "ServerName":  "kmssrv01p",
+                        "FQDN":  "kmssrv01p.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  112
+                    },
+                    {
+                        "ServerName":  "winsrvpw01",
+                        "FQDN":  "winsrvpw01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  113
+                    },
+                    {
+                        "ServerName":  "muwcanon01",
+                        "FQDN":  "muwcanon01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  114
+                    },
+                    {
+                        "ServerName":  "testsrv01",
+                        "FQDN":  "testsrv01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  115
+                    },
+                    {
+                        "ServerName":  "ca01",
+                        "FQDN":  "ca01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  116
+                    },
+                    {
+                        "ServerName":  "casql01",
+                        "FQDN":  "casql01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  117
+                    },
+                    {
+                        "ServerName":  "wsus",
+                        "FQDN":  "wsus.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  118
+                    },
+                    {
+                        "ServerName":  "wsusstud",
+                        "FQDN":  "wsusstud.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  119
+                    },
+                    {
+                        "ServerName":  "e-befund",
+                        "FQDN":  "e-befund.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  120
+                    },
+                    {
+                        "ServerName":  "AKIM",
+                        "FQDN":  "AKIM.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  121
+                    },
+                    {
+                        "ServerName":  "HCS01",
+                        "FQDN":  "HCS01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  122
+                    },
+                    {
+                        "ServerName":  "icca-mssql-prod01",
+                        "FQDN":  "icca-mssql-prod01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  123
+                    },
+                    {
+                        "ServerName":  "rdapseu01",
+                        "FQDN":  "rdapseu01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  124
+                    },
+                    {
+                        "ServerName":  "icca-mssql-test01",
+                        "FQDN":  "icca-mssql-test01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  125
+                    },
+                    {
+                        "ServerName":  "watson01",
+                        "FQDN":  "watson01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  126
+                    },
+                    {
+                        "ServerName":  "rdapspu01",
+                        "FQDN":  "rdapspu01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  127
+                    },
+                    {
+                        "ServerName":  "TEL",
+                        "FQDN":  "TEL.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  128
+                    },
+                    {
+                        "ServerName":  "PATHO",
+                        "FQDN":  "PATHO.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  129
+                    },
+                    {
+                        "ServerName":  "S01",
+                        "FQDN":  "S01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  130
+                    },
+                    {
+                        "ServerName":  "S02",
+                        "FQDN":  "S02.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  131
+                    },
+                    {
+                        "ServerName":  "s09",
+                        "FQDN":  "s09.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  132
+                    },
+                    {
+                        "ServerName":  "winsrvvmscp01",
+                        "FQDN":  "winsrvvmscp01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  133
+                    },
+                    {
+                        "ServerName":  "ZUKO",
+                        "FQDN":  "ZUKO.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  134
+                    },
+                    {
+                        "ServerName":  "zukoprod1",
+                        "FQDN":  "zukoprod1.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  135
+                    },
+                    {
+                        "ServerName":  "zukotest1",
+                        "FQDN":  "zukotest1.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  136
+                    },
+                    {
+                        "ServerName":  "winkeysafe01p",
+                        "FQDN":  "winkeysafe01p.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  137
+                    },
+                    {
+                        "ServerName":  "Progeny",
+                        "FQDN":  "Progeny.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  138
+                    },
+                    {
+                        "ServerName":  "Progenysrv01",
+                        "FQDN":  "Progenysrv01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  139
+                    },
+                    {
+                        "ServerName":  "MED-GESCH",
+                        "FQDN":  "MED-GESCH.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  140
+                    },
+                    {
+                        "ServerName":  "kasssrv01",
+                        "FQDN":  "kasssrv01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  141
+                    },
+                    {
+                        "ServerName":  "immunologie",
+                        "FQDN":  "immunologie.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  142
+                    },
+                    {
+                        "ServerName":  "ifi-medicalnet",
+                        "FQDN":  "ifi-medicalnet.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  143
+                    },
+                    {
+                        "ServerName":  "PKU",
+                        "FQDN":  "PKU.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  144
+                    },
+                    {
+                        "ServerName":  "pkuapp02",
+                        "FQDN":  "pkuapp02.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  145
+                    },
+                    {
+                        "ServerName":  "BEMAW",
+                        "FQDN":  "BEMAW.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  146
+                    },
+                    {
+                        "ServerName":  "WILLI01",
+                        "FQDN":  "WILLI01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  147
+                    },
+                    {
+                        "ServerName":  "Digital-Signage",
+                        "FQDN":  "Digital-Signage.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  148
+                    },
+                    {
+                        "ServerName":  "SIGNAGE01",
+                        "FQDN":  "SIGNAGE01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  149
+                    },
+                    {
+                        "ServerName":  "Anaesthesie",
+                        "FQDN":  "Anaesthesie.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  150
+                    },
+                    {
+                        "ServerName":  "uaais-sqlsrv01",
+                        "FQDN":  "uaais-sqlsrv01.srv.meduniwien.ac.at",
+                        "Status":  "Pending",
+                        "ServerType":  "Workgroup",
+                        "Index":  151
+                    }
+                ],
+    "CompletedServers":  0,
+    "PendingServers":  151,
+    "LastUpdated":  "2025-09-17 12:11:13",
+    "TotalServers":  151,
+    "FailedServers":  0
+}
