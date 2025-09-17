@@ -19,7 +19,7 @@
 
 # Module-level variables
 $script:ModuleName = "FL-WebService"
-$script:ModuleVersion = "v1.0.0"
+$script:ModuleVersion = "v1.1.0"
 
 #----------------------------------------------------------[Functions]------------------------------------------------------------
 
@@ -442,4 +442,4 @@ Export-ModuleMember -Function @(
     'Update-CertificateWebService'
 )
 
-# --- End of module --- v1.0.0 ; Regelwerk: v9.3.0 ---
+# --- End of module --- v1.1.0 ; Regelwerk: v9.3.1 ---

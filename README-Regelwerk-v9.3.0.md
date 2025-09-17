@@ -1,14 +1,14 @@
-# Certificate Surveillance System v1.0.0
+# Certificate Surveillance System v1.1.0
 
-## Regelwerk v9.3.0 Compliance Implementation
+## Regelwerk v9.3.1 Compliance Implementation (Updated - Extended Modularity)
 
 ### Übersicht / Overview
 
 Das Certificate Surveillance System wurde vollständig auf das MUW-Regelwerk v9.3.0 mit **strict modularity** Prinzipien aktualisiert.
 
-**[DE]** Das System folgt streng dem Prinzip der Modularität: Das Hauptskript ist minimalistisch (unter 100 Zeilen) und delegiert alle spezifischen Funktionen an spezialisierte FL-* Module.
+**[DE]** Das System folgt streng dem Prinzip der Modularität: Das Hauptskript ist minimalistisch (unter 300 Zeilen) und delegiert alle spezifischen Funktionen an spezialisierte FL-* Module.
 
-**[EN]** The system strictly follows modularity principles: The main script is minimalistic (under 100 lines) and delegates all specific functions to specialized FL-* modules.
+**[EN]** The system strictly follows modularity principles: The main script is minimalistic (under 300 lines) and delegates all specific functions to specialized FL-* modules.
 
 ---
 
@@ -64,9 +64,18 @@ Certificate Surveillance System
 
 ### Regelwerk v9.3.0 Compliance Features
 
-#### 1. **Strict Modularity Implementation**
+#### **Regelwerk Update September 2025**: Erweiterte Strict Modularity
 
-- ✅ Hauptskript unter 100 Zeilen
+Die ursprüngliche Grenze von 100 Zeilen wurde auf **300 Zeilen** erweitert, um moderne Enterprise-Anforderungen zu berücksichtigen:
+
+- Umfangreichere Error-Handling-Strategien
+- Erweiterte WebService-Integration
+- Produktionsreife Logging-Mechanismen
+- Komplexere Konfigurationsvalidierung
+
+#### 1. **Strict Modularity Implementation (Updated)**
+
+- ✅ Hauptskript unter 300 Zeilen (erweiterte Modularität für Enterprise-Umgebungen)
 - ✅ Universelles Hauptskript ohne spezifische Logik
 - ✅ Alle Funktionen in spezialisierte FL-* Module ausgelagert
 - ✅ Klare Trennung zwischen Orchestrierung und Implementierung

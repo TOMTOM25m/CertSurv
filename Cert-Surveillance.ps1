@@ -73,7 +73,7 @@ param(
 
 #----------------------------------------------------------[Declarations / Deklarationen]----------------------------------------------------------
 $Global:ScriptName = $MyInvocation.MyCommand.Name
-$Global:ScriptVersion = "v1.0.3"
+$Global:ScriptVersion = "v1.1.0"
 $Global:RulebookVersion = "v9.3.0"
 $Global:ScriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Definition
 

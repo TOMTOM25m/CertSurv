@@ -20,7 +20,7 @@
 #>
 
 $ModuleName = "FL-CoreLogic"
-$ModuleVersion = "v1.0.0"
+$ModuleVersion = "v1.1.0"
 
 #----------------------------------------------------------[Functions]----------------------------------------------------------
 
@@ -173,4 +173,4 @@ Export-ModuleMember -Function @(
     'Test-WorkflowPrerequisites'
 )
 
-# --- End of module --- v1.0.0 ; Regelwerk: v9.3.0 ---
+# --- End of module --- v1.1.0 ; Regelwerk: v9.3.1 ---

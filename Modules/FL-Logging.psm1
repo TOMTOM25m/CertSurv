@@ -20,7 +20,7 @@
 #>
 
 $ModuleName = "FL-Logging"
-$ModuleVersion = "v1.0.0"
+$ModuleVersion = "v1.1.0"
 
 #----------------------------------------------------------[Functions]----------------------------------------------------------
 
@@ -59,4 +59,4 @@ Export-ModuleMember -Function Write-Log
 
 Write-Verbose "FL-Logging module v$ModuleVersion loaded successfully"
 
-# --- End of module --- v1.0.0 ; Regelwerk: v9.3.0 ---
+# --- End of module --- v1.1.0 ; Regelwerk: v9.3.1 ---

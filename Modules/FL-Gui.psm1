@@ -20,7 +20,7 @@
 #>
 
 $ModuleName = "FL-Gui"
-$ModuleVersion = "v1.0.0"
+$ModuleVersion = "v1.1.0"
 
 # [DE] Abhängigkeiten importieren / [EN] Import dependencies
 try {

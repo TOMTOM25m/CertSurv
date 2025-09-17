@@ -27,8 +27,8 @@
 #---------------------------------------------------------[Script Parameters]------------------------------------------------------
 
 # Module Metadata
-$Script:ModuleVersion = "1.0.0"
-$Script:RulebookVersion = "v9.3.0"
+$Script:ModuleVersion = "1.1.0"
+$Script:RulebookVersion = "v9.3.1"
 
 #---------------------------------------------------------[Functions]------------------------------------------------------------
 
@@ -541,4 +541,4 @@ Export-ModuleMember -Function @(
     'Find-ServerCertificateInCentralData'
 )
 
-# --- End of module --- v1.0.0 ; Regelwerk: v9.3.0 ---
+# --- End of module --- v1.1.0 ; Regelwerk: v9.3.1 ---

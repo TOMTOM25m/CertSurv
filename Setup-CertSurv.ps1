@@ -15,9 +15,9 @@
     [DE] Startet die Setup-GUI
     [EN] Launches the setup GUI
 .NOTES
-    Version: v1.0.0
+    Version: v1.1.0
     Author: GitHub Copilot
-    MUW-Regelwerk:  v9.3.0
+    MUW-Regelwerk:  v9.3.1
 #>
 
 [CmdletBinding()]
@@ -25,8 +25,8 @@ param()
 
 #----------------------------------------------------------[Declarations / Deklarationen]----------------------------------------------------------
 $Global:ScriptName = $MyInvocation.MyCommand.Name
-$Global:ScriptVersion = "v1.0.0"
-$Global:RulebookVersion = "v9.3.0"
+$Global:ScriptVersion = "v1.1.0"
+$Global:RulebookVersion = "v9.3.1"
 $Global:ScriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 #----------------------------------------------------------[PowerShell Version Detection / PowerShell Versionserkennung]----------------------------------------
@@ -116,4 +116,4 @@ Write-Host "Setup completed / Setup abgeschlossen" -ForegroundColor Green
 Read-Host "Press Enter to exit / Druecken Sie Enter zum Beenden"
 
 #----------------------------------------------------------[End of Script]----------------------------------------------------------
-# --- End of Setup Script --- v1.0.0 ; Regelwerk: v9.3.0 ; PowerShell: $($Global:PowerShellVersion) ---
+# --- End of Setup Script --- v1.1.0 ; Regelwerk: v9.3.1 ; PowerShell: $($Global:PowerShellVersion) ---

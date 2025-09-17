@@ -2,7 +2,7 @@
 # Version: v1.0.0 (Fixed)
 # Date: 2025.09.09
 
-$ModuleVersion = "v1.0.0"
+$ModuleVersion = "v1.1.0"
 
 <#
 .SYNOPSIS
@@ -288,4 +288,4 @@ Export-ModuleMember -Function @(
 
 Write-Verbose "FL-Certificate module v$ModuleVersion loaded successfully"
 
-# --- End of module --- v1.0.0 ; Regelwerk: v9.3.0 ---
+# --- End of module --- v1.1.0 ; Regelwerk: v9.3.1 ---

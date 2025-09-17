@@ -1,10 +1,10 @@
 {
-  "ScriptVersion": "v1.0.3",
-  "RulebookVersion": "v9.3.0",
-  "Version": "v1.0.3",
-  "RunMode": "DEV",
+  "ScriptVersion": "v1.1.0",
+  "RulebookVersion": "v9.3.1",
+  "Version": "v1.1.0",
+  "RunMode": "PROD",
   "Language": "de-DE",
-  "DebugMode": true,
+  "DebugMode": false,
   "LastModuleCheck": "",
   "MainDomain": "meduniwien.ac.at",
   "Paths": {
@@ -37,14 +37,14 @@
     "EnableComparison": true,
     "EnableAutoPortDetection": true,
     "TestMode": {
-      "Enabled": true,
+      "Enabled": false,
       "AllowedDomains": ["UVW", "WORKGROUP", "EX"],
       "AllowedServers": ["EX01"],
       "MaxServers": 1
     },
     "WebService": {
       "Enabled": true,
-      "PrimaryServer": "localhost",
+      "PrimaryServer": "itscmgmt03.srv.meduniwien.ac.at",
       "HttpPort": 9080,
       "HttpsPort": 9443,
       "UseHttps": false,

@@ -24,7 +24,7 @@
 
 # Module Variables
 $ModuleName = "FL-ActiveDirectory"
-$ModuleVersion = "v1.0.0"
+$ModuleVersion = "v1.1.0"
 
 #----------------------------------------------------------[Functions]------------------------------------------------------------
 
@@ -332,4 +332,4 @@ Export-ModuleMember -Function @(
 # Module information
 Write-Verbose "$ModuleName $ModuleVersion loaded successfully"
 
-# --- End of module --- v1.0.0 ; Regelwerk: v9.3.0 ---
+# --- End of module --- v1.1.0 ; Regelwerk: v9.3.1 ---
