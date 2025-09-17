@@ -129,10 +129,27 @@ function New-HTMLReport {
 "@
     
     # Generate summary
-    $urgentCount = ($Certificates | Where-Object { $_.DaysRemaining -le $Config.Intervals.DaysUntilUrgent }).Count
-    $criticalCount = ($Certificates | Where-Object { $_.DaysRemaining -le $Config.Intervals.DaysUntilCritical -and $_.DaysRemaining -gt $Config.Intervals.DaysUntilUrgent }).Count
-    $warningCount = ($Certificates | Where-Object { $_.DaysRemaining -le $Config.Intervals.DaysUntilWarning -and $_.DaysRemaining -gt $Config.Intervals.DaysUntilCritical }).Count
-    $validCount = ($Certificates | Where-Object { $_.DaysRemaining -gt $Config.Intervals.DaysUntilWarning }).Count
+    Write-Log "DEBUG: Processing $($Certificates.Count) certificates for summary" -LogFile $LogFile
+    
+    if ($null -eq $Certificates -or $Certificates.Count -eq 0) {
+        $urgentCount = 0
+        $criticalCount = 0
+        $warningCount = 0
+        $validCount = 0
+        Write-Log "DEBUG: No certificates to process" -LogFile $LogFile
+    }
+    else {
+        # Ensure $Certificates is an array
+        $certArray = @($Certificates)
+        Write-Log "DEBUG: Certificate array has $($certArray.Count) items" -LogFile $LogFile
+        
+        $urgentCount = ($certArray | Where-Object { $null -ne $_ -and $null -ne $_.DaysRemaining -and $_.DaysRemaining -le $Config.Intervals.DaysUntilUrgent }).Count
+        $criticalCount = ($certArray | Where-Object { $null -ne $_ -and $null -ne $_.DaysRemaining -and $_.DaysRemaining -le $Config.Intervals.DaysUntilCritical -and $_.DaysRemaining -gt $Config.Intervals.DaysUntilUrgent }).Count
+        $warningCount = ($certArray | Where-Object { $null -ne $_ -and $null -ne $_.DaysRemaining -and $_.DaysRemaining -le $Config.Intervals.DaysUntilWarning -and $_.DaysRemaining -gt $Config.Intervals.DaysUntilCritical }).Count
+        $validCount = ($certArray | Where-Object { $null -ne $_ -and $null -ne $_.DaysRemaining -and $_.DaysRemaining -gt $Config.Intervals.DaysUntilWarning }).Count
+        
+        Write-Log "DEBUG: Summary counts - Urgent: $urgentCount, Critical: $criticalCount, Warning: $warningCount, Valid: $validCount" -LogFile $LogFile
+    }
     
     $htmlSummary = @"
     <div class="summary">
@@ -149,25 +166,31 @@ function New-HTMLReport {
     # Generate certificate table
     $htmlTable = ""
     
-    if ($Certificates.Count -eq 0) {
+    if ($null -eq $Certificates -or $Certificates.Count -eq 0) {
         $htmlTable = "<p><strong>No certificates were found or processed.</strong></p>"
         Write-Log "No certificates found for report generation" -Level WARN -LogFile $LogFile
     }
     else {
-        $sortedCerts = $Certificates | Sort-Object DaysRemaining
+        # Ensure we have an array and filter out null values
+        $certArray = @($Certificates | Where-Object { $null -ne $_ })
+        Write-Log "DEBUG: Processing $($certArray.Count) non-null certificates for table" -LogFile $LogFile
+        
+        $sortedCerts = $certArray | Sort-Object DaysRemaining
         
         $tableRows = foreach ($cert in $sortedCerts) {
-            $statusClass = Get-CertificateStatusClass -DaysRemaining $cert.DaysRemaining -Config $Config
-            $daysDisplay = if ($cert.DaysRemaining -lt 0) { "Expired" } else { "$($cert.DaysRemaining) days" }
-            
-            "<tr class='$statusClass'>"
-            "<td>$($cert.ServerName)</td>"
-            "<td>$($cert.FQDN)</td>"
-            "<td>$($cert.ServerType)</td>"
-            "<td>$($cert.CertificateSubject)</td>"
-            "<td>$($cert.NotAfter.ToString('yyyy-MM-dd'))</td>"
-            "<td>$daysDisplay</td>"
-            "</tr>"
+            if ($null -ne $cert -and $null -ne $cert.DaysRemaining) {
+                $statusClass = Get-CertificateStatusClass -DaysRemaining $cert.DaysRemaining -Config $Config
+                $daysDisplay = if ($cert.DaysRemaining -lt 0) { "Expired" } else { "$($cert.DaysRemaining) days" }
+                
+                "<tr class='$statusClass'>"
+                "<td>$($cert.ServerName)</td>"
+                "<td>$($cert.FQDN)</td>"
+                "<td>$($cert.ServerType)</td>"
+                "<td>$($cert.CertificateSubject)</td>"
+                "<td>$($cert.NotAfter.ToString('yyyy-MM-dd'))</td>"
+                "<td>$daysDisplay</td>"
+                "</tr>"
+            }
         }
         
         $htmlTable = @"

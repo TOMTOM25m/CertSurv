@@ -107,7 +107,8 @@ $internalModules = @(
     'FL-Security',
     'FL-Reporting',
     'FL-CoreLogic',
-    'FL-Certificate'
+    'FL-Certificate',
+    'FL-CertificateAPI'
 )
 
 $modulesPath = Join-Path -Path $Global:ScriptDirectory -ChildPath "Modules"

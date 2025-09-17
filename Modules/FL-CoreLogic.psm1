@@ -72,25 +72,35 @@ function Invoke-MainWorkflow {
         # Step 4: Save updated Excel data
         Write-Log "Step 4: Saving updated Excel data..." -LogFile $LogFile
         $updatedRows = $networkResult.Results | ForEach-Object { $_.Row }
-        Export-ExcelData -ExcelData $updatedRows -ExcelPath $Config.Excel.ExcelPath -WorksheetName $Config.Excel.SheetName -LogFile $LogFile
+        Export-ExcelData -ServerData $updatedRows -OutputPath $Config.Excel.ExcelPath -Config $Config -LogFile $LogFile
         
         # Step 5: Generate reports and send notifications
         Write-Log "Step 5: Generating reports..." -LogFile $LogFile
-        $reportResult = Invoke-ReportingOperations -Certificates $certResult.Certificates -Config $Config -ScriptDirectory $ScriptDirectory -LogFile $LogFile
+        if ($certResult.Certificates -and ($certResult.Certificates | Measure-Object).Count -gt 0) {
+            $reportResult = Invoke-ReportingOperations -Certificates $certResult.Certificates -Config $Config -ScriptDirectory $ScriptDirectory -LogFile $LogFile
+        } else {
+            Write-Log "No certificates found - skipping report generation" -LogFile $LogFile
+            $reportResult = @{
+                Success = $true
+                ReportPath = "No certificates found"
+                EmailSent = $false
+            }
+        }
         
         # Step 6: Log final summary
+        $certCount = if ($certResult.Certificates) { ($certResult.Certificates | Measure-Object).Count } else { 0 }
         Write-Log "Workflow completed successfully!" -LogFile $LogFile
         Write-Log "Summary:" -LogFile $LogFile
         Write-Log "  - Excel rows processed: $($excelResult.OriginalCount) (filtered: $($excelResult.FilteredCount))" -LogFile $LogFile
         Write-Log "  - Domain servers: $($networkResult.DomainServersCount)" -LogFile $LogFile
         Write-Log "  - Workgroup servers: $($networkResult.WorkgroupServersCount)" -LogFile $LogFile
-        Write-Log "  - Certificates found: $($certResult.Certificates.Count)" -LogFile $LogFile
+        Write-Log "  - Certificates found: $certCount" -LogFile $LogFile
         Write-Log "  - Report saved to: $($reportResult.ReportPath)" -LogFile $LogFile
         
         return @{
             Success = $true
             ExcelProcessed = $excelResult.FilteredCount
-            CertificatesFound = $certResult.Certificates.Count
+            CertificatesFound = $certCount
             ReportPath = $reportResult.ReportPath
             EmailSent = $reportResult.EmailSent
         }

@@ -156,6 +156,11 @@ function Import-ExcelData {
     # Apply header context to filtered data
     $enrichedData = Apply-HeaderContext -ServerData $filteredData -HeaderContext $headerContext -Config $Config -LogFile $LogFile
     
+    # Apply test mode filter if enabled
+    if ($Config.Certificate.TestMode.Enabled) {
+        $enrichedData = Apply-TestModeFilter -ServerData $enrichedData -Config $Config -LogFile $LogFile
+    }
+    
     return @{
         Data = $enrichedData
         HeaderRow = $headerRowFound
@@ -460,12 +465,162 @@ function Apply-HeaderContext {
     return $enrichedData
 }
 
+<#
+.SYNOPSIS
+    [DE] Exportiert Serverdaten zurück in Excel-Datei mit Zertifikatsinformationen
+    [EN] Exports server data back to Excel file with certificate information
+.DESCRIPTION
+    [DE] Schreibt die verarbeiteten Serverdaten mit Zertifikatsinformationen zurück in die Excel-Datei
+    [EN] Writes processed server data with certificate information back to Excel file
+#>
+function Export-ExcelData {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [array]$ServerData,
+        
+        [Parameter(Mandatory = $true)]
+        [string]$OutputPath,
+        
+        [Parameter(Mandatory = $true)]
+        [object]$Config,
+        
+        [Parameter(Mandatory = $true)]
+        [string]$LogFile
+    )
+    
+    Write-Log "Exporting enhanced server data to: $OutputPath" -LogFile $LogFile
+    
+    try {
+        # Prepare data for export
+        $exportData = @()
+        
+        foreach ($server in $ServerData) {
+            $exportRow = [PSCustomObject]@{
+                ServerName = $server.$($Config.Excel.ServerNameColumnName)
+                FQDN_Used = if ($server.FQDN_Used) { $server.FQDN_Used } else { "Not processed" }
+                CertificateStatus = if ($server.CertificateStatus) { $server.CertificateStatus } else { "No certificate" }
+                DomainContext = if ($server._DomainContext) { $server._DomainContext } else { "SRV/Workgroup" }
+                ServerType = if ($server._IsDomainServer -eq $true) { "Domain" } else { "Workgroup" }
+            }
+            
+            # Add certificate details if available
+            if ($server.Certificate -and $server.Certificate.Subject) {
+                $exportRow | Add-Member -NotePropertyName "CertificateSubject" -NotePropertyValue $server.Certificate.Subject
+                $exportRow | Add-Member -NotePropertyName "CertificateExpiry" -NotePropertyValue $server.Certificate.NotAfter
+                $exportRow | Add-Member -NotePropertyName "CertificateIssuer" -NotePropertyValue $server.Certificate.Issuer
+            } else {
+                $exportRow | Add-Member -NotePropertyName "CertificateSubject" -NotePropertyValue "No certificate found"
+                $exportRow | Add-Member -NotePropertyName "CertificateExpiry" -NotePropertyValue $null
+                $exportRow | Add-Member -NotePropertyName "CertificateIssuer" -NotePropertyValue $null
+            }
+            
+            $exportData += $exportRow
+        }
+        
+        # Export to CSV (as Excel export requires ImportExcel module)
+        $csvPath = $OutputPath -replace '\.xlsx$', '_enhanced.csv'
+        $exportData | Export-Csv -Path $csvPath -NoTypeInformation -Encoding UTF8
+        
+        Write-Log "Successfully exported $($exportData.Count) server records to: $csvPath" -LogFile $LogFile
+        Write-Log "Export summary:" -LogFile $LogFile
+        Write-Log "  - Total servers: $($exportData.Count)" -LogFile $LogFile
+        
+        $domainCount = ($exportData | Where-Object { $_.ServerType -eq 'Domain' } | Measure-Object).Count
+        $workgroupCount = ($exportData | Where-Object { $_.ServerType -eq 'Workgroup' } | Measure-Object).Count
+        $certCount = ($exportData | Where-Object { $_.CertificateSubject -ne 'No certificate found' } | Measure-Object).Count
+        
+        Write-Log "  - Domain servers: $domainCount" -LogFile $LogFile
+        Write-Log "  - Workgroup servers: $workgroupCount" -LogFile $LogFile
+        Write-Log "  - Servers with certificates: $certCount" -LogFile $LogFile
+        
+        return @{
+            Success = $true
+            ExportPath = $csvPath
+            RecordCount = $exportData.Count
+        }
+        
+    } catch {
+        Write-Log "ERROR in Export-ExcelData: $($_.Exception.Message)" -LogFile $LogFile
+        throw "Failed to export Excel data: $($_.Exception.Message)"
+    }
+}
+
+<#
+.SYNOPSIS
+    [DE] Filtert Serverdaten für Test-Modus basierend auf erlaubten Domains und Servern
+    [EN] Filters server data for test mode based on allowed domains and servers
+.DESCRIPTION
+    [DE] Reduziert die Serverliste auf die konfigurierten Test-Domains und -Server
+    [EN] Reduces server list to configured test domains and servers
+#>
+function Apply-TestModeFilter {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [array]$ServerData,
+        
+        [Parameter(Mandatory = $true)]
+        [object]$Config,
+        
+        [Parameter(Mandatory = $true)]
+        [string]$LogFile
+    )
+    
+    Write-Log "Applying test mode filter..." -LogFile $LogFile
+    
+    $allowedDomains = $Config.Certificate.TestMode.AllowedDomains
+    $allowedServers = $Config.Certificate.TestMode.AllowedServers
+    $maxServers = $Config.Certificate.TestMode.MaxServers
+    
+    $filteredData = @()
+    
+    foreach ($row in $ServerData) {
+        $serverName = $row.($Config.Excel.ServerNameColumnName)
+        $isDomainAllowed = $false
+        $isServerAllowed = $false
+        
+        # Check if domain is allowed
+        if ($row.Domain -and $allowedDomains -contains $row.Domain) {
+            $isDomainAllowed = $true
+        }
+        
+        # Check if specific server is allowed
+        if ($allowedServers) {
+            foreach ($allowedServer in $allowedServers) {
+                if ($serverName -like "*$allowedServer*") {
+                    $isServerAllowed = $true
+                    break
+                }
+            }
+        }
+        
+        # Include if domain or server is allowed
+        if ($isDomainAllowed -or $isServerAllowed) {
+            $filteredData += $row
+            Write-Log "Test mode: Including server '$serverName' (Domain: $($row.Domain))" -LogFile $LogFile
+        }
+        
+        # Stop if max servers reached
+        if ($filteredData.Count -ge $maxServers) {
+            Write-Log "Test mode: Maximum server limit ($maxServers) reached" -LogFile $LogFile
+            break
+        }
+    }
+    
+    Write-Log "Test mode filter applied: $($filteredData.Count) servers selected from $($ServerData.Count) total" -LogFile $LogFile
+    
+    return $filteredData
+}
+
 #----------------------------------------------------------[Module Exports]--------------------------------------------------------
 Export-ModuleMember -Function @(
     'Import-ExcelData',
     'Remove-StrikethroughServers', 
     'Extract-HeaderContext',
-    'Apply-HeaderContext'
+    'Apply-HeaderContext',
+    'Apply-TestModeFilter',
+    'Export-ExcelData'
 )
 
 # --- End of module --- v1.0.1 ; Regelwerk: v9.3.0 ---

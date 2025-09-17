@@ -36,6 +36,28 @@
     "EnableBrowserCheck": true,
     "EnableComparison": true,
     "EnableAutoPortDetection": true,
+    "TestMode": {
+      "Enabled": true,
+      "AllowedDomains": ["UVW", "WORKGROUP", "EX"],
+      "AllowedServers": ["EX01"],
+      "MaxServers": 1
+    },
+    "WebService": {
+      "Enabled": true,
+      "PrimaryServer": "localhost",
+      "HttpPort": 9080,
+      "HttpsPort": 9443,
+      "UseHttps": false,
+      "FallbackToLocal": true,
+      "Timeout": 5000,
+      "MaxRetries": 2,
+      "CacheEnabled": true,
+      "Endpoints": {
+        "Certificates": "/certificates.json",
+        "Summary": "/summary.json",
+        "Health": "/health.json"
+      }
+    },
     "CommonSSLPorts": [
       443,
       9443,
