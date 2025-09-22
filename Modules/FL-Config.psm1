@@ -1,5 +1,15 @@
 #requires -Version 5.1
 
+#region PowerShell Version Detection (MANDATORY - Regelwerk v9.4.0)
+$PSVersion = $PSVersionTable.PSVersion
+$IsPS7Plus = $PSVersion.Major -ge 7
+$IsPS5 = $PSVersion.Major -eq 5
+$IsPS51 = $PSVersion.Major -eq 5 -and $PSVersion.Minor -eq 1
+
+Write-Verbose "FL-Config - PowerShell Version: $($PSVersion.ToString())"
+Write-Verbose "Compatibility Mode: $(if($IsPS7Plus){'PowerShell 7.x Enhanced'}elseif($IsPS51){'PowerShell 5.1 Compatible'}else{'PowerShell 5.x Standard'})"
+#endregion
+
 <#
 .SYNOPSIS
     [DE] FL-Config Modul - Konfigurationsverwaltung für Cert-Surveillance
@@ -22,6 +32,20 @@
 $ModuleName = "FL-Config"
 $ModuleVersion = "v1.1.0"
 
+#region Universal JSON Functions (Regelwerk v9.4.0)
+function ConvertFrom-JsonUniversal {
+    param([string]$JsonString)
+    
+    if ($IsPS7Plus) {
+        Write-Verbose "Using PowerShell 7.x ConvertFrom-Json with AsHashtable"
+        return $JsonString | ConvertFrom-Json -AsHashtable
+    } else {
+        Write-Verbose "Using PowerShell 5.1 compatible ConvertFrom-Json"
+        return $JsonString | ConvertFrom-Json
+    }
+}
+#endregion
+
 #----------------------------------------------------------[Functions]----------------------------------------------------------
 
 Function Get-ScriptConfiguration {
@@ -43,16 +67,14 @@ Function Get-ScriptConfiguration {
         throw "FATAL: Configuration file not found at '$configFile'"
     }
 
-    $config = Get-Content -Path $configFile | ConvertFrom-Json
+    $config = Get-Content -Path $configFile | ConvertFrom-JsonUniversal
     
     $langFile = Join-Path -Path $configPath -ChildPath "$($config.Language).json"
     if (-not (Test-Path $langFile)) {
         throw "FATAL: Language file not found for '$($config.Language)' at '$langFile'"
     }
-    
-    $localization = Get-Content -Path $langFile | ConvertFrom-Json
 
-    return @{
+    $localization = Get-Content -Path $langFile | ConvertFrom-JsonUniversal    return @{
         Config = $config
         Localization = $localization
     }
@@ -64,4 +86,4 @@ Export-ModuleMember -Function Get-ScriptConfiguration
 
 Write-Verbose "FL-Config module v$ModuleVersion loaded successfully"
 
-# --- End of module --- v1.1.0 ; Regelwerk: v9.3.1 ---
+# --- End of module --- v1.1.0 ; Regelwerk: v9.4.0 (PowerShell Version Adaptation) ---

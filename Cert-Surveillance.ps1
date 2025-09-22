@@ -3,46 +3,46 @@
 
 <#
 .SYNOPSIS
-    [DE] Certificate Surveillance Script - Umfassende SSL/TLS-Zertifikatsüberwachung für Server-Infrastrukturen
+    [DE] Certificate Surveillance Script - Umfassende SSL/TLS-Zertifikatsueberwachung fuer Server-Infrastrukturen
     [EN] Certificate Surveillance Script - Comprehensive SSL/TLS certificate monitoring for server infrastructures
 .DESCRIPTION
-    [DE] Ein minimalistisches PowerShell-Skript zur Überwachung von SSL/TLS-Zertifikaten nach Regelwerk v9.3.0.
+    [DE] Ein minimalistisches PowerShell-Skript zur Ueberwachung von SSL/TLS-Zertifikaten nach Regelwerk v9.4.0.
          Das Hauptskript ist universal und minimalistisch - ALLE spezifische Logik wird von spezialisierten FL-*-Modulen behandelt.
-         Strikte Modularität: Excel-Verarbeitung, AD-Abfragen, Zertifikatsabruf, Berichtserstellung - alles ausgelagert.
-    [EN] A minimalistic PowerShell script for SSL/TLS certificate monitoring according to Rulebook v9.3.0.
+         Strikte Modularitaet: Excel-Verarbeitung, AD-Abfragen, Zertifikatsabruf, Berichtserstellung - alles ausgelagert.
+    [EN] A minimalistic PowerShell script for SSL/TLS certificate monitoring according to Rulebook v9.4.0.
          The main script is universal and minimalistic - ALL specific logic is handled by specialized FL-* modules.
          Strict modularity: Excel processing, AD queries, certificate retrieval, reporting - all externalized.
 .PARAMETER ExcelPath
-    [DE] Optional: Überschreibt den Excel-Dateipfad aus der Konfiguration. Ermöglicht die Verwendung einer alternativen Serverliste.
+    [DE] Optional: Ueberschreibt den Excel-Dateipfad aus der Konfiguration. Ermoeglicht die Verwendung einer alternativen Serverliste.
     [EN] Optional: Override Excel file path from configuration. Allows using an alternative server list.
 .PARAMETER Setup
     [DE] Startet die WPF-Konfigurations-GUI, um die Einstellungen zu bearbeiten.
     [EN] Starts the WPF configuration GUI to edit the settings.
 .EXAMPLE
     .\Cert-Surveillance.ps1
-    [DE] Führt das Skript mit der Standardkonfiguration aus. Verwendet die in Config-Cert-Surveillance.json definierte Excel-Datei.
+    [DE] Fuehrt das Skript mit der Standardkonfiguration aus. Verwendet die in Config-Cert-Surveillance.json definierte Excel-Datei.
     [EN] Runs the script with default configuration. Uses the Excel file defined in Config-Cert-Surveillance.json.
 .EXAMPLE
     .\Cert-Surveillance.ps1 -ExcelPath "C:\Custom\Servers.xlsx"
-    [DE] Führt das Skript mit einer benutzerdefinierten Excel-Datei aus, überschreibt die Konfiguration temporär.
+    [DE] Fuehrt das Skript mit einer benutzerdefinierten Excel-Datei aus, ueberschreibt die Konfiguration temporaer.
     [EN] Runs the script with a custom Excel file, temporarily overriding the configuration.
 .EXAMPLE
     .\Cert-Surveillance.ps1 -Setup
-    [DE] Öffnet die Konfigurations-GUI, um die aktuellen Einstellungen zu ändern.
+    [DE] Oeffnet die Konfigurations-GUI, um die aktuellen Einstellungen zu aendern.
     [EN] Opens the configuration GUI to change the current settings.
 .NOTES
     Author:         Flecki (Tom) Garnreiter
     Created on:     2025.09.04
-    Last modified:  2025.09.04
-    Version:        v1.0.3
-    MUW-Regelwerk:  v9.3.0
+    Last modified:  2025.09.22
+    Version:        v1.2.0
+    MUW-Regelwerk:  v9.4.0 (PowerShell Version Adaptation)
     Copyright:      © 2025 Flecki Garnreiter
     License:        MIT License
     Architecture:   Strict Modularity (FL-* modules only)
 .DISCLAIMER
-    [DE] Die bereitgestellten Skripte und die zugehörige Dokumentation werden "wie besehen" ("as is")
-    ohne ausdrückliche oder stillschweigende Gewährleistung jeglicher Art zur Verfügung gestellt.
-    Insbesondere wird keinerlei Gewähr übernommen für die Marktgängigkeit, die Eignung für einen bestimmten Zweck
+    [DE] Die bereitgestellten Skripte und die zugehoerige Dokumentation werden "wie besehen" ("as is")
+    ohne ausdrueckliche oder stillschweigende Gewaehrleistung jeglicher Art zur Verfuegung gestellt.
+    Insbesondere wird keinerlei Gewaehr uebernommen fuer die Marktgaengigkeit, die Eignung fuer einen bestimmten Zweck
     oder die Nichtverletzung von Rechten Dritter.
     Es besteht keine Verpflichtung zur Wartung, Aktualisierung oder Unterstützung der Skripte. Jegliche Nutzung erfolgt auf eigenes Risiko.
     In keinem Fall haften Herr Flecki Garnreiter, sein Arbeitgeber oder die Mitwirkenden an der Erstellung,
@@ -71,25 +71,33 @@ param(
     [switch]$Setup
 )
 
-#----------------------------------------------------------[Declarations / Deklarationen]----------------------------------------------------------
-$Global:ScriptName = $MyInvocation.MyCommand.Name
-$Global:ScriptVersion = "v1.1.0"
-$Global:RulebookVersion = "v9.3.0"
-$Global:ScriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Definition
+#region PowerShell Version Detection (MANDATORY - Regelwerk v9.4.0)
+$PSVersion = $PSVersionTable.PSVersion
+$IsPS7Plus = $PSVersion.Major -ge 7
+$IsPS5 = $PSVersion.Major -eq 5
+$IsPS51 = $PSVersion.Major -eq 5 -and $PSVersion.Minor -eq 1
 
-#----------------------------------------------------------[PowerShell Version Detection / PowerShell Versionserkennung]----------------------------------------
-# Detect PowerShell version and set compatibility flags / PowerShell-Version erkennen und Kompatibilitäts-Flags setzen
+Write-Verbose "Certificate Surveillance - PowerShell Version: $($PSVersion.ToString())"
+Write-Verbose "Compatibility Mode: $(if($IsPS7Plus){'PowerShell 7.x Enhanced'}elseif($IsPS51){'PowerShell 5.1 Compatible'}else{'PowerShell 5.x Standard'})"
+Write-Verbose "Edition: $($PSVersionTable.PSEdition)"
+
+# Legacy compatibility for existing code
 $Global:PowerShellVersion = $PSVersionTable.PSVersion
-$Global:IsPowerShell5 = $PSVersionTable.PSVersion.Major -eq 5
-$Global:IsPowerShell7Plus = $PSVersionTable.PSVersion.Major -ge 7
+$Global:IsPowerShell5 = $IsPS5
+$Global:IsPowerShell7Plus = $IsPS7Plus
 $Global:IsWindowsPowerShell = $PSVersionTable.PSEdition -eq 'Desktop'
 $Global:IsPowerShellCore = $PSVersionTable.PSEdition -eq 'Core'
 
-Write-Verbose "PowerShell Version: $($Global:PowerShellVersion)"
-Write-Verbose "Edition: $($PSVersionTable.PSEdition)"
-if ($Global:IsPowerShell7Plus) {
+if ($IsPS7Plus) {
     Write-Verbose "Platform: $($PSVersionTable.Platform)"
 }
+#endregion
+
+#----------------------------------------------------------[Declarations / Deklarationen]----------------------------------------------------------
+$Global:ScriptName = $MyInvocation.MyCommand.Name
+$Global:ScriptVersion = "v1.2.0"
+$Global:RulebookVersion = "v9.4.0"
+$Global:ScriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 #----------------------------------------------------------[Module Loading / Modul-Laden]--------------------------------------------------------
 # Internal Modules / Interne Module
@@ -254,4 +262,4 @@ finally {
 }
 
 #----------------------------------------------------------[End of Script]----------------------------------------------------------
-# --- End of Script --- v1.0.3 ; Regelwerk: v9.3.0 ; PowerShell: $($Global:PowerShellVersion) ---
+# --- End of Script --- v1.2.0 ; Regelwerk: v9.4.0 ; PowerShell: $($Global:PowerShellVersion) ---

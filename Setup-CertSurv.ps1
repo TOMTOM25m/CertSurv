@@ -1,6 +1,16 @@
 #Requires -version 5.1
 #Requires -RunAsAdministrator
 
+#region PowerShell Version Detection (MANDATORY - Regelwerk v9.4.0)
+$PSVersion = $PSVersionTable.PSVersion
+$IsPS7Plus = $PSVersion.Major -ge 7
+$IsPS5 = $PSVersion.Major -eq 5
+$IsPS51 = $PSVersion.Major -eq 5 -and $PSVersion.Minor -eq 1
+
+Write-Verbose "Setup-CertSurv - PowerShell Version: $($PSVersion.ToString())"
+Write-Verbose "Compatibility Mode: $(if($IsPS7Plus){'PowerShell 7.x Enhanced'}elseif($IsPS51){'PowerShell 5.1 Compatible'}else{'PowerShell 5.x Standard'})"
+#endregion
+
 <#
 .SYNOPSIS
     [DE] Setup-GUI für Certificate Surveillance System
@@ -15,9 +25,9 @@
     [DE] Startet die Setup-GUI
     [EN] Launches the setup GUI
 .NOTES
-    Version: v1.1.0
+    Version: v1.2.0
     Author: GitHub Copilot
-    MUW-Regelwerk:  v9.3.1
+    MUW-Regelwerk:  v9.4.0 (PowerShell Version Adaptation)
 #>
 
 [CmdletBinding()]
@@ -25,8 +35,8 @@ param()
 
 #----------------------------------------------------------[Declarations / Deklarationen]----------------------------------------------------------
 $Global:ScriptName = $MyInvocation.MyCommand.Name
-$Global:ScriptVersion = "v1.1.0"
-$Global:RulebookVersion = "v9.3.1"
+$Global:ScriptVersion = "v1.2.0"
+$Global:RulebookVersion = "v9.4.0"
 $Global:ScriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 #----------------------------------------------------------[PowerShell Version Detection / PowerShell Versionserkennung]----------------------------------------

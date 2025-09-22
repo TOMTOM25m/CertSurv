@@ -1,5 +1,15 @@
 #requires -Version 5.1
 
+#region PowerShell Version Detection (MANDATORY - Regelwerk v9.4.0)
+$PSVersion = $PSVersionTable.PSVersion
+$IsPS7Plus = $PSVersion.Major -ge 7
+$IsPS5 = $PSVersion.Major -eq 5
+$IsPS51 = $PSVersion.Major -eq 5 -and $PSVersion.Minor -eq 1
+
+Write-Verbose "FL-Logging - PowerShell Version: $($PSVersion.ToString())"
+Write-Verbose "Compatibility Mode: $(if($IsPS7Plus){'PowerShell 7.x Enhanced'}elseif($IsPS51){'PowerShell 5.1 Compatible'}else{'PowerShell 5.x Standard'})"
+#endregion
+
 <#
 .SYNOPSIS
     [DE] FL-Logging Modul - Strukturiertes Logging für Cert-Surveillance
@@ -14,13 +24,29 @@
     Created on:     2025.09.04
     Last modified:  2025.09.04
     Version:        v1.0.0
-    MUW-Regelwerk:  v9.3.0
+    MUW-Regelwerk:  v9.4.0 (PowerShell Version Adaptation)
     Copyright:      © 2025 Flecki Garnreiter
     License:        MIT License
 #>
 
 $ModuleName = "FL-Logging"
 $ModuleVersion = "v1.1.0"
+
+#region PowerShell Version Logging Functions (Regelwerk v9.4.0)
+function Write-PowerShellVersionInfo {
+    param(
+        [Parameter(Mandatory = $false)]
+        [string]$LogFile
+    )
+    
+    $psInfo = "PowerShell $($PSVersion.ToString()) ($($PSVersionTable.PSEdition))"
+    if ($IsPS7Plus -and $PSVersionTable.Platform) {
+        $psInfo += " on $($PSVersionTable.Platform)"
+    }
+    
+    Write-Log -Message "Session Started - $psInfo" -Level 'INFO' -LogFile $LogFile
+}
+#endregion
 
 #----------------------------------------------------------[Functions]----------------------------------------------------------
 
@@ -55,7 +81,7 @@ Function Write-Log {
 
 #----------------------------------------------------------[Module Exports]--------------------------------------------------------
 
-Export-ModuleMember -Function Write-Log
+Export-ModuleMember -Function Write-Log, Write-PowerShellVersionInfo
 
 Write-Verbose "FL-Logging module v$ModuleVersion loaded successfully"
 

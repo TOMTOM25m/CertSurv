@@ -1,5 +1,15 @@
 #requires -Version 5.1
 
+#region PowerShell Version Detection (MANDATORY - Regelwerk v9.4.0)
+$PSVersion = $PSVersionTable.PSVersion
+$IsPS7Plus = $PSVersion.Major -ge 7
+$IsPS5 = $PSVersion.Major -eq 5
+$IsPS51 = $PSVersion.Major -eq 5 -and $PSVersion.Minor -eq 1
+
+Write-Verbose "FL-Compatibility - PowerShell Version: $($PSVersion.ToString())"
+Write-Verbose "Compatibility Mode: $(if($IsPS7Plus){'PowerShell 7.x Enhanced'}elseif($IsPS51){'PowerShell 5.1 Compatible'}else{'PowerShell 5.x Standard'})"
+#endregion
+
 <#
 .SYNOPSIS
     [DE] FL-Compatibility Modul - PowerShell-Versionskompatibilität und Cross-Version-Funktionen
@@ -14,7 +24,7 @@
     Created on:     2025.09.04
     Last modified:  2025.09.04
     Version:        v1.0.0
-    MUW-Regelwerk:  v9.3.0
+    MUW-Regelwerk:  v9.4.0 (PowerShell Version Adaptation)
     Copyright:      © 2025 Flecki Garnreiter
     License:        MIT License
 #>

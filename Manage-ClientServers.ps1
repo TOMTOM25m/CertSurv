@@ -1,5 +1,15 @@
 #requires -Version 5.1
 
+#region PowerShell Version Detection (MANDATORY - Regelwerk v9.4.0)
+$PSVersion = $PSVersionTable.PSVersion
+$IsPS7Plus = $PSVersion.Major -ge 7
+$IsPS5 = $PSVersion.Major -eq 5
+$IsPS51 = $PSVersion.Major -eq 5 -and $PSVersion.Minor -eq 1
+
+Write-Verbose "Manage-ClientServers - PowerShell Version: $($PSVersion.ToString())"
+Write-Verbose "Compatibility Mode: $(if($IsPS7Plus){'PowerShell 7.x Enhanced'}elseif($IsPS51){'PowerShell 5.1 Compatible'}else{'PowerShell 5.x Standard'})"
+#endregion
+
 <#
 .SYNOPSIS
     Client Server Management Tool v1.1.0 - Manuelle WebService Einrichtung
@@ -8,8 +18,8 @@
     Berücksichtigt, dass jeder Server unterschiedlich konfiguriert ist und individuelle Behandlung benötigt.
 .NOTES
     Author: Flecki (Tom) Garnreiter
-    Version: v1.1.0
-    Regelwerk: v9.3.1
+    Version: v1.2.0
+    Regelwerk: v9.4.0 (PowerShell Version Adaptation)
     Usage: Interaktive manuelle Einrichtung aller 151 Server
 #>
 
@@ -22,6 +32,10 @@ $ScriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $ConfigPath = Join-Path $ScriptDirectory "Config"
 $LogPath = Join-Path $ScriptDirectory "LOG"
 $ModulesPath = Join-Path $ScriptDirectory "Modules"
+
+# Script version information
+$Global:ScriptVersion = "v1.2.0"
+$Global:RulebookVersion = "v9.4.0"
 
 # Import required modules
 Import-Module (Join-Path $ModulesPath "FL-Config.psm1") -Force
@@ -99,11 +113,11 @@ function Get-AllServersFromExcel {
             }
         }
         
-        Write-ClientLog "✅ $($servers.Count) Server aus Excel geladen" -Level SUCCESS
+        Write-ClientLog "[OK] $($servers.Count) Server aus Excel geladen" -Level SUCCESS
         return $servers
         
     } catch {
-        Write-ClientLog "❌ Fehler beim Laden der Excel-Daten: $($_.Exception.Message)" -Level ERROR
+        Write-ClientLog "[FAIL] Fehler beim Laden der Excel-Daten: $($_.Exception.Message)" -Level ERROR
         throw
     }
 }
@@ -125,7 +139,7 @@ function Save-ClientProgress {
         Write-ClientLog "Fortschritt gespeichert: $ProgressFile" -Level INFO
         
     } catch {
-        Write-ClientLog "⚠️ Warnung: Fortschritt konnte nicht gespeichert werden: $($_.Exception.Message)" -Level WARN
+        Write-ClientLog "[WARN] Warnung: Fortschritt konnte nicht gespeichert werden: $($_.Exception.Message)" -Level WARN
     }
 }
 
@@ -138,7 +152,7 @@ function Load-ClientProgress {
             Write-ClientLog "Fortschritt geladen: $($progressData.CompletedServers)/$($progressData.TotalServers) abgeschlossen" -Level SUCCESS
             return $progressData.Servers
         } catch {
-            Write-ClientLog "⚠️ Warnung: Fortschritt konnte nicht geladen werden: $($_.Exception.Message)" -Level WARN
+            Write-ClientLog "[WARN] Warnung: Fortschritt konnte nicht geladen werden: $($_.Exception.Message)" -Level WARN
         }
     }
     return $null
@@ -168,7 +182,7 @@ function Test-ServerReadiness {
         Write-ClientLog "  -> Teste Netzwerk-Konnektivität..." -Level INFO
         if (Test-NetConnection -ComputerName $Server.FQDN -Port 135 -InformationLevel Quiet) {
             $readinessStatus.Reachable = $true
-            Write-ClientLog "  ✅ Server erreichbar" -Level SUCCESS
+            Write-ClientLog "  [OK] Server erreichbar" -Level SUCCESS
         } else {
             $readinessStatus.Recommendations += "Server ist nicht über das Netzwerk erreichbar"
             return $readinessStatus
@@ -178,7 +192,7 @@ function Test-ServerReadiness {
         Write-ClientLog "  -> Teste WinRM-Verfügbarkeit..." -Level INFO
         if (Test-WSMan -ComputerName $Server.FQDN -ErrorAction SilentlyContinue) {
             $readinessStatus.WinRMAvailable = $true
-            Write-ClientLog "  ✅ WinRM verfügbar" -Level SUCCESS
+            Write-ClientLog "  [OK] WinRM verfuegbar" -Level SUCCESS
         } else {
             $readinessStatus.Recommendations += "WinRM muss aktiviert werden (Enable-PSRemoting)"
         }
@@ -207,7 +221,7 @@ function Test-ServerReadiness {
                 $readinessStatus.IISInstalled = $systemInfo.IISInstalled
                 $readinessStatus.FreeSpace = $systemInfo.FreeSpace
                 
-                Write-ClientLog "  ✅ System-Info: $($systemInfo.OSVersion), PS $($systemInfo.PowerShellVersion)" -Level SUCCESS
+                Write-ClientLog "  [OK] System-Info: $($systemInfo.OSVersion), PS $($systemInfo.PowerShellVersion)" -Level SUCCESS
                 
                 # Recommendations based on system info
                 if (-not $systemInfo.IISInstalled) {
@@ -255,9 +269,9 @@ function Show-ServerMenu {
     
     if ($ReadinessStatus) {
         Write-Host "System-Status:" -ForegroundColor White
-        Write-Host "  Erreichbar: $(if($ReadinessStatus.Reachable){"✅ Ja"}else{"❌ Nein"})" -ForegroundColor $(if($ReadinessStatus.Reachable){"Green"}else{"Red"})
-        Write-Host "  WinRM: $(if($ReadinessStatus.WinRMAvailable){"✅ Verfügbar"}else{"❌ Nicht verfügbar"})" -ForegroundColor $(if($ReadinessStatus.WinRMAvailable){"Green"}else{"Red"})
-        Write-Host "  IIS: $(if($ReadinessStatus.IISInstalled){"✅ Installiert"}else{"❌ Nicht installiert"})" -ForegroundColor $(if($ReadinessStatus.IISInstalled){"Green"}else{"Red"})
+        Write-Host "  Erreichbar: $(if($ReadinessStatus.Reachable){"[OK] Ja"}else{"[FAIL] Nein"})" -ForegroundColor $(if($ReadinessStatus.Reachable){"Green"}else{"Red"})
+        Write-Host "  WinRM: $(if($ReadinessStatus.WinRMAvailable){"[OK] Verfuegbar"}else{"[FAIL] Nicht verfuegbar"})" -ForegroundColor $(if($ReadinessStatus.WinRMAvailable){"Green"}else{"Red"})
+        Write-Host "  IIS: $(if($ReadinessStatus.IISInstalled){"[OK] Installiert"}else{"[FAIL] Nicht installiert"})" -ForegroundColor $(if($ReadinessStatus.IISInstalled){"Green"}else{"Red"})
         if ($ReadinessStatus.OSVersion) {
             Write-Host "  OS: $($ReadinessStatus.OSVersion)" -ForegroundColor Cyan
         }
@@ -267,7 +281,7 @@ function Show-ServerMenu {
         Write-Host ""
         
         if ($ReadinessStatus.Recommendations.Count -gt 0) {
-            Write-Host "⚠️ Empfehlungen:" -ForegroundColor Yellow
+            Write-Host "[WARN] Empfehlungen:" -ForegroundColor Yellow
             foreach ($rec in $ReadinessStatus.Recommendations) {
                 Write-Host "  • $rec" -ForegroundColor Yellow
             }
@@ -432,13 +446,13 @@ try {
             } -ArgumentList $Server.FQDN
             
             if ($result.Success) {
-                Write-ClientLog "✅ WebService erfolgreich installiert!" -Level SUCCESS
+                Write-ClientLog "[OK] WebService erfolgreich installiert!" -Level SUCCESS
                 $Server.WebServiceInstalled = $true
                 $Server.Status = "Completed"
                 $Server.LastChecked = Get-Date
                 return $true
             } else {
-                Write-ClientLog "❌ Installation fehlgeschlagen: $($result.Message)" -Level ERROR
+                Write-ClientLog "[FAIL] Installation fehlgeschlagen: $($result.Message)" -Level ERROR
                 return $false
             }
             
@@ -447,7 +461,7 @@ try {
         }
         
     } catch {
-        Write-ClientLog "❌ Installation fehlgeschlagen: $($_.Exception.Message)" -Level ERROR
+        Write-ClientLog "[FAIL] Installation fehlgeschlagen: $($_.Exception.Message)" -Level ERROR
         return $false
     }
 }
@@ -464,18 +478,18 @@ function Test-WebServiceOnServer {
         $response = Invoke-RestMethod -Uri $testUrl -TimeoutSec 10 -ErrorAction Stop
         
         if ($response.status -eq "ready") {
-            Write-ClientLog "✅ WebService Test erfolgreich!" -Level SUCCESS
+            Write-ClientLog "[OK] WebService Test erfolgreich!" -Level SUCCESS
             Write-ClientLog "  Server: $($response.server_name)" -Level SUCCESS
             Write-ClientLog "  Zertifikate: $($response.total_count)" -Level SUCCESS
             Write-ClientLog "  Version: $($response.version)" -Level SUCCESS
             return $true
         } else {
-            Write-ClientLog "❌ WebService antwortet, aber Status ist nicht 'ready'" -Level ERROR
+            Write-ClientLog "[FAIL] WebService antwortet, aber Status ist nicht 'ready'" -Level ERROR
             return $false
         }
         
     } catch {
-        Write-ClientLog "❌ WebService Test fehlgeschlagen: $($_.Exception.Message)" -Level ERROR
+        Write-ClientLog "[FAIL] WebService Test fehlgeschlagen: $($_.Exception.Message)" -Level ERROR
         
         # Try HTTP as fallback
         try {
@@ -484,7 +498,7 @@ function Test-WebServiceOnServer {
             
             $response = Invoke-RestMethod -Uri $httpUrl -TimeoutSec 10 -ErrorAction Stop
             if ($response.status -eq "ready") {
-                Write-ClientLog "✅ HTTP WebService Test erfolgreich!" -Level SUCCESS
+                Write-ClientLog "[OK] HTTP WebService Test erfolgreich!" -Level SUCCESS
                 return $true
             }
         } catch {
