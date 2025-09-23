@@ -6,10 +6,10 @@
     [DE] Certificate Surveillance Script - Umfassende SSL/TLS-Zertifikatsueberwachung fuer Server-Infrastrukturen
     [EN] Certificate Surveillance Script - Comprehensive SSL/TLS certificate monitoring for server infrastructures
 .DESCRIPTION
-    [DE] Ein minimalistisches PowerShell-Skript zur Ueberwachung von SSL/TLS-Zertifikaten nach Regelwerk v9.4.0.
+    [DE] Ein minimalistisches PowerShell-Skript zur Ueberwachung von SSL/TLS-Zertifikaten nach Regelwerk v9.5.0.
          Das Hauptskript ist universal und minimalistisch - ALLE spezifische Logik wird von spezialisierten FL-*-Modulen behandelt.
          Strikte Modularitaet: Excel-Verarbeitung, AD-Abfragen, Zertifikatsabruf, Berichtserstellung - alles ausgelagert.
-    [EN] A minimalistic PowerShell script for SSL/TLS certificate monitoring according to Rulebook v9.4.0.
+    [EN] A minimalistic PowerShell script for SSL/TLS certificate monitoring according to Rulebook v9.5.0.
          The main script is universal and minimalistic - ALL specific logic is handled by specialized FL-* modules.
          Strict modularity: Excel processing, AD queries, certificate retrieval, reporting - all externalized.
 .PARAMETER ExcelPath
@@ -35,7 +35,7 @@
     Created on:     2025.09.04
     Last modified:  2025.09.22
     Version:        v1.2.0
-    MUW-Regelwerk:  v9.4.0 (PowerShell Version Adaptation)
+    MUW-Regelwerk:  v9.5.0 (File Operations + Script Versioning Standards)
     Copyright:      © 2025 Flecki Garnreiter
     License:        MIT License
     Architecture:   Strict Modularity (FL-* modules only)
@@ -71,7 +71,7 @@ param(
     [switch]$Setup
 )
 
-#region PowerShell Version Detection (MANDATORY - Regelwerk v9.4.0)
+#region PowerShell Version Detection (MANDATORY - Regelwerk v9.5.0)
 $PSVersion = $PSVersionTable.PSVersion
 $IsPS7Plus = $PSVersion.Major -ge 7
 $IsPS5 = $PSVersion.Major -eq 5
@@ -96,7 +96,7 @@ if ($IsPS7Plus) {
 #----------------------------------------------------------[Declarations / Deklarationen]----------------------------------------------------------
 $Global:ScriptName = $MyInvocation.MyCommand.Name
 $Global:ScriptVersion = "v1.2.0"
-$Global:RulebookVersion = "v9.4.0"
+$Global:RulebookVersion = "v9.5.0"
 $Global:ScriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 #----------------------------------------------------------[Module Loading / Modul-Laden]--------------------------------------------------------
@@ -262,4 +262,4 @@ finally {
 }
 
 #----------------------------------------------------------[End of Script]----------------------------------------------------------
-# --- End of Script --- v1.2.0 ; Regelwerk: v9.4.0 ; PowerShell: $($Global:PowerShellVersion) ---
+# --- End of Script --- v1.3.0 ; Regelwerk: v9.5.0 ; PowerShell: $($Global:PowerShellVersion) ---

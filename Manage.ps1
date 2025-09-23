@@ -1,6 +1,6 @@
 #requires -Version 5.1
 
-#region PowerShell Version Detection (MANDATORY - Regelwerk v9.4.0)
+#region PowerShell Version Detection (MANDATORY - Regelwerk v9.5.0)
 $PSVersion = $PSVersionTable.PSVersion
 $IsPS7Plus = $PSVersion.Major -ge 7
 $IsPS51 = $PSVersion.Major -eq 5 -and $PSVersion.Minor -eq 1
@@ -18,7 +18,7 @@ Write-Verbose "Compatibility Mode: $(if($IsPS7Plus){'PowerShell 7.x Enhanced'}el
 .NOTES
     Author: Flecki (Tom) Garnreiter
     Version: v1.2.0
-    Regelwerk: v9.4.0 (PowerShell Version Adaptation)
+    Regelwerk: v9.5.0 (File Operations + Script Versioning Standards)
     Usage: Interaktive manuelle Einrichtung aller 151 Server
 #>
 
@@ -34,7 +34,7 @@ $ModulesPath = Join-Path $ScriptDirectory "Modules"
 
 # Script version information
 $Global:ScriptVersion = "v1.2.0"
-$Global:RulebookVersion = "v9.4.0"
+$Global:RulebookVersion = "v9.5.0"
 
 # Import required modules
 Import-Module (Join-Path $ModulesPath "FL-Config.psm1") -Force
@@ -651,4 +651,4 @@ try {
     Write-ClientLog '=== Client Management Tool beendet ===' -Level 'INFO'
 }
 
-# --- End of script --- v1.2.0 ; Regelwerk: v9.4.0 ---
+# --- End of script --- v1.3.0 ; Regelwerk: v9.5.0 ---

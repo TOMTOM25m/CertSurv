@@ -1,7 +1,7 @@
 #Requires -version 5.1
 #Requires -RunAsAdministrator
 
-#region PowerShell Version Detection (MANDATORY - Regelwerk v9.4.0)
+#region PowerShell Version Detection (MANDATORY - Regelwerk v9.5.0)
 $PSVersion = $PSVersionTable.PSVersion
 $IsPS7Plus = $PSVersion.Major -ge 7
 $IsPS5 = $PSVersion.Major -eq 5
@@ -27,7 +27,7 @@ Write-Verbose "Compatibility Mode: $(if($IsPS7Plus){'PowerShell 7.x Enhanced'}el
 .NOTES
     Version: v1.2.0
     Author: GitHub Copilot
-    MUW-Regelwerk:  v9.4.0 (PowerShell Version Adaptation)
+    MUW-Regelwerk:  v9.5.0 (File Operations + Script Versioning Standards)
 #>
 
 [CmdletBinding()]
@@ -36,7 +36,7 @@ param()
 #----------------------------------------------------------[Declarations / Deklarationen]----------------------------------------------------------
 $Global:ScriptName = $MyInvocation.MyCommand.Name
 $Global:ScriptVersion = "v1.2.0"
-$Global:RulebookVersion = "v9.4.0"
+$Global:RulebookVersion = "v9.5.0"
 $Global:ScriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Definition
 
 #----------------------------------------------------------[PowerShell Version Detection / PowerShell Versionserkennung]----------------------------------------
@@ -126,4 +126,4 @@ Write-Host "Setup completed / Setup abgeschlossen" -ForegroundColor Green
 Read-Host "Press Enter to exit / Druecken Sie Enter zum Beenden"
 
 #----------------------------------------------------------[End of Script]----------------------------------------------------------
-# --- End of Setup Script --- v1.1.0 ; Regelwerk: v9.3.1 ; PowerShell: $($Global:PowerShellVersion) ---
+# --- End of Setup Script --- v1.2.0 ; Regelwerk: v9.5.0 ; PowerShell: $($Global:PowerShellVersion) ---

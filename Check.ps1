@@ -2,15 +2,15 @@
 
 <#
 .SYNOPSIS
-    Regelwerk v9.3.1 Compliance Check für Certificate Surveillance System
+    Regelwerk v9.5.0 Compliance Check fuer Certificate Surveillance System
 .DESCRIPTION
     Prüft die vollständige Compliance des Certificate Surveillance Systems 
-    mit dem MUW-Regelwerk v9.3.1 für strict modularity
+    mit dem MUW-Regelwerk v9.5.0 fuer strict modularity
 .NOTES
     Author:         Flecki (Tom) Garnreiter
     Created on:     2025.09.17
     Version:        v1.1.0
-    Target:         Regelwerk v9.3.1 Compliance
+    Target:         Regelwerk v9.5.0 Compliance
 #>
 
 param(
@@ -19,7 +19,7 @@ param(
 )
 
 Write-Host "`n=================================" -ForegroundColor Cyan
-Write-Host "Regelwerk v9.3.1 Compliance Check" -ForegroundColor Cyan
+Write-Host "Regelwerk v9.5.0 Compliance Check" -ForegroundColor Cyan
 Write-Host "=================================" -ForegroundColor Cyan
 
 $ScriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Definition
@@ -228,7 +228,7 @@ Write-Host "  ❌ Fehlgeschlagen: $failedChecks" -ForegroundColor Red
 Write-Host "  ⚠️  Warnungen: $warningChecks" -ForegroundColor Yellow
 
 $overallCompliance = ($failedChecks -eq 0)
-Write-Host "`nRegelwerk v9.3.1 Compliance: " -NoNewline
+Write-Host "`nRegelwerk v9.5.0 Compliance: " -NoNewline
 if ($overallCompliance) {
     Write-Host "BESTANDEN" -ForegroundColor Green
 } else {

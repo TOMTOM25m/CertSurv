@@ -9,7 +9,7 @@
 .NOTES
     Author: Flecki (Tom) Garnreiter
     Version: v1.2.0
-    Regelwerk: v9.4.0
+    Regelwerk: v9.5.0
 #>
 
 Set-StrictMode -Version Latest
