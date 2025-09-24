@@ -1,9 +1,10 @@
 # Certificate Surveillance System
 
-**Version:** v1.0.3  
+**Version:** v1.3.1  
 **Author:** © Flecki Garnreiter  
-**Rulebook:** v9.1.1  
-**License:** MIT License
+**Rulebook:** v9.5.0  
+**License:** MIT License  
+**Build Date:** 2025-09-24
 
 ---
 
@@ -37,6 +38,15 @@
 
 - **[EN]** **Automated Maintenance:** Archives old log files and deletes outdated archives to keep the script directory clean.
 - **[DE]** **Automatisierte Wartung:** Archiviert alte Log-Dateien und löscht veraltete Archive, um das Skriptverzeichnis sauber zu halten.
+
+- **[EN]** **WebService Integration:** Central certificate collection via itscmgmt03 WebService API for enhanced performance.
+- **[DE]** **WebService-Integration:** Zentrale Zertifikatssammlung über itscmgmt03 WebService API für verbesserte Performance.
+
+- **[EN]** **Setup GUI:** Graphical configuration interface for easy parameter adjustment via Setup-CertSurv.ps1.
+- **[DE]** **Setup-GUI:** Grafische Konfigurationsoberfläche für einfache Parameter-Anpassung über Setup-CertSurv.ps1.
+
+- **[EN]** **Network Deployment:** Robocopy-based deployment system compliant with Regelwerk v9.5.0.
+- **[DE]** **Netzwerk-Deployment:** Robocopy-basiertes Deployment-System konform mit Regelwerk v9.5.0.
 
 ---
 
@@ -139,6 +149,27 @@ Um das Skript automatisch nach einem Zeitplan auszuführen, können Sie eine Auf
 
 ---
 
+## 5.1. Setup GUI / Setup-Benutzeroberfläche
+
+**[EN]** For easier configuration, you can use the graphical setup interface:
+**[DE]** Für eine einfachere Konfiguration können Sie die grafische Setup-Oberfläche verwenden:
+
+```powershell
+.\Setup-CertSurv.ps1
+```
+
+**[EN]** The Setup GUI allows you to:
+**[DE]** Die Setup-GUI ermöglicht Ihnen:
+
+- **[EN]** Edit all parameters in Config-Cert-Surveillance.json
+- **[DE]** Alle Parameter in Config-Cert-Surveillance.json zu bearbeiten
+- **[EN]** Deploy updated configuration to network share
+- **[DE]** Aktualisierte Konfiguration auf Netzlaufwerk zu deployen
+- **[EN]** Visual validation of configuration changes
+- **[DE]** Visuelle Validierung von Konfigurationsänderungen
+
+---
+
 ## 6. Configuration / Konfiguration
 
 **[EN]** The script's behavior is controlled by `Config\Config-Cert-Surveillance.json`.
@@ -163,6 +194,29 @@ Um das Skript automatisch nach einem Zeitplan auszuführen, können Sie eine Auf
   - `SmtpServer`, `SmtpPort`, `SenderAddress`: [EN] Standard SMTP settings. / [DE] Standard-SMTP-Einstellungen.
   - `DevTo`, `ProdTo`: [EN] Recipient addresses, chosen based on the `RunMode` setting. / [DE] Empfängeradressen, die basierend auf der `RunMode`-Einstellung ausgewählt werden.
 - **`CorporateDesign`**: [EN] Colors used for styling the HTML report. / [DE] Farben für das Design des HTML-Berichts.
+- **`Certificate.WebService`**:
+  - `Enabled`: [EN] Enable/disable WebService integration / [DE] WebService-Integration aktivieren/deaktivieren
+  - `PrimaryServer`: [EN] WebService server FQDN (e.g., "itscmgmt03.srv.meduniwien.ac.at") / [DE] WebService-Server FQDN
+  - `HttpPort`: [EN] WebService HTTP port (default: 9080) / [DE] WebService HTTP-Port
+  - `FallbackToLocal`: [EN] Fallback to local SSL query if WebService fails / [DE] Fallback auf lokale SSL-Abfrage bei WebService-Ausfall
+
+---
+
+## 6.1. Network Deployment / Netzwerk-Deployment
+
+**[EN]** For enterprise deployment, refer to the comprehensive deployment guide:
+**[DE]** Für Enterprise-Deployment siehe das umfassende Deployment-Handbuch:
+
+```powershell
+# Deploy to network share
+.\Deploy.ps1 -Action Publish -NetworkPath "\\itscmgmt03\iso\CertSurv"
+
+# Install from network share
+.\Deploy.ps1 -Action Install -NetworkPath "\\itscmgmt03\iso\CertSurv"
+```
+
+**[EN]** See `NETWORK-DEPLOYMENT-GUIDE.md` for detailed instructions.
+**[DE]** Siehe `NETWORK-DEPLOYMENT-GUIDE.md` für detaillierte Anweisungen.
 
 ---
 
@@ -172,25 +226,39 @@ Um das Skript automatisch nach einem Zeitplan auszuführen, können Sie eine Auf
 CertSurv/
 │
 ├── Cert-Surveillance.ps1       # [EN] Main executable script / [DE] Hauptausführungsskript
+├── Setup.ps1                   # [EN] Installation and configuration script / [DE] Installations- und Konfigurationsskript
+├── Setup-CertSurv.ps1          # [EN] GUI for config editing / [DE] GUI für Config-Bearbeitung
+├── Check.ps1                   # [EN] System compliance check / [DE] System-Compliance-Prüfung
+├── Deploy.ps1                  # [EN] Deployment operations / [DE] Deployment-Operationen
+├── Manage.ps1                  # [EN] Management functions / [DE] Management-Funktionen
 ├── README.md                   # [EN] This file / [DE] Diese Datei
-├── FIRSTME.md                  # [EN] This is the original idea and task to implement the request /
-│                               # [DE] das ist der Ursprungsgedanke und Auftrag die Anfrage umzusetzen
+├── CHANGELOG.md                # [EN] Version history / [DE] Versionshistorie
+├── NETWORK-DEPLOYMENT-GUIDE.md # [EN] Deployment guide / [DE] Deployment-Handbuch
+├── FIRSTME.md                  # [EN] Original idea and requirements / [DE] Ursprungsidee und Anforderungen
 │
 ├── Config/
 │   ├── Config-Cert-Surveillance.json # [EN] Main configuration / [DE] Hauptkonfiguration
 │   ├── de-DE.json                # [EN] German localization / [DE] Deutsche Lokalisierung
 │   └── en-US.json                # [EN] English localization / [DE] Englische Lokalisierung
 │
-├── Modules/
-│   ├── FL-Config.psm1            # [EN] Loads configuration / [DE] Lädt die Konfiguration
-│   ├── FL-Logging.psm1           # [EN] Handles logging / [DE] Zuständig für das Logging
-│   ├── FL-Maintenance.psm1       # [EN] Cleans up old logs / [DE] Bereinigt alte Protokolle
-│   └── FL-Utils.psm1             # [EN] Utility functions (Email, Cert Checks) / [DE] Hilfsfunktionen (E-Mail, Zertifikatsprüfung)
+├── Modules/                    # [EN] FL-* PowerShell modules / [DE] FL-* PowerShell-Module
+│   ├── FL-Config.psm1            # [EN] Configuration management / [DE] Konfigurationsverwaltung
+│   ├── FL-Logging.psm1           # [EN] Logging functions / [DE] Logging-Funktionen
+│   ├── FL-CoreLogic.psm1         # [EN] Main workflow logic / [DE] Haupt-Workflow-Logik
+│   ├── FL-DataProcessing.psm1    # [EN] Excel/CSV processing / [DE] Excel/CSV-Verarbeitung
+│   ├── FL-NetworkOperations.psm1 # [EN] Network connectivity / [DE] Netzwerk-Konnektivität
+│   ├── FL-Reporting.psm1         # [EN] HTML/JSON reports / [DE] HTML/JSON-Berichte
+│   ├── FL-ActiveDirectory.psm1   # [EN] AD integration / [DE] AD-Integration
+│   ├── FL-Security.psm1          # [EN] SSL/TLS validation / [DE] SSL/TLS-Validierung
+│   ├── FL-Maintenance.psm1       # [EN] System maintenance / [DE] System-Wartung
+│   ├── FL-Utils.psm1             # [EN] Utility functions / [DE] Hilfsfunktionen
+│   ├── FL-Compatibility.psm1     # [EN] PowerShell compatibility / [DE] PowerShell-Kompatibilität
+│   └── FL-CertificateAPI.psm1    # [EN] WebService API integration / [DE] WebService-API-Integration
 │
-├── LOG/                        # [EN] Created on first run for log files / [DE] Wird beim ersten Start für Protokolldateien erstellt
+├── LOG/                        # [EN] Log files (created on first run) / [DE] Log-Dateien (beim ersten Start erstellt)
 │
-├── reports/                    # [EN] Created on first run for HTML reports / [DE] Wird beim ersten Start für HTML-Berichte erstellt
+├── Reports/                    # [EN] HTML reports (created on first run) / [DE] HTML-Berichte (beim ersten Start erstellt)
 │
 └── old/
-    └── seekCertReNewDay.ps1      # [EN] The original script, kept for reference / [DE] Das ursprüngliche Skript, als Referenz aufbewahrt
+    └── seekCertReNewDay.ps1      # [EN] Original script for reference / [DE] Ursprungsskript als Referenz
 ```

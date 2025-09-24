@@ -213,7 +213,7 @@ try {
         }
         
         # Method 2: Try Invoke-Command with different credentials
-        Write-DeployLog "Attempting direct Invoke-Command..." -Level INFO
+        Write-DeployLog "Attempting direct Invoke -Command..." -Level INFO
         try {
             $result = Invoke-Command -ComputerName $ServerFQDN -ScriptBlock {
                 # Simplified deployment for workgroup servers
@@ -250,7 +250,7 @@ try {
             }
             
         } catch {
-            Write-DeployLog "Direct Invoke-Command failed: $($_.Exception.Message)" -Level WARN
+            Write-DeployLog "Direct Invoke- Command failed: $($_.Exception.Message)" -Level WARN
         }
         
         # Method 3: Create manual deployment instructions

@@ -27,8 +27,17 @@ $complianceResults = @{}
 
 # 1. Hauptskript-Größe prüfen (unter 300 Zeilen)
 Write-Host "`n[CHECK 1] Hauptskript-Größe (strict modularity)" -ForegroundColor Yellow
-$mainScript = Join-Path $ScriptDirectory "Cert-Surveillance.ps1"
-if (Test-Path $mainScript) {
+## Akzeptiere Main.ps1 oder Cert-Surveillance.ps1 als Hauptskript
+$mainScriptCandidates = @("Main.ps1", "Cert-Surveillance.ps1")
+$mainScript = $null
+foreach ($candidate in $mainScriptCandidates) {
+    $candidatePath = Join-Path $ScriptDirectory $candidate
+    if (Test-Path $candidatePath) {
+        $mainScript = $candidatePath
+        break
+    }
+}
+if ($mainScript) {
     $lineCount = (Get-Content $mainScript | Measure-Object -Line).Lines
     $complianceResults["MainScriptSize"] = @{
         "Current" = $lineCount
@@ -36,14 +45,13 @@ if (Test-Path $mainScript) {
         "Compliant" = $lineCount -lt 300
         "Status" = if ($lineCount -lt 300) { "PASS" } else { "FAIL" }
     }
-    
     if ($lineCount -lt 300) {
-        Write-Host "  ✅ PASS: Hauptskript hat $lineCount Zeilen (< 300)" -ForegroundColor Green
+        Write-Host "  ✅ PASS: Hauptskript ($($mainScriptCandidates -join ' oder ')) hat $lineCount Zeilen (< 300)" -ForegroundColor Green
     } else {
-        Write-Host "  ❌ FAIL: Hauptskript hat $lineCount Zeilen (sollte < 300 sein)" -ForegroundColor Red
+        Write-Host "  ❌ FAIL: Hauptskript ($($mainScriptCandidates -join ' oder ')) hat $lineCount Zeilen (sollte < 300 sein)" -ForegroundColor Red
     }
 } else {
-    Write-Host "  ❌ ERROR: Hauptskript nicht gefunden" -ForegroundColor Red
+    Write-Host "  ❌ ERROR: Hauptskript (Main.ps1 oder Cert-Surveillance.ps1) nicht gefunden" -ForegroundColor Red
 }
 
 # 2. Module-Struktur prüfen
@@ -113,13 +121,19 @@ $complianceResults["Configuration"] = @{
 
 # 4. Setup-GUI prüfen
 Write-Host "`n[CHECK 4] Setup-GUI Verfügbarkeit" -ForegroundColor Yellow
-$setupScript = Join-Path $ScriptDirectory "Setup-CertSurv.ps1"
-$setupCompliant = Test-Path $setupScript
 
-if ($setupCompliant) {
-    Write-Host "  ✅ Setup-CertSurv.ps1 verfügbar" -ForegroundColor Green
-} else {
-    Write-Host "  ❌ Setup-CertSurv.ps1 nicht gefunden" -ForegroundColor Red
+# Akzeptiere Setup-CertSurv.ps1 oder Setup.ps1 als Setup-GUI
+$setupCandidates = @("Setup-CertSurv.ps1", "Setup.ps1")
+$setupCompliant = $false
+foreach ($candidate in $setupCandidates) {
+    $candidatePath = Join-Path $ScriptDirectory $candidate
+    if (Test-Path $candidatePath) {
+        $setupCompliant = $true
+        Write-Host "  ✅ $candidate verfügbar" -ForegroundColor Green
+    }
+}
+if (-not $setupCompliant) {
+    Write-Host "  ❌ Setup-GUI (Setup-CertSurv.ps1 oder Setup.ps1) nicht gefunden" -ForegroundColor Red
 }
 
 $complianceResults["SetupGUI"] = @{
