@@ -1,0 +1,40 @@
+Certificate WebService Test Instructions for WSUS Server
+========================================================
+
+CURRENT STATUS:
+- Package updated with Server Core priority
+- Install-WebService.bat now prioritizes Setup-WebService-ServerCore.ps1
+- Full FQDN support implemented
+
+TEST COMMANDS FOR WSUS SERVER:
+==============================
+
+1. Clean previous attempts:
+cd C:\script
+rmdir CertWebService-Deployment /S /Q
+
+2. Download latest package (Regelwerk v9.5.0 compliant):
+robocopy "\\itscmgmt03.srv.meduniwien.ac.at\Iso\CertWebService-Deployment" "C:\script\CertWebService-Deployment" /E /R:3 /W:5
+
+3. Install Certificate WebService:
+cd C:\script\CertWebService-Deployment
+.\Install-WebService.bat
+
+EXPECTED BEHAVIOR:
+- Auto-detects Server Core environment
+- Uses Setup-WebService-ServerCore.ps1 (ASCII-safe)
+- Shows FQDN: hostname.srv.meduniwien.ac.at
+- Creates endpoints with full FQDN
+
+ENDPOINTS AFTER INSTALLATION:
+- HTTP:  http://hostname.srv.meduniwien.ac.at:9080/api/certificates
+- HTTPS: https://hostname.srv.meduniwien.ac.at:9443/api/certificates
+
+TESTING:
+.\Test-WebService.ps1
+
+TROUBLESHOOTING:
+If still fails, try manual installation:
+powershell.exe -ExecutionPolicy Bypass -File "Setup-WebService-ServerCore.ps1"
+
+Last Updated: 2025-09-23 10:01
