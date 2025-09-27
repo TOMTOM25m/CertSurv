@@ -1,10 +1,11 @@
 # Certificate Surveillance System
 
-**Version:** v1.3.1  
+**Version:** v1.4.0-STABLE  
 **Author:** © Flecki Garnreiter  
 **Rulebook:** v9.5.0  
 **License:** MIT License  
-**Build Date:** 2025-09-24
+**Build:** 20250924.1  
+**Release Date:** 2025-09-24
 
 ---
 
@@ -13,6 +14,52 @@
 **[EN]** The Certificate Surveillance System is a comprehensive PowerShell solution for monitoring SSL/TLS certificates across your server infrastructure. It provides automated certificate discovery, expiration monitoring, reporting, and notification capabilities through a modular architecture.
 
 **[DE]** Das Certificate Surveillance System ist eine umfassende PowerShell-Lösung zur Überwachung von SSL/TLS-Zertifikaten in Ihrer Server-Infrastruktur. Es bietet automatische Zertifikatserkennung, Ablaufüberwachung, Berichterstattung und Benachrichtigungsfunktionen durch eine modulare Architektur.
+
+---
+
+## File Structure / Dateistruktur
+
+```
+CertSurv/
+├── README.md                     # Main documentation / Hauptdokumentation
+├── Cert-Surveillance-Main.ps1  # Primary surveillance script / Haupt-Überwachungsskript
+├── Setup-CertSurv-System.ps1   # Installation and setup / Installation und Setup
+├── Setup-CertSurvGUI.ps1       # GUI configuration tool / GUI-Konfigurationstool
+├── Manage-CertSurv-Servers.ps1 # Management interface / Management-Interface
+├── Deploy-CertSurv-Network.ps1 # Deployment operations / Deployment-Operationen
+├── Check-CertSurv-Compliance.ps1 # System validation / System-Validierung
+├── Deploy-Network.ps1          # Network deployment / Netzwerk-Deployment
+├── QuickSetup-ITSCmgmt03.ps1   # ITSCmgmt03 quick setup / ITSCmgmt03 Schnell-Setup
+├── Install-CertSurv.bat        # Universal installer / Universeller Installer
+├── Install-on-itscmgmt03.bat   # ITSCmgmt03 specific installer / ITSCmgmt03-spezifischer Installer
+├── Config/                      # Configuration files / Konfigurationsdateien
+│   ├── Config-Cert-Surveillance.json  # Main configuration / Hauptkonfiguration
+│   ├── de-DE.json              # German language file / Deutsche Sprachdatei
+│   └── en-US.json              # English language file / Englische Sprachdatei
+├── Modules/                     # PowerShell modules / PowerShell-Module
+│   ├── FL-ActiveDirectory.psm1  # Active Directory integration / Active Directory-Integration
+│   ├── FL-Certificate.psm1     # Certificate operations / Zertifikat-Operationen
+│   ├── FL-CertificateAPI.psm1   # Certificate API / Zertifikat-API
+│   ├── FL-Config.psm1          # Configuration management / Konfigurationsverwaltung
+│   ├── FL-CoreLogic.psm1       # Core workflow logic / Kern-Workflow-Logik
+│   ├── FL-DataProcessing.psm1   # Data processing / Datenverarbeitung
+│   ├── FL-Logging.psm1         # Logging framework / Logging-Framework
+│   ├── FL-NetworkOperations.psm1 # Network operations / Netzwerkoperationen
+│   ├── FL-Reporting.psm1       # Report generation / Berichtgenerierung
+│   ├── FL-Security.psm1        # Security functions / Sicherheitsfunktionen
+│   ├── FL-Utils.psm1           # Utility functions / Hilfsfunktionen
+│   └── FL-WebService.psm1      # WebService integration / WebService-Integration
+├── Docs/                        # Documentation / Dokumentation
+│   ├── CHANGELOG.md            # Version history / Versionshistorie
+│   ├── DEPLOYMENT-CHECKLIST.md # Deployment checklist / Deployment-Checkliste
+│   ├── INSTALL-BEST-PRACTICES.md # Installation best practices / Installations-Best-Practices
+│   ├── INSTALL-GUIDE.md        # Installation guide / Installationshandbuch
+│   ├── NETWORK-DEPLOYMENT-GUIDE.md # Network deployment guide / Netzwerk-Deployment-Handbuch
+│   ├── QUICK-INSTALL-REFERENCE.md # Quick install reference / Schnellinstallations-Referenz
+│   └── SCHNELLSTART-ITSCmgmt03.md # ITSCmgmt03 quick start / ITSCmgmt03 Schnellstart
+├── LOG/                         # Log files / Log-Dateien
+└── old/                         # Archived/legacy files / Archivierte/Legacy-Dateien
+```
 
 ---
 
@@ -42,8 +89,8 @@
 - **[EN]** **WebService Integration:** Central certificate collection via itscmgmt03 WebService API for enhanced performance.
 - **[DE]** **WebService-Integration:** Zentrale Zertifikatssammlung über itscmgmt03 WebService API für verbesserte Performance.
 
-- **[EN]** **Setup GUI:** Graphical configuration interface for easy parameter adjustment via Setup-CertSurv.ps1.
-- **[DE]** **Setup-GUI:** Grafische Konfigurationsoberfläche für einfache Parameter-Anpassung über Setup-CertSurv.ps1.
+- **[EN]** **Setup GUI:** Graphical configuration interface for easy parameter adjustment via Setup-CertSurvGUI.ps1.
+- **[DE]** **Setup-GUI:** Grafische Konfigurationsoberfläche für einfache Parameter-Anpassung über Setup-CertSurvGUI.ps1.
 
 - **[EN]** **Network Deployment:** Robocopy-based deployment system compliant with Regelwerk v9.5.0.
 - **[DE]** **Netzwerk-Deployment:** Robocopy-basiertes Deployment-System konform mit Regelwerk v9.5.0.
@@ -155,7 +202,7 @@ Um das Skript automatisch nach einem Zeitplan auszuführen, können Sie eine Auf
 **[DE]** Für eine einfachere Konfiguration können Sie die grafische Setup-Oberfläche verwenden:
 
 ```powershell
-.\Setup-CertSurv.ps1
+.\Setup-CertSurvGUI.ps1
 ```
 
 **[EN]** The Setup GUI allows you to:

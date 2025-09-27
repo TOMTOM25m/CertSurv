@@ -1,0 +1,57 @@
+[2025-09-27 10:14:57] [SUCCESS] ═══════════════════════════════════════════════════════════════════
+[2025-09-27 10:14:57] [SUCCESS]     CLIENT SERVER MANAGEMENT TOOL v1.1.0
+[2025-09-27 10:14:57] [SUCCESS] ═══════════════════════════════════════════════════════════════════
+[2025-09-27 10:14:57] [INFO] 
+[2025-09-27 10:14:57] [INFO] Konfiguration geladen: F:\DEV\repositories\CertSurv\Config\Config-Cert-Surveillance.json
+[2025-09-27 10:14:57] [SUCCESS] Fortschritt geladen: 0/151 abgeschlossen
+[2025-09-27 10:14:57] [INFO] Gefundene Server: 151
+[2025-09-27 10:14:57] [SUCCESS] Abgeschlossen: 0
+[2025-09-27 10:14:57] [ERROR] Fehlgeschlagen: 1
+[2025-09-27 10:14:57] [WARN] Ausstehend: 150
+[2025-09-27 10:14:57] [INFO] 
+[2025-09-27 10:14:57] [PROGRESS] Bearbeite Server 1 von 150: UVWDC001
+[2025-09-27 10:15:20] [ERROR] [FAIL] Fehler im Client Management Tool: Exception setting "Notes": "The property 'Notes' cannot be found on this object. Verify that the property exists and can be set."
+[2025-09-27 10:15:20] [INFO] Fortschritt gespeichert: F:\DEV\repositories\CertSurv\LOG\ClientProgress.json
+[2025-09-27 10:15:20] [INFO] === Client Management Tool beendet ===
+[2025-09-27 10:19:05] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-27 10:19:05] [SUCCESS]     CLIENT SERVER MANAGEMENT TOOL v1.1.0
+[2025-09-27 10:19:05] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-27 10:19:05] [INFO] 
+[2025-09-27 10:19:05] [INFO] Konfiguration geladen: F:\DEV\repositories\CertSurv\Config\Config-Cert-Surveillance.json
+[2025-09-27 10:19:05] [SUCCESS] Fortschritt geladen: 0/151 abgeschlossen
+[2025-09-27 10:19:05] [INFO] Gefundene Server: 151
+[2025-09-27 10:19:05] [SUCCESS] Abgeschlossen: 0
+[2025-09-27 10:19:05] [ERROR] Fehlgeschlagen: 2
+[2025-09-27 10:19:05] [WARN] Ausstehend: 149
+[2025-09-27 10:19:05] [INFO] 
+[2025-09-27 10:19:05] [PROGRESS] Bearbeite Server 1 von 149: C-SQL01
+[2025-09-27 10:19:26] [PROGRESS] Bearbeite Server 2 von 149: C-Lic01
+[2025-09-27 10:19:30] [PROGRESS] Bearbeite Server 3 von 149: C-LIC02
+[2025-09-27 10:19:33] [PROGRESS] Bearbeite Server 4 von 149: UVW-FINANZ02
+[2025-09-27 10:19:36] [PROGRESS] Bearbeite Server 5 von 149: C-APP01
+[2025-09-27 10:19:41] [PROGRESS] Bearbeite Server 6 von 149: C-APP02
+[2025-09-27 10:19:43] [PROGRESS] Bearbeite Server 7 von 149: adonisnpappprod
+[2025-09-27 10:19:44] [PROGRESS] Bearbeite Server 8 von 149: adonisnpapptst
+[2025-09-27 10:19:46] [PROGRESS] Bearbeite Server 9 von 149: COORAPPPROD01
+[2025-09-27 10:19:47] [PROGRESS] Bearbeite Server 10 von 149: UVWDC003
+[2025-09-27 10:19:48] [PROGRESS] Bearbeite Server 11 von 149: C-FS01
+[2025-09-27 10:19:48] [PROGRESS] Bearbeite Server 12 von 149: proman
+[2025-09-27 10:19:49] [PROGRESS] Bearbeite Server 13 von 149: COORAPPTEST01
+[2025-09-27 10:19:49] [PROGRESS] Bearbeite Server 14 von 149: UVWPRINT01
+[2025-09-27 10:19:50] [PROGRESS] Bearbeite Server 15 von 149: UVWDC002
+[2025-09-27 10:19:55] [PROGRESS] Teste Server-Bereitschaft: UVWDC002.uvw.meduniwien.ac.at
+[2025-09-27 10:19:55] [INFO]   -> Teste Netzwerk-Konnektivitaet...
+[2025-09-27 10:19:56] [SUCCESS]   [OK] Server erreichbar
+[2025-09-27 10:19:56] [INFO]   -> Teste WinRM-Verfuegbarkeit...
+[2025-09-27 10:20:04] [INFO] System-Check abgeschlossen
+[2025-09-27 10:21:23] [WARN] Unguelltige Auswahl
+[2025-09-27 10:21:23] [WARN] Unguelltige Auswahl
+[2025-09-27 10:21:23] [WARN] Unguelltige Auswahl
+[2025-09-27 10:21:23] [WARN] Unguelltige Auswahl
+[2025-09-27 10:21:23] [WARN] Unguelltige Auswahl
+[2025-09-27 10:21:23] [WARN] Unguelltige Auswahl
+[2025-09-27 10:21:23] [WARN] Unguelltige Auswahl
+[2025-09-27 10:21:23] [WARN] Unguelltige Auswahl
+[2025-09-27 10:22:15] [PROGRESS] Bearbeite Server 16 von 149: ZGAAPP01
+[2025-09-27 10:22:16] [WARN] Unguelltige Auswahl
+[2025-09-27 10:22:16] [WARN] Unguelltige Auswahl

@@ -1,6 +1,6 @@
 #Requires -version 5.1
 
-#region PowerShell Version Detection (MANDATORY - Regelwerk v9.4.0)
+#region PowerShell Version Detection (MANDATORY - Regelwerk v9.6.0)
 $PSVersion = $PSVersionTable.PSVersion
 $IsPS7Plus = $PSVersion.Major -ge 7
 $IsPS5 = $PSVersion.Major -eq 5
@@ -8,6 +8,110 @@ $IsPS51 = $PSVersion.Major -eq 5 -and $PSVersion.Minor -eq 1
 
 Write-Verbose "FL-Utils - PowerShell Version: $($PSVersion.ToString())"
 Write-Verbose "Compatibility Mode: $(if($IsPS7Plus){'PowerShell 7.x Enhanced'}elseif($IsPS51){'PowerShell 5.1 Compatible'}else{'PowerShell 5.x Standard'})"
+#endregion
+
+#region Cross-Script Communication (MANDATORY - Regelwerk v9.6.0 §20.3)
+
+function Send-ScriptMessage {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)]
+        [string]$TargetScript,
+        [Parameter(Mandatory=$true)]
+        [string]$Message,
+        [Parameter(Mandatory=$false)]
+        [ValidateSet("INFO", "WARNING", "ERROR", "SUCCESS")]
+        [string]$Type = "INFO"
+    )
+    
+    try {
+        $MessageFile = "LOG\Messages\$TargetScript-$(Get-Date -Format 'yyyyMMdd-HHmmss').json"
+        $MessageData = @{
+            Timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
+            Source = $MyInvocation.ScriptName
+            Target = $TargetScript
+            Message = $Message
+            Type = $Type
+            RegelwerkVersion = "v9.6.0"
+        }
+        
+        $MessageData | ConvertTo-Json | Out-File $MessageFile -Encoding UTF8
+        Write-Verbose "Message sent to $TargetScript: $Message"
+        return $true
+    }
+    catch {
+        Write-Warning "Failed to send message to $TargetScript`: $($_.Exception.Message)"
+        return $false
+    }
+}
+
+function Set-ScriptStatus {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)]
+        [ValidateSet("STARTING", "RUNNING", "COMPLETED", "FAILED", "STOPPED")]
+        [string]$Status,
+        [Parameter(Mandatory=$false)]
+        [hashtable]$Details = @{}
+    )
+    
+    try {
+        $ScriptName = Split-Path -Leaf $MyInvocation.ScriptName
+        $StatusFile = "LOG\Status\$ScriptName-Status.json"
+        $StatusData = @{
+            Timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm:ss'
+            Script = $ScriptName
+            Status = $Status
+            Details = $Details
+            RegelwerkVersion = "v9.6.0"
+        }
+        
+        $StatusData | ConvertTo-Json | Out-File $StatusFile -Encoding UTF8
+        Write-Verbose "Status set to $Status for script $ScriptName"
+        return $true
+    }
+    catch {
+        Write-Warning "Failed to set script status: $($_.Exception.Message)"
+        return $false
+    }
+}
+
+function Get-ScriptStatus {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$false)]
+        [string]$ScriptName
+    )
+    
+    try {
+        if (-not $ScriptName) {
+            # Return all script statuses
+            $StatusFiles = Get-ChildItem "LOG\Status\*-Status.json" -ErrorAction SilentlyContinue
+            $AllStatuses = @()
+            foreach ($File in $StatusFiles) {
+                $StatusData = Get-Content $File.FullName | ConvertFrom-Json
+                $AllStatuses += $StatusData
+            }
+            return $AllStatuses
+        }
+        else {
+            # Return specific script status
+            $StatusFile = "LOG\Status\$ScriptName-Status.json"
+            if (Test-Path $StatusFile) {
+                return Get-Content $StatusFile | ConvertFrom-Json
+            }
+            else {
+                Write-Warning "Status file not found for script: $ScriptName"
+                return $null
+            }
+        }
+    }
+    catch {
+        Write-Warning "Failed to get script status: $($_.Exception.Message)"
+        return $null
+    }
+}
+
 #endregion
 
 Function Send-MailNotification {

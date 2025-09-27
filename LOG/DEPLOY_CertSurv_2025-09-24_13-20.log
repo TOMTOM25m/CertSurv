@@ -1,0 +1,369 @@
+
+-------------------------------------------------------------------------------
+   ROBOCOPY     ::     Robust File Copy for Windows                              
+-------------------------------------------------------------------------------
+
+  Started : Mittwoch, 24. September 2025 13:20:23
+   Source = f:\DEV\repositories\CertSurv\
+     Dest : \\itscmgmt03.srv.meduniwien.ac.at\iso\CertSurv\
+
+    Files : *.*
+	    
+  Options : *.* /S /E /DCOPY:DA /COPY:DAT /PURGE /MT:8 /R:3 /W:5 
+
+------------------------------------------------------------------------------
+
+	    Newer     		   19337	f:\DEV\repositories\CertSurv\README.md100%  
+	    Newer     		   13782	f:\DEV\repositories\CertSurv\Setup-CertSurvGUI.ps1100%  
+	    New File  		    5424	f:\DEV\repositories\CertSurv\Setup-Old.ps1100%  
+	    Newer     		    3862	f:\DEV\repositories\CertSurv\Setup.ps1100%  
+	    New File  		    3573	f:\DEV\repositories\CertSurv\VERSION.ps1100%  
+	    New File  		    3361	f:\DEV\repositories\CertSurv\.github\copilot-instructions.md100%  
+	    New File  		      41	f:\DEV\repositories\CertSurv\.git\AUTO_MERGE100%  
+	    New File  		     642	f:\DEV\repositories\CertSurv\.git\COMMIT_EDITMSG100%  
+	    New File  		     333	f:\DEV\repositories\CertSurv\.git\config100%  
+	    New File  		      73	f:\DEV\repositories\CertSurv\.git\description100%  
+	    New File  		      97	f:\DEV\repositories\CertSurv\.git\FETCH_HEAD100%  
+	    New File  		      21	f:\DEV\repositories\CertSurv\.git\HEAD100%  
+	    New File  		    9263	f:\DEV\repositories\CertSurv\.git\index100%  
+	    New File  		      41	f:\DEV\repositories\CertSurv\.git\MERGE_HEAD100%  
+	    New File  		       0	f:\DEV\repositories\CertSurv\.git\MERGE_MODE100%  
+	    New File  		      90	f:\DEV\repositories\CertSurv\.git\MERGE_MSG100%  
+	    New File  		     637	f:\DEV\repositories\CertSurv\.vscode\launch.json100%  
+	    New File  		      41	f:\DEV\repositories\CertSurv\.git\ORIG_HEAD100%  
+	    New File  		    1763	f:\DEV\repositories\CertSurv\LOG\ClientManagement_2025-09-22.log100%  
+	    New File  		   26793	f:\DEV\repositories\CertSurv\LOG\ClientManagement_2025-09-23.log100%  
+	    New File  		   46676	f:\DEV\repositories\CertSurv\LOG\ClientProgress.json100%  
+	    New File  		   29800	f:\DEV\repositories\CertSurv\LOG\DEBUG_BlockProcessing.log100%  
+	    New File  		    1092	f:\DEV\repositories\CertSurv\LOG\DEBUG_Test.log100%  
+	    New File  		       2	f:\DEV\repositories\CertSurv\LOG\DEPLOY_CertSurv_2025-09-24_13-20.log100%  
+	    New File  		  765803	f:\DEV\repositories\CertSurv\LOG\DEV_Cert-Surveillance_2025-09-04.log100%  
+	    New File  		   2.7 m	f:\DEV\repositories\CertSurv\LOG\DEV_Cert-Surveillance_2025-09-09.log100%  
+	    New File  		  997462	f:\DEV\repositories\CertSurv\LOG\DEV_Cert-Surveillance_2025-09-16.log100%  
+	    New File  		   36046	f:\DEV\repositories\CertSurv\LOG\DEV_Cert-Surveillance_2025-09-17.log100%  
+	    New File  		    8146	f:\DEV\repositories\CertSurv\LOG\PROD_Cert-Surveillance_2025-09-17.log100%  
+	    New File  		   83820	f:\DEV\repositories\CertSurv\LOG\PROD_Cert-Surveillance_2025-09-23.log100%  
+	    New File  		   30048	f:\DEV\repositories\CertSurv\LOG\test.log100%  
+	    New File  		   29800	f:\DEV\repositories\CertSurv\LOG\TEST_Debug_Import.log100%  
+	    New File  		  129490	f:\DEV\repositories\CertSurv\LOG\TEST_HeaderProcessing_2025-09-09.log100%  
+	    New File  		    1132	f:\DEV\repositories\CertSurv\LOG\TEST_Mini_2025-09-16_18-28.log100%  
+	    New File  		    1376	f:\DEV\repositories\CertSurv\LOG\TEST_Report_2025-09-16.log100%  
+	    New File  		   91656	f:\DEV\repositories\CertSurv\LOG\TEST_UVW_Classification.log100%  
+	    Newer     		   10817	f:\DEV\repositories\CertSurv\Docs\CHANGELOG.md100%  
+	    New File  		    2904	f:\DEV\repositories\CertSurv\old\Cert-Report-2025-09-16.html100%  
+	    New File  		    3379	f:\DEV\repositories\CertSurv\old\CHANGELOG-AD-Integration.md100%  
+	    New File  		    1486	f:\DEV\repositories\CertSurv\old\Config-seekCertReNewDay.json100%  
+	    New File  		    5308	f:\DEV\repositories\CertSurv\old\CONFIGURATION-ANALYSIS.md100%  
+	    New File  		    4767	f:\DEV\repositories\CertSurv\old\FIRSTME.md100%  
+	    New File  		   21409	f:\DEV\repositories\CertSurv\old\FL-Certificate-broken.psm1100%  
+	    New File  		   11365	f:\DEV\repositories\CertSurv\old\FL-Certificate-Clean.psm1100%  
+	    New File  		   10083	f:\DEV\repositories\CertSurv\old\FL-Certificate-Fixed.psm1100%  
+	    New File  		    5878	f:\DEV\repositories\CertSurv\old\FL-Certificate-Minimal.psm1100%  
+	    New File  		    5878	f:\DEV\repositories\CertSurv\old\FL-Certificate.psm1100%  
+	    New File  		   21409	f:\DEV\repositories\CertSurv\old\FL-Certificate.psm1.backup100%  
+	    New File  		   42759	f:\DEV\repositories\CertSurv\old\FL-Gui.psm1100%  
+	    New File  		    9797	f:\DEV\repositories\CertSurv\old\FL-NetworkOperations-v1.1.psm1100%  
+	    New File  		    1417	f:\DEV\repositories\CertSurv\old\Get-RemoteCertificate.ps1100%  
+	    New File  		    5171	f:\DEV\repositories\CertSurv\old\Install-CertificateWebService.ps1100%  
+	    New File  		    4307	f:\DEV\repositories\CertSurv\old\installIIS.ps1100%  
+	    New File  		       0	f:\DEV\repositories\CertSurv\old\seekCertReNewDay.ps1100%  
+	    New File  		    4013	f:\DEV\repositories\CertSurv\old\Setup-CertSurv-Clean.ps1100%  
+	    New File  		    2742	f:\DEV\repositories\CertSurv\old\test-mini-workflow.ps1100%  
+	    New File  		    1686	f:\DEV\repositories\CertSurv\old\test-reporting.ps1100%  
+	    New File  		     208	f:\DEV\repositories\CertSurv\old\test.log100%  
+	    New File  		     240	f:\DEV\repositories\CertSurv\.git\info\exclude100%  
+	    New File  		     478	f:\DEV\repositories\CertSurv\.git\hooks\applypatch-msg.sample100%  
+	    New File  		     896	f:\DEV\repositories\CertSurv\.git\hooks\commit-msg.sample100%  
+	    New File  		    4726	f:\DEV\repositories\CertSurv\.git\hooks\fsmonitor-watchman.sample100%  
+	    New File  		     189	f:\DEV\repositories\CertSurv\.git\hooks\post-update.sample100%  
+	    New File  		     424	f:\DEV\repositories\CertSurv\.git\hooks\pre-applypatch.sample100%  
+	    New File  		    1643	f:\DEV\repositories\CertSurv\.git\hooks\pre-commit.sample100%  
+	    New File  		     416	f:\DEV\repositories\CertSurv\.git\hooks\pre-merge-commit.sample100%  
+	    New File  		    1374	f:\DEV\repositories\CertSurv\.git\hooks\pre-push.sample100%  
+	    New File  		    4898	f:\DEV\repositories\CertSurv\.git\hooks\pre-rebase.sample100%  
+	    New File  		     544	f:\DEV\repositories\CertSurv\.git\hooks\pre-receive.sample100%  
+	    New File  		    1492	f:\DEV\repositories\CertSurv\.git\hooks\prepare-commit-msg.sample100%  
+	    New File  		    2783	f:\DEV\repositories\CertSurv\.git\hooks\push-to-checkout.sample100%  
+	    New File  		    3650	f:\DEV\repositories\CertSurv\.git\hooks\update.sample100%  
+	    New File  		    8787	f:\DEV\repositories\CertSurv\.git\logs\HEAD100%  
+	    New File  		    3332	f:\DEV\repositories\CertSurv\old\reports\Cert-Report-2025-09-09.html100%  
+	    New File  		    2239	f:\DEV\repositories\CertSurv\old\Tests\Simple-AutoPort-Test.ps1100%  
+	    New File  		    5219	f:\DEV\repositories\CertSurv\old\Tests\Test-BlockProcessing-Debug.ps1100%  
+	    New File  		    3448	f:\DEV\repositories\CertSurv\old\Tests\Test-BlockProcessing-Final.ps1100%  
+	    New File  		    3899	f:\DEV\repositories\CertSurv\old\Tests\Test-BlockProcessing-Simple.ps1100%  
+	    New File  		    6794	f:\DEV\repositories\CertSurv\old\Tests\Test-CompleteExcelAnalysis.ps1100%  
+	    New File  		    1509	f:\DEV\repositories\CertSurv\old\Tests\Test-Debug-Import.ps1100%  
+	    New File  		    4046	f:\DEV\repositories\CertSurv\old\Tests\Test-DomainClassification.ps1100%  
+	    New File  		    2706	f:\DEV\repositories\CertSurv\old\Tests\Test-ExcelStructure.ps1100%  
+	    New File  		    1105	f:\DEV\repositories\CertSurv\old\Tests\Test-ExtendedUVWClassification.ps1100%  
+	    New File  		    4543	f:\DEV\repositories\CertSurv\old\Tests\Test-HeaderProcessing-New.ps1100%  
+	    New File  		    4543	f:\DEV\repositories\CertSurv\old\Tests\Test-HeaderProcessing.ps1100%  
+	    New File  		    8527	f:\DEV\repositories\CertSurv\old\Tests\Test-RealExcelStructure.ps1100%  
+	    New File  		    1090	f:\DEV\repositories\CertSurv\old\Tests\Test-Simple.ps1100%  
+	    New File  		    4400	f:\DEV\repositories\CertSurv\old\Tests\Test-SimpleExcelAnalysis.ps1100%  
+	    New File  		    2168	f:\DEV\repositories\CertSurv\old\Tests\Test-UVW-Full.ps1100%  
+	    New File  		    1100	f:\DEV\repositories\CertSurv\old\Tests\Test-UVW-Simple.ps1100%  
+	    New File  		    5207	f:\DEV\repositories\CertSurv\.git\objects\00\18ce567dc88cd8d443d8cb65219692719f541d100%  
+	    New File  		     250	f:\DEV\repositories\CertSurv\.git\objects\00\5ea4996a86396065badaedbb7e43bcaff4dc30100%  
+	    New File  		    2332	f:\DEV\repositories\CertSurv\.git\objects\00\c7e3c76ef1017b2ed9d1357ed8aab81c46e769100%  
+	    New File  		    3055	f:\DEV\repositories\CertSurv\.git\objects\01\9192b0b7ee185da93ffc5c23b69c97e8108aa9100%  
+	    New File  		     175	f:\DEV\repositories\CertSurv\.git\objects\04\5f05c2b3ade30b837749adf5a77521f7bd7e0d100%  
+	    New File  		    1424	f:\DEV\repositories\CertSurv\.git\objects\04\b07cdd6df8dbb9fc527ab31eea0a6c87215049100%  
+	    New File  		    8754	f:\DEV\repositories\CertSurv\.git\objects\05\525c0efee646d285b049dc2b89bc74c46268a9100%  
+	    New File  		    2173	f:\DEV\repositories\CertSurv\.git\objects\07\739b69e62ab390428fd00c4cfc1f16a4d0f1b5100%  
+	    New File  		    8249	f:\DEV\repositories\CertSurv\.git\objects\06\331a5df0c0abf1678e515207211a08418f54e9100%  
+	    New File  		     747	f:\DEV\repositories\CertSurv\.git\objects\06\6f210d16f9182e73ac9c53e518bd1bc88ef8ef100%  
+	    New File  		     478	f:\DEV\repositories\CertSurv\.git\objects\06\795a531b92180153d2c7c6583c5bdc4420b4b2100%  
+	    New File  		     527	f:\DEV\repositories\CertSurv\.git\objects\08\25044763209fccc97e087502a276ff89bb012d100%  
+	    New File  		    2418	f:\DEV\repositories\CertSurv\.git\objects\09\9bf7b026c747a1e22e534a602b123b3b7a1cd9100%  
+	    New File  		     547	f:\DEV\repositories\CertSurv\.git\objects\08\3898fc400061703ffceb72fb1f16dc57430016100%  
+	    New File  		      68	f:\DEV\repositories\CertSurv\.git\objects\0c\4f99f055ba2d66f36ea4ff696ba0dbb31c3cff100%  
+	    New File  		     421	f:\DEV\repositories\CertSurv\.git\objects\0c\af0a2d5d48a42be1d605aac34ade1cd7e7f49f100%  
+	    New File  		    3760	f:\DEV\repositories\CertSurv\.git\objects\0e\5b18338f5ec6c3b0d45fab816b352cd979941f100%  
+	    New File  		    4891	f:\DEV\repositories\CertSurv\.git\objects\0f\28ff8f48ef0bbede3b098ae945c85f03210c95100%  
+	    New File  		    2270	f:\DEV\repositories\CertSurv\.git\objects\0e\86723fef1e867e6b5051f26230ff0e4388b796100%  
+	    New File  		    3742	f:\DEV\repositories\CertSurv\.git\objects\0d\ef2d102c98277a922fa673698732b76bc87dcd100%  
+	    New File  		    3558	f:\DEV\repositories\CertSurv\.git\objects\12\0a0aa586481306981927d458b814b72581cf96100%  
+	    New File  		    2267	f:\DEV\repositories\CertSurv\.git\objects\12\8ca214ece9d11279a9edb97a476394bd2d772d100%  
+	    New File  		     696	f:\DEV\repositories\CertSurv\.git\objects\14\1c9b909fec8a689a263a7833e29299b1e8233f100%  
+	    New File  		    2321	f:\DEV\repositories\CertSurv\.git\objects\14\3541357f0b73177b99eb8db32c0134c54afcca100%  
+	    New File  		    3276	f:\DEV\repositories\CertSurv\.git\objects\14\7b52615d972b971966d7bf51ad8b44cf269b51100%  
+	    New File  		    1121	f:\DEV\repositories\CertSurv\.git\objects\18\86b0475d674200ac68664843f231af4556d229100%  
+	    New File  		    6642	f:\DEV\repositories\CertSurv\.git\objects\18\b52dcda2715f51f2e73c0679e325cdb6547f83100%  
+	    New File  		     547	f:\DEV\repositories\CertSurv\.git\objects\1b\8d62b347818db77d4bcc4a87e55f0207c8ea7c100%  
+	    New File  		    3546	f:\DEV\repositories\CertSurv\.git\objects\1c\3e8cb985464a8491e64de6dd51fe5fbd98ad52100%  
+	    New File  		    1269	f:\DEV\repositories\CertSurv\.git\objects\1c\5c667885dab237d0054d84974e7f5f2f22b90f100%  
+	    New File  		     506	f:\DEV\repositories\CertSurv\.git\objects\19\96e66bde75dadd248906a8c692a95c03f44ebf100%  
+	    New File  		    2022	f:\DEV\repositories\CertSurv\.git\objects\1f\9cef4620940ab0fe38b48f7a01c68eecd6ab49100%  
+	    New File  		    3809	f:\DEV\repositories\CertSurv\.git\objects\1e\66625937dfb8797c82b9d8c69b7b9e5fba74ed100%  
+	    New File  		     567	f:\DEV\repositories\CertSurv\.git\objects\1e\834f0f9ae86d78c1937cc3de2cafb9433aa254100%  
+	    New File  		     360	f:\DEV\repositories\CertSurv\.git\objects\1e\b4062c2270947574812c3e4f4b66a2b4da21c0100%  
+	    New File  		     292	f:\DEV\repositories\CertSurv\.git\objects\1e\de31844863790a779c78da130bd30f9cd604a3100%  
+	    New File  		    5105	f:\DEV\repositories\CertSurv\.git\objects\27\1906128e85ebb856ecd0fd2746cb7935de1a4a100%  
+	    New File  		    6638	f:\DEV\repositories\CertSurv\.git\objects\27\cd67a465ad5facff382b3073788c45e3c9a7a3100%  
+	    New File  		     292	f:\DEV\repositories\CertSurv\.git\objects\2a\14b33c2e88c4f2867c6b42f0fc448ede656369100%  
+	    New File  		    4703	f:\DEV\repositories\CertSurv\.git\objects\2a\4b7a51cacf1ca3e76fe2acd5ccb81a8546e18c100%  
+	    New File  		     391	f:\DEV\repositories\CertSurv\.git\objects\29\06e1eb1df068973882fb2067edda00bc2c167f100%  
+	    New File  		     487	f:\DEV\repositories\CertSurv\.git\objects\2e\ddf877907fc2fff243fdd97dc8681a6fa68000100%  
+	    New File  		    1375	f:\DEV\repositories\CertSurv\.git\objects\2b\2a660dcc3767335061f5da8b5746c32e56e5b8100%  
+	    New File  		    1230	f:\DEV\repositories\CertSurv\.git\objects\2b\76cf05c1911147344e7eccf8225b7b31c1e135100%  
+	    New File  		     175	f:\DEV\repositories\CertSurv\.git\objects\35\76039ee48843e8475544d4a3d0bcb363ba52b1100%  
+	    New File  		     164	f:\DEV\repositories\CertSurv\.git\objects\2c\091cba8853945eeae2c80a710446cf350f1bc2100%  
+	    New File  		     783	f:\DEV\repositories\CertSurv\.git\objects\2c\28aeaf77bb568762a3393726ec8edcdc203fd3100%  
+	    New File  		    2833	f:\DEV\repositories\CertSurv\.git\objects\2c\a1d0dd13d7ec7996455e74c58f646145f961ab100%  
+	    New File  		     356	f:\DEV\repositories\CertSurv\.git\objects\30\dfb616384d1fa8c63027f33ef9a0e9eb74d60b100%  
+	    New File  		     568	f:\DEV\repositories\CertSurv\.git\objects\30\f0e26677fc8e460aeec4c2033368b1c35434d2100%  
+	    New File  		    3113	f:\DEV\repositories\CertSurv\.git\objects\36\2cd26f9e29fae8e26abe383efa613fa462b133100%  
+	    New File  		    1174	f:\DEV\repositories\CertSurv\.git\objects\36\996c0d02fb632b1e530ef30736ca7c1e9f8430100%  
+	    New File  		    8752	f:\DEV\repositories\CertSurv\.git\objects\36\d9fbda9df501ddf38be3ae666ae360b191a3da100%  
+	    New File  		    4812	f:\DEV\repositories\CertSurv\.git\objects\36\da77ad5a5f4caaa0cb00ce48252e2ad6ca2134100%  
+	    New File  		    6590	f:\DEV\repositories\CertSurv\.git\objects\38\5c51605a9c14d4ec59e4a50f5e4ee656830b66100%  
+	    New File  		  142270	f:\DEV\repositories\CertSurv\.git\objects\37\25d8247eb5e0f763e2e1b295b261430f34f7ea100%  
+	    New File  		    6157	f:\DEV\repositories\CertSurv\.git\objects\3c\86f08d32e6241e67c24143f10eefa7b4823c0f100%  
+	    New File  		     256	f:\DEV\repositories\CertSurv\.git\objects\3c\9cd040c43ebde7dccc39cbbd35e1315c8d23c2100%  
+	    New File  		    3690	f:\DEV\repositories\CertSurv\.git\objects\3a\ce8a016d8016c68b4bb7343a4d9b4eadf950ad100%  
+	    New File  		     255	f:\DEV\repositories\CertSurv\.git\objects\3d\32567728e72f865c55f5ab5e775921b1114665100%  
+	    New File  		    2889	f:\DEV\repositories\CertSurv\.git\objects\40\13e249ae3e42a9ddeff13e21625c8ec188a546100%  
+	    New File  		     317	f:\DEV\repositories\CertSurv\.git\objects\40\9726d9722b951111aba963e2347d47dba5205d100%  
+	    New File  		     615	f:\DEV\repositories\CertSurv\.git\objects\3f\0ed91f4524160d599d71a846ce51b205b9568d100%  
+	    New File  		     620	f:\DEV\repositories\CertSurv\.git\objects\3e\3190ddf5bc51c17bead2fbce4e3a4209042eed100%  
+	    New File  		     427	f:\DEV\repositories\CertSurv\.git\objects\3e\dbd71da729df487a67ad06be4edecc3ee9099a100%  
+	    New File  		     245	f:\DEV\repositories\CertSurv\.git\objects\42\1039359c07a352a76ae5d9ad32a91b2a281126100%  
+	    New File  		     244	f:\DEV\repositories\CertSurv\.git\objects\41\96cc2b34f9ce24101117395940831ae18996d6100%  
+	    New File  		    6814	f:\DEV\repositories\CertSurv\.git\objects\42\8a925e4824d62cb7474aebae7620605554539d100%  
+	    New File  		    1226	f:\DEV\repositories\CertSurv\.git\objects\43\58bd39ba57a6a374d7171858f3f9808b653c76100%  
+	    New File  		     412	f:\DEV\repositories\CertSurv\.git\objects\43\93fd370414d2960a97ce63223ac2465a6de8ac100%  
+	    New File  		    1617	f:\DEV\repositories\CertSurv\.git\objects\43\e0bc1c9b4d0c1ec86c4fc2e1a415383af6e6fd100%  
+	    New File  		    5430	f:\DEV\repositories\CertSurv\.git\objects\4a\60b14723d688674750e326559380ccbaeb5764100%  
+	    New File  		     376	f:\DEV\repositories\CertSurv\.git\objects\46\18282bf9d66defb1ee50c5d26ba9833435334f100%  
+	    New File  		    3260	f:\DEV\repositories\CertSurv\.git\objects\47\ea15925a547505f1f9175496da6c8f8d3ac72f100%  
+	    New File  		    5267	f:\DEV\repositories\CertSurv\.git\objects\4c\20779c934aac197dc3c5c2ebffb8ee58104f57100%  
+	    New File  		    7777	f:\DEV\repositories\CertSurv\.git\objects\4c\4cc5acb3472b3b9b51b4182f32c260901c4627100%  
+	    New File  		     968	f:\DEV\repositories\CertSurv\.git\objects\4c\9a5764328fdb4b0ebffc36579e8dae01582ac1100%  
+	    New File  		    4822	f:\DEV\repositories\CertSurv\.git\objects\4d\a027d5b12eaf9808bc423e35c966b6d0ebcda6100%  
+	    New File  		    2911	f:\DEV\repositories\CertSurv\.git\objects\4d\fce37cc0a026ebce519a69259655f675a8adcd100%  
+	    New File  		    1905	f:\DEV\repositories\CertSurv\.git\objects\4e\580210cb56e01c5044260ce999c3325cf86704100%  
+	    New File  		     339	f:\DEV\repositories\CertSurv\.git\objects\4f\803cef82ebe112f624b4ec5f649f7a948c6df7100%  
+	    New File  		     953	f:\DEV\repositories\CertSurv\.git\objects\4e\92bf7afc4d7dc3f81ed122df11c16a726d0c3e100%  
+	    New File  		    5432	f:\DEV\repositories\CertSurv\.git\objects\50\27e1cc9700aaa6919f4ff808dbaaddd7098057100%  
+	    New File  		    1327	f:\DEV\repositories\CertSurv\.git\objects\54\29ed562f6eac80a9556855efc2d09f6965c6c9100%  
+	    New File  		    7731	f:\DEV\repositories\CertSurv\.git\objects\54\3629b8d791537ea86dfc61be8d25eab5877d30100%  
+	    New File  		    1195	f:\DEV\repositories\CertSurv\.git\objects\52\87fa2b3e1fcd39e03ba02472cfd5e62d232469100%  
+	    New File  		    3737	f:\DEV\repositories\CertSurv\.git\objects\51\60b03a625e1249797bdc02a50dfd2a416ba077100%  
+	    New File  		    2465	f:\DEV\repositories\CertSurv\.git\objects\58\b72fe5716c0815e9c93adc89bbae2a099ac8cf100%  
+	    New File  		    5672	f:\DEV\repositories\CertSurv\.git\objects\57\bc757b7fb02dd03696a46be1caabdff4d7cf26100%  
+	    New File  		    2123	f:\DEV\repositories\CertSurv\.git\objects\59\1d9d4a0aaf1eb43b23cb66041df6c931617271100%  
+	    New File  		    2005	f:\DEV\repositories\CertSurv\.git\objects\5a\298195f4112effee4883e3ec7e301c53b696a1100%  
+	    New File  		    3740	f:\DEV\repositories\CertSurv\.git\objects\5a\978733369533a5a55262753b07a25141a5853e100%  
+	    New File  		    2585	f:\DEV\repositories\CertSurv\.git\objects\5b\74b3ff999cf23a066328365c375cc5e9130054100%  
+	    New File  		      54	f:\DEV\repositories\CertSurv\.git\objects\61\b9aba359bc039c1f80115ac8621d0a74b78eee100%  
+	    New File  		    7471	f:\DEV\repositories\CertSurv\.git\objects\60\c18b4070716b2fd51f5193150da6eb39aa4041100%  
+	    New File  		    1155	f:\DEV\repositories\CertSurv\.git\objects\5e\de803a68f634141091c6ee2b13b95867d77e1f100%  
+	    New File  		    1355	f:\DEV\repositories\CertSurv\.git\objects\5e\df1fec35714c3da8fa0baa84132fedf52e38ab100%  
+	    New File  		    1007	f:\DEV\repositories\CertSurv\.git\objects\63\e5df23759506a4074795d505b869c3bd9a33ad100%  
+	    New File  		    2770	f:\DEV\repositories\CertSurv\.git\objects\65\e77842a08095d69d0c794463b2b7615c01b46d100%  
+	    New File  		    1696	f:\DEV\repositories\CertSurv\.git\objects\67\54e045efdb9c761806507227f524477d4ae849100%  
+	    New File  		     603	f:\DEV\repositories\CertSurv\.git\objects\67\c6f7c011fb8ad674d898d03d613398bc90a121100%  
+	    New File  		    4459	f:\DEV\repositories\CertSurv\.git\objects\67\f4cd103896a5feef70fe76430a085f64f50d88100%  
+	    New File  		     244	f:\DEV\repositories\CertSurv\.git\objects\69\abe45da5d6816b8566fbee7cd9da1d182154e5100%  
+	    New File  		    1003	f:\DEV\repositories\CertSurv\.git\objects\6e\4c23affdaca5c94da17c5d629a92380f749465100%  
+	    New File  		    5197	f:\DEV\repositories\CertSurv\.git\objects\6c\156d377731f05848402839525f26929fba60f3100%  
+	    New File  		    2534	f:\DEV\repositories\CertSurv\.git\objects\6c\6b82f8486855a47fc17f154eba5d99991c73f6100%  
+	    New File  		    3971	f:\DEV\repositories\CertSurv\.git\objects\6d\303fa1a1dc84af3d14027211ac594cbfdd9534100%  
+	    New File  		      99	f:\DEV\repositories\CertSurv\.git\objects\70\faa25821198a79cb42d16fe56f7598f4d09428100%  
+	    New File  		     366	f:\DEV\repositories\CertSurv\.git\objects\71\38627d6b6958eb343a4da8539ff68a289f93a5100%  
+	    New File  		     317	f:\DEV\repositories\CertSurv\.git\objects\74\7dd1a9fb2ce274d8852b686fe7a009e6236b98100%  
+	    New File  		    1654	f:\DEV\repositories\CertSurv\.git\objects\74\c1ecd71dbe61379bc4c91c64230145c5ce9668100%  
+	    New File  		    5264	f:\DEV\repositories\CertSurv\.git\objects\75\fbd9d109f50a866da1e7d3dba0b106955161e1100%  
+	    New File  		    6991	f:\DEV\repositories\CertSurv\.git\objects\7a\33935310da7f9c16e71e65db29bd848fe4a111100%  
+	    New File  		    1016	f:\DEV\repositories\CertSurv\.git\objects\7b\a57daad3d89d584a305f94a7bdc33646d7935a100%  
+	    New File  		    6816	f:\DEV\repositories\CertSurv\.git\objects\7c\6298d83d70bd1de478af29606e50ada20064b5100%  
+	    New File  		      65	f:\DEV\repositories\CertSurv\.git\objects\7c\a7ab50ca1de20404410230f0fee02b7ff8862a100%  
+	    New File  		     150	f:\DEV\repositories\CertSurv\.git\objects\81\2b81532f76dc433c45ac2646d4614591aa5e5e100%  
+	    New File  		    3005	f:\DEV\repositories\CertSurv\.git\objects\83\0a5100104f68fc09e1e8b26977bc6673b610db100%  
+	    New File  		     179	f:\DEV\repositories\CertSurv\.git\objects\83\eac55fc98cd8ca23d4d826beb8fea704633913100%  
+	    New File  		     136	f:\DEV\repositories\CertSurv\.git\objects\84\777d5c98071ec26759292a687e597abdf1a343100%  
+	    New File  		     596	f:\DEV\repositories\CertSurv\.git\objects\84\9c0ccb59e4f63628b65af82882195b65839c9c100%  
+	    New File  		    1141	f:\DEV\repositories\CertSurv\.git\objects\85\e4a673aece6e2be892c7c11726aab0067e2334100%  
+	    New File  		    1873	f:\DEV\repositories\CertSurv\.git\objects\87\0552802585cdf66a706c17e68600a465c9677b100%  
+	    New File  		    3950	f:\DEV\repositories\CertSurv\.git\objects\86\98d690830899376b5a0db3a34af38f7f6f9650100%  
+	    New File  		    1422	f:\DEV\repositories\CertSurv\.git\objects\86\ccbab8217506d67b90e64d4c63ea23ac62ae0d100%  
+	    New File  		     810	f:\DEV\repositories\CertSurv\.git\objects\87\38eb3eca00a0f17fd050028e80a0bf17c66578100%  
+	    New File  		     786	f:\DEV\repositories\CertSurv\.git\objects\88\ae32a7e53af3ff0e878ba7935e578d9e51372d100%  
+	    New File  		    2825	f:\DEV\repositories\CertSurv\.git\objects\8b\0de084e9418e7ed311d9ffef01b01473102fcb100%  
+	    New File  		      69	f:\DEV\repositories\CertSurv\.git\objects\8b\304b43f30f87a587027f949bca26f657ba1aff100%  
+	    New File  		     955	f:\DEV\repositories\CertSurv\.git\objects\8b\94756707a3046791f0a8c82218f8cefd29439f100%  
+	    New File  		     956	f:\DEV\repositories\CertSurv\.git\objects\89\9132383f5f1e4583d104866dc7a3b8ec6604db100%  
+	    New File  		    1723	f:\DEV\repositories\CertSurv\.git\objects\8a\621edea452ad7dfe0563260ae4fa045d48a869100%  
+	    New File  		    3457	f:\DEV\repositories\CertSurv\.git\objects\8e\5c748188681f326903498716fe490e12d9e681100%  
+	    New File  		    2769	f:\DEV\repositories\CertSurv\.git\objects\8d\23804e2c59e5099e52aea1ec17f2deb1cc7ce5100%  
+	    New File  		    1750	f:\DEV\repositories\CertSurv\.git\objects\90\6fdf0c21f962abbec5940b15fb1082d379104f100%  
+	    New File  		     251	f:\DEV\repositories\CertSurv\.git\objects\8f\025c22c7e7f097baafdc46c0e6a5a612fcb100100%  
+	    New File  		    2461	f:\DEV\repositories\CertSurv\.git\objects\8f\835229eb7fb7a474f30d374c1610cff80f4b80100%  
+	    New File  		     514	f:\DEV\repositories\CertSurv\.git\objects\8f\9d0bd759ecd3ec542f6232e1f49fda068c78de100%  
+	    New File  		    1277	f:\DEV\repositories\CertSurv\.git\objects\92\c9e55359da0753880fc08ac288a51967194783100%  
+	    New File  		     700	f:\DEV\repositories\CertSurv\.git\objects\93\7de05989651170cb6a17059f9ed374be469a6a100%  
+	    New File  		   70089	f:\DEV\repositories\CertSurv\.git\objects\93\a3d57babd3a64cee1a5c5637bbcfa86c1a7ad8100%  
+	    New File  		     674	f:\DEV\repositories\CertSurv\.git\objects\91\b35b1deb8980a6816cd1420b73fb1160b07939100%  
+	    New File  		    4812	f:\DEV\repositories\CertSurv\.git\objects\94\fdfd60891fc42ac6b3b3c9d22c84197074de0c100%  
+	    New File  		    7008	f:\DEV\repositories\CertSurv\.git\objects\95\00eec4dd2a3355d7afdeabe9b2e64dab45f4ac100%  
+	    New File  		    5096	f:\DEV\repositories\CertSurv\.git\objects\96\9dfaa7d288221edae3bac7717f30465f430da5100%  
+	    New File  		     923	f:\DEV\repositories\CertSurv\.git\objects\9a\498652fc14e919fd67ec814be318615a63a2ea100%  
+	    New File  		     537	f:\DEV\repositories\CertSurv\.git\objects\98\055e658c0da29f1492f1a8f21771989b2bbf4a100%  
+	    New File  		    2121	f:\DEV\repositories\CertSurv\.git\objects\9b\3267c35f5c2bca05a6169127e9b7b3f954ffd5100%  
+	    New File  		     968	f:\DEV\repositories\CertSurv\.git\objects\9b\62446c6600ce9c984b6e5f0cdd5d2ed8fd4c3f100%  
+	    New File  		     884	f:\DEV\repositories\CertSurv\.git\objects\9b\6938ae2b1be2b3ed92e5d4d926157d14d1dab5100%  
+	    New File  		    4238	f:\DEV\repositories\CertSurv\.git\objects\9e\18f81e0a8a3bd0388e1541911d41b717f5b9cd100%  
+	    New File  		    2117	f:\DEV\repositories\CertSurv\.git\objects\9e\aaaff9b642d4b22d08805f610720cb2b846c50100%  
+	    New File  		    3257	f:\DEV\repositories\CertSurv\.git\objects\9f\fc85d0c17a6ca69454708c20c443da925e8104100%  
+	    New File  		     249	f:\DEV\repositories\CertSurv\.git\objects\9c\381d5df090b116724ef2cec126688d0eb4a1d6100%  
+	    New File  		    2277	f:\DEV\repositories\CertSurv\.git\objects\a0\f2d7b789687d8e482c1490da7f563121761ab2100%  
+	    New File  		    3751	f:\DEV\repositories\CertSurv\.git\objects\a2\dfd6b618b1063be0ce30974aece4678c0fb91f100%  
+	    New File  		    5094	f:\DEV\repositories\CertSurv\.git\objects\a3\bf231e6cf98755c3d2ea126b0b22e9af0951e2100%  
+	    New File  		     913	f:\DEV\repositories\CertSurv\.git\objects\a3\d23b2e43339ae0dd8e0b4d7599370df766d23b100%  
+	    New File  		    3270	f:\DEV\repositories\CertSurv\.git\objects\a4\05b97ddc6c589ee82643e11636a783b4a842ef100%  
+	    New File  		     962	f:\DEV\repositories\CertSurv\.git\objects\aa\93e99ec7a55b765063b69ec84917418aefc83a100%  
+	    New File  		    4880	f:\DEV\repositories\CertSurv\.git\objects\a4\42da418203e1caf38470f782745a7f7709e30b100%  
+	    New File  		    2484	f:\DEV\repositories\CertSurv\.git\objects\ad\a3fa95a273e21fe90dae4e6cedc3673ac16a40100%  
+	    New File  		     718	f:\DEV\repositories\CertSurv\.git\objects\ab\a103f62561372af31270a72b89b58067b91d2e100%  
+	    New File  		    4028	f:\DEV\repositories\CertSurv\.git\objects\ab\bd70fc8d2b42ffa329a68b630f9cad61c6306c100%  
+	    New File  		     595	f:\DEV\repositories\CertSurv\.git\objects\ac\3c55e50e8e65ada9fd031efb02e4de366d66c9100%  
+	    New File  		    2798	f:\DEV\repositories\CertSurv\.git\objects\ac\7b2653fd5da82b5112d2e5525d0677fbb94fc0100%  
+	    New File  		    1229	f:\DEV\repositories\CertSurv\.git\objects\ae\00c02421a9a09f6bb0b7a6228815f8ef5c8ddc100%  
+	    New File  		    3623	f:\DEV\repositories\CertSurv\.git\objects\ae\145d651a18aa98028dbf5c034f6746ec6b1431100%  
+	    New File  		    2969	f:\DEV\repositories\CertSurv\.git\objects\ae\b686c1bddfffa7e1a0b5cd70a9f99e03f7cef5100%  
+	    New File  		    5088	f:\DEV\repositories\CertSurv\.git\objects\af\4e46c27af7a25eab5faa0d002b47d8ac526d11100%  
+	    New File  		    1234	f:\DEV\repositories\CertSurv\.git\objects\b0\9bbeab4f5883e4eb6276d5ce1a9339b473ca7f100%  
+	    New File  		    7769	f:\DEV\repositories\CertSurv\.git\objects\b3\54bbb11e89029f26ce92db0b605b6557e4517a100%  
+	    New File  		    1902	f:\DEV\repositories\CertSurv\.git\objects\b1\6fb21cbd6fc3c9814ea13c811ccda6264773b2100%  
+	    New File  		    7567	f:\DEV\repositories\CertSurv\.git\objects\b1\bb21c72c444496c230a9ab08c71266c1d6584f100%  
+	    New File  		     916	f:\DEV\repositories\CertSurv\.git\objects\b6\676b05738994233f4a8373716de1bee393dc11100%  
+	    New File  		     360	f:\DEV\repositories\CertSurv\.git\objects\b8\c230d5e5f1bdc6bb072b8351fee61675a5099d100%  
+	    New File  		   73815	f:\DEV\repositories\CertSurv\.git\objects\b7\6a6dc1e64ed755f24aece4595512a633a84b8d100%  
+	    New File  		     329	f:\DEV\repositories\CertSurv\.git\objects\b7\9f30dac931a8f2df93a9bbb9bd1cba75e73105100%  
+	    New File  		    2173	f:\DEV\repositories\CertSurv\.git\objects\b7\d6bb234ae99a8f48bb8d37986406ed50a4cd1b100%  
+	    New File  		    3549	f:\DEV\repositories\CertSurv\.git\objects\ba\4e337fbc68741df453bc51f1987aa2c87bce63100%  
+	    New File  		    4176	f:\DEV\repositories\CertSurv\.git\objects\bb\78c99151df56793ce311f9ff9f83647a5d481c100%  
+	    New File  		    1487	f:\DEV\repositories\CertSurv\.git\objects\bc\964d0cee1937d875ea88b68f436cebd2af2835100%  
+	    New File  		    2875	f:\DEV\repositories\CertSurv\.git\objects\c3\334814fecae2e52e864a417efa536cb3047e1f100%  
+	    New File  		    1640	f:\DEV\repositories\CertSurv\.git\objects\c3\6b80a3999554e6e84a2fd88c9b0c572d18e776100%  
+	    New File  		     135	f:\DEV\repositories\CertSurv\.git\objects\bd\d5aa3d3b9844ee1a8db7e732adcfdfe5f433db100%  
+	    New File  		     625	f:\DEV\repositories\CertSurv\.git\objects\c1\9bcb23051f54ec3025fc63d25d2aaaa05022ba100%  
+	    New File  		     689	f:\DEV\repositories\CertSurv\.git\objects\c1\be60f0acacde92b4b4b272fe87bff27694103d100%  
+	    New File  		   13486	f:\DEV\repositories\CertSurv\.git\objects\c1\beea12022f5a1f3c51205770f986c6f23f5098100%  
+	    New File  		     296	f:\DEV\repositories\CertSurv\.git\objects\c4\2114a9c16b5deea84cba26eb527874cd1a0056100%  
+	    New File  		     676	f:\DEV\repositories\CertSurv\.git\objects\c4\ebe2f44cc05b116e93ab1c105ebad6a11ad2df100%  
+	    New File  		     752	f:\DEV\repositories\CertSurv\.git\objects\c6\d32be8f0fcf7070b2cff3366ffa63a7783f526100%  
+	    New File  		    6403	f:\DEV\repositories\CertSurv\.git\objects\c7\1fa0acc05669c934b538d968372c359d57ac65100%  
+	    New File  		     234	f:\DEV\repositories\CertSurv\.git\objects\c7\e7a55a27935d0ecf65ac6e1f5a2f2a9e48c595100%  
+	    New File  		     433	f:\DEV\repositories\CertSurv\.git\objects\c8\51a997a35f63e8a5e4d8ae9ab33ed6f574175b100%  
+	    New File  		    1146	f:\DEV\repositories\CertSurv\.git\objects\c8\fcacb77f8095be72fcc85c28ee08ba61efc340100%  
+	    New File  		     565	f:\DEV\repositories\CertSurv\.git\objects\cc\0feb6fee4dd4329ba21c573101d9a68c25fdc3100%  
+	    New File  		     506	f:\DEV\repositories\CertSurv\.git\objects\cc\2a00112829a3e087d311f3d9b26218916c042c100%  
+	    New File  		    5272	f:\DEV\repositories\CertSurv\.git\objects\ce\49c6b5e8712e717a83dd124aafe43c5000af12100%  
+	    New File  		     157	f:\DEV\repositories\CertSurv\.git\objects\ce\ff8a55c8e9074999fdb9119b908e078d3abbf4100%  
+	    New File  		     992	f:\DEV\repositories\CertSurv\.git\objects\cd\80ed554dc23433110eed78f51c759a3f3b1ec5100%  
+	    New File  		    3080	f:\DEV\repositories\CertSurv\.git\objects\cf\3f62b9a2bb89d3e7d7f65869caa92dc0faf9e3100%  
+	    New File  		    2118	f:\DEV\repositories\CertSurv\.git\objects\cf\6c232099488ff8a713a1b479205b69ec8c9534100%  
+	    New File  		    2557	f:\DEV\repositories\CertSurv\.git\objects\d1\a878170d6ea5dc8e815e60e6ef7919f96789ec100%  
+	    New File  		    5604	f:\DEV\repositories\CertSurv\.git\objects\d4\64945f5d81f2a0eec3a264c74f63a94cb30512100%  
+	    New File  		     847	f:\DEV\repositories\CertSurv\.git\objects\d4\ca4a9275f3e7b6b906e75282064e33ff72100f100%  
+	    New File  		    2466	f:\DEV\repositories\CertSurv\.git\objects\d5\3dfec39d236bfb9640829aa25436330712d026100%  
+	    New File  		    2308	f:\DEV\repositories\CertSurv\.git\objects\d5\90662b7cb2d096b0e904fe33889a9075a2eeed100%  
+	    New File  		    1506	f:\DEV\repositories\CertSurv\.git\objects\da\037ac95f6063c8bc100de45e1d4f84dd964cab100%  
+	    New File  		    2120	f:\DEV\repositories\CertSurv\.git\objects\da\87385cd60ac55b6f348e8aaa77b1e643ae46e8100%  
+	    New File  		    2235	f:\DEV\repositories\CertSurv\.git\objects\dc\58f331ee439160bacf604f5330215e83ed0e64100%  
+	    New File  		    1285	f:\DEV\repositories\CertSurv\.git\objects\dc\7a191df51a875bb79f9f156fdaf9dc93ab5ecf100%  
+	    New File  		    1240	f:\DEV\repositories\CertSurv\.git\objects\de\13f673099e76d9d47595a8efd60a9a751967a8100%  
+	    New File  		    1481	f:\DEV\repositories\CertSurv\.git\objects\de\d9684ff7dad2ff65e214d948c721d8fde30cfa100%  
+	    New File  		    2341	f:\DEV\repositories\CertSurv\.git\objects\df\546b71131d1feadb4ad957396f5046c6851528100%  
+	    New File  		     681	f:\DEV\repositories\CertSurv\.git\objects\df\ade6bb0f451e9cda7320a17cc80375370f7aca100%  
+	    New File  		     291	f:\DEV\repositories\CertSurv\.git\objects\e1\094d9a6d8a4c7a2ef3f4e6b02a0e777f3968df100%  
+	    New File  		      15	f:\DEV\repositories\CertSurv\.git\objects\e6\9de29bb2d1d6434b8b29ae775ad8c2e48c5391100%  
+	    New File  		     406	f:\DEV\repositories\CertSurv\.git\objects\e3\3bf98f0ff3bff0d8edf7dc6502d744b4617fd5100%  
+	    New File  		     531	f:\DEV\repositories\CertSurv\.git\objects\e8\cde7c0c22eacf9df183e2f791a3e916918e1f6100%  
+	    New File  		     447	f:\DEV\repositories\CertSurv\.git\objects\e9\681aa87e2b0f2e3ad75aec7aaaf0c3b48ffe12100%  
+	    New File  		     838	f:\DEV\repositories\CertSurv\.git\objects\e9\c819746e63f5f944e2b1c6292f84a2ab336cc0100%  
+	    New File  		    3446	f:\DEV\repositories\CertSurv\.git\objects\e9\ea8ab58f1d70c72ef91464b421558c66669ab5100%  
+	    New File  		     954	f:\DEV\repositories\CertSurv\.git\objects\eb\163b501bde37cb8cefda37a3f4ec8c43949b53100%  
+	    New File  		    1687	f:\DEV\repositories\CertSurv\.git\objects\eb\4575a090cd4f7686786d79db783b8f8363bbbe100%  
+	    New File  		     950	f:\DEV\repositories\CertSurv\.git\objects\eb\54c14dba1f9993c4e84380d57c0270586789ae100%  
+	    New File  		     173	f:\DEV\repositories\CertSurv\.git\objects\eb\9940e84e48b0ddfdde088bc99f2f5e478012e7100%  
+	    New File  		     175	f:\DEV\repositories\CertSurv\.git\objects\ed\150e7dff67f468ff070de1403878d728b57cc9100%  
+	    New File  		    2821	f:\DEV\repositories\CertSurv\.git\objects\ee\535c3c7e9e0d17f879161560566f5ad4cb66ba100%  
+	    New File  		     663	f:\DEV\repositories\CertSurv\.git\objects\ef\2c79fcd1fb6599e01c2de6c2806695da0fe09b100%  
+	    New File  		    1999	f:\DEV\repositories\CertSurv\.git\objects\ef\93affe916d4cb01e522e8badc6a6f89653fad6100%  
+	    New File  		    1397	f:\DEV\repositories\CertSurv\.git\objects\f2\c4db5ecbe7ff82de50ec798c5d1301a996d44c100%  
+	    New File  		     252	f:\DEV\repositories\CertSurv\.git\objects\f1\ec6c5084b9e391162d4d24784899ecd9062115100%  
+	    New File  		     616	f:\DEV\repositories\CertSurv\.git\objects\f4\9bb68fde92cb1f48c6910125534a4ae3b47608100%  
+	    New File  		      27	f:\DEV\repositories\CertSurv\.git\objects\f5\fc0a42aae4f153d38d0cb6923c5b4012539b80100%  
+	    New File  		    6163	f:\DEV\repositories\CertSurv\.git\objects\f6\81df7a9bc164edcbd864e411fe986064175986100%  
+	    New File  		    1389	f:\DEV\repositories\CertSurv\.git\objects\f7\febecc704b384243d2a95fcf20a01e000a35fd100%  
+	    New File  		    2120	f:\DEV\repositories\CertSurv\.git\objects\f9\bb1a6378cda4d541229cd7583daed804d987ee100%  
+	    New File  		      56	f:\DEV\repositories\CertSurv\.git\objects\fc\724676e30137b7856648c0fcb10cc52dfe13c3100%  
+	    New File  		    2613	f:\DEV\repositories\CertSurv\.git\objects\fc\dbfa5fc6099fd4e843763618731cc737196adb100%  
+	    New File  		    1682	f:\DEV\repositories\CertSurv\.git\objects\fe\3bc71cdb4d048aa8d3f94e9da2ec3bcda997e2100%  
+	    New File  		     217	f:\DEV\repositories\CertSurv\.git\objects\fe\b659389836b5c71a69152027c84249014c3f77100%  
+	    New File  		    5266	f:\DEV\repositories\CertSurv\.git\objects\ff\60fe425a529ea47ba446f88d7fe712c9a0e522100%  
+	    New File  		    1509	f:\DEV\repositories\CertSurv\.git\objects\fd\2a0a103749bc9ad6e6f293ae69db803867fe4a100%  
+	    New File  		    5308	f:\DEV\repositories\CertSurv\.git\objects\fd\7aec044ccab50ae480161ad71d29e85c0a9f4a100%  
+	    New File  		      41	f:\DEV\repositories\CertSurv\.git\refs\heads\main100%  
+	    New File  		    7905	f:\DEV\repositories\CertSurv\.git\logs\refs\heads\main100%  
+	    New File  		      30	f:\DEV\repositories\CertSurv\.git\refs\remotes\origin\HEAD100%  
+	    New File  		      41	f:\DEV\repositories\CertSurv\.git\refs\remotes\origin\main100%  
+	    New File  		     147	f:\DEV\repositories\CertSurv\.git\logs\refs\remotes\origin\HEAD100%  
+	    New File  		    5257	f:\DEV\repositories\CertSurv\.git\logs\refs\remotes\origin\main100%  
+
+------------------------------------------------------------------------------
+
+               Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :       184       184         4         0         0         0
+   Files :       370       340        30         0         0         0
+   Bytes :    6.30 m    5.99 m   312.3 k         0         0         0
+   Times :   0:00:18   0:00:02                       0:00:00   0:00:00
+
+
+   Speed :           2ÿ580ÿ175 Bytes/sec.
+   Speed :             147,639 MegaBytes/min.
+   Ended : Mittwoch, 24. September 2025 13:20:27
+

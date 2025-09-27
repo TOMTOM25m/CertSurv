@@ -69,9 +69,15 @@ REM Copy files using robocopy (Regelwerk v9.5.0 - lokale Kopie zuerst)
 echo [INFO] Step 1/2: Copying files from network using robocopy...
 echo [INFO] Source: %NETWORK_PATH%
 echo [INFO] Target: %LOCAL_PATH%
+echo [INFO] Cleaning up old files first...
 echo.
 
-robocopy "%NETWORK_PATH%" "%LOCAL_PATH%" /E /R:3 /W:10 /NP /MT:8
+REM Clean up old files first to avoid conflicts
+if exist "%LOCAL_PATH%\*.md" del /Q "%LOCAL_PATH%\*.md" 2>nul
+if exist "%LOCAL_PATH%\*.bat" del /Q "%LOCAL_PATH%\Install-on-itscmgmt03.bat" 2>nul
+if exist "%LOCAL_PATH%\QuickSetup-ITSCmgmt03.ps1" del /Q "%LOCAL_PATH%\QuickSetup-ITSCmgmt03.ps1" 2>nul
+
+robocopy "%NETWORK_PATH%" "%LOCAL_PATH%" /E /R:3 /W:10 /NP /MT:8 /PURGE
 set ROBOCOPY_RESULT=%errorlevel%
 
 if %ROBOCOPY_RESULT% leq 7 (
@@ -93,9 +99,16 @@ if not exist "%LOCAL_PATH%\Setup.ps1" (
     pause
     exit /b 1
 )
-if not exist "%LOCAL_PATH%\Cert-Surveillance.ps1" (
-    echo [FAIL] Cert-Surveillance.ps1 not found in local directory
-    echo [INFO] Please check robocopy operation
+
+REM Check for Main.ps1 (current filename) or Cert-Surveillance.ps1 (alternative)
+if exist "%LOCAL_PATH%\Main.ps1" (
+    echo [OK] Main.ps1 found in local directory
+) else if exist "%LOCAL_PATH%\Cert-Surveillance.ps1" (
+    echo [OK] Cert-Surveillance.ps1 found in local directory
+) else (
+    echo [FAIL] Main surveillance script not found in local directory
+    echo [INFO] Looking for: Main.ps1 or Cert-Surveillance.ps1
+    echo [INFO] Please check robocopy operation and file names
     pause
     exit /b 1
 )
@@ -105,13 +118,21 @@ echo.
 REM Run setup script from LOCAL copy (Regelwerk compliance)
 echo [INFO] Step 2/2: Running CertSurv Setup from local copy...
 echo [INFO] Working directory: %LOCAL_PATH%
-cd /d "%LOCAL_PATH%"
-PowerShell.exe -ExecutionPolicy Bypass -File "Setup.ps1"
+
+REM Change to local directory and run setup with proper path handling
+pushd "%LOCAL_PATH%"
+if exist "Setup.ps1" (
+    PowerShell.exe -ExecutionPolicy Bypass -NoProfile -Command "& '.\Setup.ps1'"
+) else (
+    echo [WARN] Setup.ps1 not found, skipping setup step
+    echo [INFO] You can run setup manually later: cd /d "%LOCAL_PATH%" && PowerShell.exe -ExecutionPolicy Bypass -File "Setup.ps1"
+)
+popd
 
 REM Optional: Run configuration GUI
 echo.
 echo [OPTION] You can now configure the system using the GUI:
-echo PowerShell.exe -ExecutionPolicy Bypass -File "Setup-CertSurv.ps1"
+echo PowerShell.exe -ExecutionPolicy Bypass -File "Setup-CertSurvGUI.ps1"
 echo.
 
 if %errorlevel% equ 0 (
@@ -122,9 +143,9 @@ if %errorlevel% equ 0 (
     echo.
     echo Next steps (execute from local directory):
     echo 1. Review configuration: %LOCAL_PATH%\Config\Config-Cert-Surveillance.json
-    echo 2. Edit configuration GUI: cd /d "%LOCAL_PATH%" ^&^& PowerShell.exe -ExecutionPolicy Bypass -File "Setup-CertSurv.ps1"
+    echo 2. Edit configuration GUI: cd /d "%LOCAL_PATH%" ^&^& PowerShell.exe -ExecutionPolicy Bypass -File "Setup-CertSurvGUI.ps1"
     echo 3. Test system: cd /d "%LOCAL_PATH%" ^&^& PowerShell.exe -ExecutionPolicy Bypass -File "Check.ps1"
-    echo 4. Start surveillance: cd /d "%LOCAL_PATH%" ^&^& PowerShell.exe -ExecutionPolicy Bypass -File "Cert-Surveillance.ps1"
+    echo 4. Start surveillance: cd /d "%LOCAL_PATH%" ^&^& PowerShell.exe -ExecutionPolicy Bypass -File "Main.ps1"
     echo.
     echo [CONFIG] Network Source: %NETWORK_PATH%
     echo [CONFIG] Local Install: %LOCAL_PATH%

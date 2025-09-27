@@ -1,0 +1,16 @@
+﻿{
+    "SmtpServer":  "",
+    "WebServicePort":  8080,
+    "CheckIntervalHours":  24,
+    "EnableEmailNotifications":  false,
+    "SmtpUsername":  "",
+    "SmtpPort":  587,
+    "WarningDaysBeforeExpiry":  30,
+    "FromEmail":  "",
+    "CriticalDaysBeforeExpiry":  7,
+    "ToEmails":  [
+
+                 ],
+    "LogLevel":  "INFO",
+    "EnableWebService":  true
+}

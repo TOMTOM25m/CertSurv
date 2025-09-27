@@ -77,7 +77,7 @@ PowerShell.exe -ExecutionPolicy Bypass -File "Setup.ps1"
 REM Optional: Run configuration GUI
 echo.
 echo [OPTION] You can now configure the system using the GUI:
-echo PowerShell.exe -ExecutionPolicy Bypass -File "Setup-CertSurv.ps1"
+echo PowerShell.exe -ExecutionPolicy Bypass -File "Setup-CertSurvGUI.ps1"
 echo.
 
 if %errorlevel% equ 0 (
@@ -87,7 +87,7 @@ if %errorlevel% equ 0 (
     echo.
     echo Next steps:
     echo 1. Review configuration: %LOCAL_PATH%\Config\Config-Cert-Surveillance.json
-    echo 2. Edit configuration GUI: PowerShell.exe -ExecutionPolicy Bypass -File "Setup-CertSurv.ps1"
+    echo 2. Edit configuration GUI: PowerShell.exe -ExecutionPolicy Bypass -File "Setup-CertSurvGUI.ps1"
     echo 3. Test system: PowerShell.exe -ExecutionPolicy Bypass -File "Check.ps1"
     echo 4. Start surveillance: PowerShell.exe -ExecutionPolicy Bypass -File "Cert-Surveillance.ps1"
     echo.

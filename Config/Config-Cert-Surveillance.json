@@ -1,0 +1,52 @@
+{
+  "SmtpServer": "smtp.meduniwien.ac.at",
+  "EnableWebService": true,
+  "WebServicePort": 8443,
+  "BackupDirectory": "C:\\Script\\CertSurv-Master\\Backup",
+  "EnableDetailedLogging": true,
+  "MaxConcurrentScans": 5,
+  "WorkingDirectory": "C:\\Script\\CertSurv-Master",
+  "ExcelFilePath": "\\\\itscmgmt03.srv.meduniwien.ac.at\\iso\\WIndowsServerListe\\Serverliste2025.xlsx",
+  "CertificateThumbprints": "",
+  "EnableEmailNotifications": false,
+  "CriticalDaysBeforeExpiry": 7,
+  "ConfigDirectory": "C:\\Script\\CertSurv-Master\\Config",
+  "LogLevel": "INFO",
+  "ReportsDirectory": "C:\\Script\\CertSurv-Master\\Reports",
+  "NetworkSharePath": "\\\\itscmgmt03.srv.meduniwien.ac.at\\iso\\CertSurv",
+  "FromEmail": "",
+  "ToEmails": "",
+  "LogDirectory": "C:\\Script\\CertSurv-Master\\LOG",
+  "SmtpUsername": "",
+  "ScanTimeoutSeconds": 30,
+  "InstallationDrive": "C:",
+  "CheckIntervalHours": 24,
+  "WarningDaysBeforeExpiry": 30,
+  "ScanRemoteCertificates": true,
+  "WebServiceLogLevel": "INFO",
+  "MaxLogFiles": 30,
+  "SmtpPort": 25,
+  "RetryAttempts": 3,
+  "SmtpPassword": "",
+  "TempDirectory": "C:\\Script\\CertSurv-Master\\Temp",
+  "EnableSsl": false,
+  "CertStores": [
+    "My",
+    "Root",
+    "CA"
+  ],
+  "WebServiceUrl": "https://localhost:8443",
+  "ArchiveOldLogs": true,
+  "Excel": {
+    "ExcelPath": "C:\\Script\\CertSurv-Master\\Data\\Server-List.xlsx",
+    "SheetName": "ServerList",
+    "ServerNameColumnName": "ServerName"
+  },
+  "MainDomain": "meduniwien.ac.at",
+  "ManagementTool": {
+    "WebServiceHTTPPort": 9080,
+    "WebServiceHTTPSPort": 9443,
+    "ProgressFile": "LOG\\ClientProgress.json",
+    "DefaultDomainSuffix": ".srv.meduniwien.ac.at"
+  }
+}

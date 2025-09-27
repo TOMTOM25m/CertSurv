@@ -1,0 +1,41 @@
+﻿{
+    "LogLevel":  "INFO",
+    "CheckIntervalHours":  24,
+    "WarningDaysBeforeExpiry":  30,
+    "CriticalDaysBeforeExpiry":  7,
+    "EnableDetailedLogging":  false,
+    "ArchiveOldLogs":  true,
+    "MaxLogFiles":  30,
+    
+    "InstallationDrive":  "C:",
+    "WorkingDirectory":  "C:\\Script\\CertSurv-Master",
+    "ExcelFilePath":  "C:\\Script\\CertSurv-Master\\Data\\Server-List.xlsx",
+    "LogDirectory":  "C:\\Script\\CertSurv-Master\\LOG",
+    "ConfigDirectory":  "C:\\Script\\CertSurv-Master\\Config",
+    "ReportsDirectory":  "C:\\Script\\CertSurv-Master\\Reports",
+    "BackupDirectory":  "C:\\Script\\CertSurv-Master\\Backup",
+    "TempDirectory":  "C:\\Script\\CertSurv-Master\\Temp",
+    "NetworkSharePath":  "\\\\itscmgmt03.srv.meduniwien.ac.at\\iso\\CertSurv",
+    
+    "EnableEmailNotifications":  false,
+    "SmtpServer":  "",
+    "SmtpPort":  587,
+    "SmtpUsername":  "",
+    "SmtpPassword":  "",
+    "FromEmail":  "",
+    "ToEmails":  [],
+    "EnableSsl":  true,
+    
+    "EnableWebService":  true,
+    "WebServicePort":  8080,
+    "WebServiceUrl":  "http://localhost:8080",
+    "WebServiceLogLevel":  "INFO",
+    
+    "ScanRemoteCertificates":  true,
+    "CertStores":  ["My", "Root", "CA"],
+    "CertificateThumbprints":  [],
+    
+    "MaxConcurrentScans":  5,
+    "ScanTimeoutSeconds":  30,
+    "RetryAttempts":  3
+}
