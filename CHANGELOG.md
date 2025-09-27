@@ -10,18 +10,23 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 
 #### Added ✨
 
+- **Install-CertSurv.bat** - Universelle Installation für alle Server-Umgebungen
 - **Setup-CertSurv.ps1** - Vollständige GUI für Config-Cert-Surveillance.json Bearbeitung
 - **CertWebService v2.1.0** - Robocopy-basiertes Deployment mit lokaler Ausführung
 - **Setup-ScheduledTask-CertScan.ps1** - Automatische Scheduled Task-Erstellung
 - **Encoding-Fixes** - ASCII-Kompatibilität für alle Konfigurationsdateien
 - **Network Deployment** - Vollautomatische Bereitstellung auf Netzlaufwerke
+- **File Verification** - Automatische Überprüfung kopierter Dateien vor Installation
+- **Multi-Threading** - Robocopy mit /MT:8 für optimierte Übertragungsgeschwindigkeit
 
 #### Changed 🔄
 
+- **Install-CertSurv.bat** - Universelle Installation mit Regelwerk v9.5.0 Compliance
 - **Check.ps1** - Compliance-Logik erweitert für Main.ps1 und Setup.ps1 Akzeptanz
 - **Install.bat** - Robocopy-Integration mit C:\Temp lokaler Ausführung
 - **Setup-CertSurv.ps1** - Dynamische GUI-Generierung für alle Config-Parameter
-- **Deployment-Methode** - Von xcopy auf robocopy umgestellt (Regelwerk v9.5.0)
+- **Deployment-Methode** - Lokale Kopie zuerst, dann Installation (regelwerkkonform)
+- **Installation Process** - Schritt 1: Robocopy, Schritt 2: Lokale Setup-Ausführung
 
 #### Fixed 🐛
 
@@ -32,6 +37,11 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 
 #### Technical Improvements 🔧
 
+- **Regelwerk v9.5.0 Compliance**: Lokale Kopie vor Installation (Sicherheitsstandard)
+- **Universal Deployment**: Konfigurierbare Pfade für verschiedene Server-Umgebungen
+- **Enhanced Error Handling**: Detaillierte Robocopy-Diagnose und PowerShell-Troubleshooting
+- **Two-Step Installation**: Schritt 1 - Robocopy, Schritt 2 - Lokale Setup-Ausführung
+- **File Integrity Checks**: Automatische Verifikation von Setup.ps1 und Cert-Surveillance.ps1
 - **Lokale Ausführung**: Install.bat kopiert Dateien vor Ausführung lokal
 - **Automatische Bereinigung**: Temporäre Installationsdateien werden automatisch gelöscht
 - **Integrated Task Setup**: Scheduled Tasks werden automatisch während Installation erstellt
@@ -136,10 +146,10 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 
 ## Version History Summary
 
-| Version | Datum | Beschreibung | Hauptfeatures |
-|---------|-------|--------------|---------------|
+| Version    | Datum      | Beschreibung               | Hauptfeatures                                       |
+| ---------- | ---------- | -------------------------- | --------------------------------------------------- |
 | **v1.1.0** | 2025-09-17 | **WebService Integration** | Zentrale API, Extended Modularity, Production Ready |
-| **v1.0.3** | 2025-09-04 | **Initial Release** | FL-Modules, Strict Modularity, Regelwerk Compliance |
+| **v1.0.3** | 2025-09-04 | **Initial Release**        | FL-Modules, Strict Modularity, Regelwerk Compliance |
 
 ---
 
