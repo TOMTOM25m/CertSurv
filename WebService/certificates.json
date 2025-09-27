@@ -1,0 +1,19 @@
+{
+    "status": "ready",
+    "message": "Certificate Web Service is operational",
+    "version": "v1.0.3",
+    "generated": "2025-09-16T20:35:00Z",
+    "certificates": [],
+    "total_count": 0,
+    "filters_applied": [
+        "exclude_microsoft_certs",
+        "exclude_root_certs", 
+        "exclude_test_certs",
+        "active_certificates_only"
+    ],
+    "endpoints": {
+        "certificates": "/certificates.json",
+        "summary": "/summary.json",
+        "health": "/health.json"
+    }
+}

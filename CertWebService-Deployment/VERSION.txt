@@ -1,0 +1,38 @@
+Package: CertWebService-Deployment
+Version: v1.4.0
+Build Date: 2025-09-23
+Regelwerk: v9.5.0
+Author: Flecki (Tom) Garnreiter
+Compatibility: Windows Server 2012R2+, PowerShell 5.1+
+
+=== PACKAGE CONTENTS ===
+- Setup-WebService-v1.4.0.ps1      : Regelwerk v9.5.0 compliant main script
+- Setup-WebService-ServerCore.ps1   : Legacy Server Core version (v1.3.1)
+- Install-WebService.bat            : Standard installer
+- Install-WebService-v1.4.0.bat     : New Regelwerk compliant installer  
+- Test-WebService.ps1               : API testing script
+- Test-Simple.ps1                   : Basic compatibility test
+- README.txt                        : Installation instructions
+- VERSION.txt                       : This file
+
+=== CHANGELOG v1.4.0 ===
++ Regelwerk v9.5.0 Compliance
++ Robocopy Integration for File Operations
++ Script Version Display (Show-ScriptInfo)
++ PowerShell Version Detection
++ Enhanced Error Handling
++ Network Path Validation
++ Improved Logging Standards
+
+=== INSTALLATION METHODS ===
+1. Regelwerk Compliant: Install-WebService-v1.4.0.bat
+2. Legacy Server Core: Install-WebService-ServerCore.bat  
+3. Standard: Install-WebService.bat
+
+=== PORTS ===
+HTTP: 9080
+HTTPS: 9443
+
+=== AUTOMATIC UPDATES ===
+Daily: 06:00 and 18:00
+Manual: C:\inetpub\CertWebService\Update-CertificateData.ps1

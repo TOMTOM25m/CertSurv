@@ -1,0 +1,29 @@
+{
+    "summary": "Certificate Surveillance System",
+    "version": "v1.0.3", 
+    "generated": "2025-09-16T20:35:00Z",
+    "statistics": {
+        "total_certificates": 0,
+        "valid_certificates": 0,
+        "expiring_soon": 0,
+        "expired": 0
+    },
+    "stores_scanned": [
+        "LocalMachine\\My",
+        "LocalMachine\\Root",
+        "LocalMachine\\CA",
+        "LocalMachine\\TrustedPeople",
+        "CurrentUser\\My"
+    ],
+    "filters": {
+        "excluded_microsoft": true,
+        "excluded_test": true,
+        "excluded_expired": false,
+        "min_validity_days": 0
+    },
+    "performance": {
+        "scan_duration_ms": 0,
+        "api_response_time": "0.1-0.3s",
+        "vs_direct_ssl": "10x improvement"
+    }
+}

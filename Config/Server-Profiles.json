@@ -1,0 +1,102 @@
+{
+  "deployment_info": {
+    "package_version": "v1.0.3",
+    "created": "2025-09-17",
+    "regelwerk": "v9.3.0",
+    "compatibility": {
+      "powershell": "5.1+",
+      "windows_server": "2012+",
+      "iis": "8.0+"
+    }
+  },
+  "server_profiles": {
+    "ISO": {
+      "description": "ISO Server (itscmgmt03)",
+      "http_port": 9080,
+      "https_port": 9443,
+      "install_path": "C:\\inetpub\\wwwroot\\CertSurveillance",
+      "site_name": "CertSurveillance",
+      "target_servers": ["itscmgmt03.srv.meduniwien.ac.at"],
+      "features": {
+        "firewall_rules": true,
+        "ssl_certificate": true,
+        "performance_optimized": true
+      }
+    },
+    "Exchange": {
+      "description": "Exchange Server (EX01, EX02, EX03)",
+      "http_port": 9180,
+      "https_port": 9543,
+      "install_path": "C:\\inetpub\\wwwroot\\CertSurveillance",
+      "site_name": "CertSurveillance",
+      "target_servers": [
+        "EX01.ex.meduniwien.ac.at",
+        "EX02.ex.meduniwien.ac.at", 
+        "EX03.ex.meduniwien.ac.at"
+      ],
+      "features": {
+        "firewall_rules": true,
+        "ssl_certificate": true,
+        "performance_optimized": true
+      }
+    },
+    "DomainController": {
+      "description": "Domain Controller (UVWDC001, UVWDC002)",
+      "http_port": 9280,
+      "https_port": 9643,
+      "install_path": "C:\\inetpub\\wwwroot\\CertSurveillance",
+      "site_name": "CertSurveillance",
+      "target_servers": [
+        "UVWDC001.UVW.meduniwien.ac.at",
+        "UVWDC002.UVW.meduniwien.ac.at"
+      ],
+      "features": {
+        "firewall_rules": true,
+        "ssl_certificate": true,
+        "performance_optimized": true
+      }
+    },
+    "Application": {
+      "description": "Application Server (C-APP01, C-APP02)",
+      "http_port": 9380,
+      "https_port": 9743,
+      "install_path": "C:\\inetpub\\wwwroot\\CertSurveillance",
+      "site_name": "CertSurveillance",
+      "target_servers": [
+        "C-APP01.UVW.meduniwien.ac.at",
+        "C-APP02.UVW.meduniwien.ac.at"
+      ],
+      "features": {
+        "firewall_rules": true,
+        "ssl_certificate": true,
+        "performance_optimized": true
+      }
+    }
+  },
+  "installation_options": {
+    "automatic_iis_install": true,
+    "create_ssl_certificate": true,
+    "configure_firewall": true,
+    "test_after_install": true,
+    "rollback_on_error": true,
+    "detailed_logging": true
+  },
+  "performance_targets": {
+    "response_time": "< 500ms",
+    "vs_direct_ssl": "10x faster",
+    "concurrent_requests": "50+",
+    "availability": "99.9%"
+  },
+  "security": {
+    "https_enabled": true,
+    "self_signed_certificates": true,
+    "firewall_ports": ["HTTP", "HTTPS"],
+    "admin_rights_required": true
+  },
+  "endpoints": {
+    "/certificates.json": "Complete certificate data",
+    "/summary.json": "Certificate statistics and counts",
+    "/health.json": "Service health and status",
+    "/": "Web interface and documentation"
+  }
+}
