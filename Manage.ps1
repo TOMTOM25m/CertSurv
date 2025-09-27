@@ -3,7 +3,6 @@
 #region PowerShell Version Detection (MANDATORY - Regelwerk v9.4.0)
 $PSVersion = $PSVersionTable.PSVersion
 $IsPS7Plus = $PSVersion.Major -ge 7
-$IsPS5 = $PSVersion.Major -eq 5
 $IsPS51 = $PSVersion.Major -eq 5 -and $PSVersion.Minor -eq 1
 
 Write-Verbose "Manage-ClientServers - PowerShell Version: $($PSVersion.ToString())"
@@ -14,8 +13,8 @@ Write-Verbose "Compatibility Mode: $(if($IsPS7Plus){'PowerShell 7.x Enhanced'}el
 .SYNOPSIS
     Client Server Management Tool v1.1.0 - Manuelle WebService Einrichtung
 .DESCRIPTION
-    Tool für die manuelle, schrittweise Einrichtung aller Server aus dem Excel-Sheet.
-    Berücksichtigt, dass jeder Server unterschiedlich konfiguriert ist und individuelle Behandlung benötigt.
+    Tool fuer die manuelle, schrittweise Einrichtung aller Server aus dem Excel-Sheet.
+    Beruecksichtigt, dass jeder Server unterschiedlich konfiguriert ist und individuelle Behandlung benoetigt.
 .NOTES
     Author: Flecki (Tom) Garnreiter
     Version: v1.2.0
@@ -126,12 +125,17 @@ function Save-ClientProgress {
     param($Servers, $ProgressFile)
     
     try {
+        # Ensure arrays for counting
+        $completedServers = @($Servers | Where-Object { $_.Status -eq "Completed" })
+        $failedServers = @($Servers | Where-Object { $_.Status -eq "Failed" })
+        $pendingServers = @($Servers | Where-Object { $_.Status -eq "Pending" })
+        
         $progressData = @{
             LastUpdated = (Get-Date).ToString('yyyy-MM-dd HH:mm:ss')
             TotalServers = $Servers.Count
-            CompletedServers = ($Servers | Where-Object { $_.Status -eq "Completed" }).Count
-            FailedServers = ($Servers | Where-Object { $_.Status -eq "Failed" }).Count
-            PendingServers = ($Servers | Where-Object { $_.Status -eq "Pending" }).Count
+            CompletedServers = $completedServers.Count
+            FailedServers = $failedServers.Count
+            PendingServers = $pendingServers.Count
             Servers = $Servers
         }
         
@@ -143,7 +147,7 @@ function Save-ClientProgress {
     }
 }
 
-function Load-ClientProgress {
+function Get-ClientProgress {
     param($ProgressFile)
     
     if (Test-Path $ProgressFile) {
@@ -179,17 +183,17 @@ function Test-ServerReadiness {
     
     try {
         # Basic connectivity test
-        Write-ClientLog "  -> Teste Netzwerk-Konnektivität..." -Level INFO
+        Write-ClientLog "  -> Teste Netzwerk-Konnektivitaet..." -Level INFO
         if (Test-NetConnection -ComputerName $Server.FQDN -Port 135 -InformationLevel Quiet) {
             $readinessStatus.Reachable = $true
             Write-ClientLog "  [OK] Server erreichbar" -Level SUCCESS
         } else {
-            $readinessStatus.Recommendations += "Server ist nicht über das Netzwerk erreichbar"
+            $readinessStatus.Recommendations += "Server ist nicht ueber das Netzwerk erreichbar"
             return $readinessStatus
         }
         
         # WinRM test
-        Write-ClientLog "  -> Teste WinRM-Verfügbarkeit..." -Level INFO
+        Write-ClientLog "  -> Teste WinRM-Verfuegbarkeit..." -Level INFO
         if (Test-WSMan -ComputerName $Server.FQDN -ErrorAction SilentlyContinue) {
             $readinessStatus.WinRMAvailable = $true
             Write-ClientLog "  [OK] WinRM verfuegbar" -Level SUCCESS
@@ -229,7 +233,7 @@ function Test-ServerReadiness {
                 }
                 
                 if ([version]$systemInfo.PowerShellVersion -lt [version]"5.1") {
-                    $readinessStatus.Recommendations += "PowerShell 5.1 oder höher wird empfohlen"
+                    $readinessStatus.Recommendations += "PowerShell 5.1 oder hoeher wird empfohlen"
                 }
                 
                 $systemDrive = $systemInfo.FreeSpace | Where-Object { $_.DeviceID -eq "C:" }
@@ -289,15 +293,15 @@ function Show-ServerMenu {
         }
     }
     
-    Write-Host "Verfügbare Aktionen:" -ForegroundColor White
-    Write-Host "  [1] System-Check durchführen" -ForegroundColor Green
+    Write-Host "Verfuegbare Aktionen:" -ForegroundColor White
+    Write-Host "  [1] System-Check durchfuehren" -ForegroundColor Green
     Write-Host "  [2] WebService installieren" -ForegroundColor Green
     Write-Host "  [3] WebService testen" -ForegroundColor Green
-    Write-Host "  [4] Manuelle Befehle ausführen" -ForegroundColor Yellow
+    Write-Host "  [4] Manuelle Befehle ausfuehren" -ForegroundColor Yellow
     Write-Host "  [5] Server als abgeschlossen markieren" -ForegroundColor Cyan
-    Write-Host "  [6] Server überspringen" -ForegroundColor Yellow
-    Write-Host "  [7] Notizen hinzufügen" -ForegroundColor White
-    Write-Host "  [n] Nächster Server" -ForegroundColor Cyan
+    Write-Host "  [6] Server ueberspringen" -ForegroundColor Yellow
+    Write-Host "  [7] Notizen hinzufuegen" -ForegroundColor White
+    Write-Host "  [n] Naechster Server" -ForegroundColor Cyan
     Write-Host "  [q] Beenden" -ForegroundColor Red
     Write-Host ""
 }
@@ -502,7 +506,7 @@ function Test-WebServiceOnServer {
                 return $true
             }
         } catch {
-            Write-ClientLog "❌ Auch HTTP Test fehlgeschlagen" -Level ERROR
+            Write-ClientLog "[FAIL] Auch HTTP Test fehlgeschlagen" -Level ERROR
         }
         
         return $false
@@ -530,7 +534,7 @@ try {
     $ProgressFile = Join-Path $LogPath "ClientProgress.json"
     
     # Load or create server list
-    $servers = Load-ClientProgress -ProgressFile $ProgressFile
+    $servers = Get-ClientProgress -ProgressFile $ProgressFile
     if (-not $servers) {
         Write-ClientLog "Erstelle neue Serverliste aus Excel..." -Level PROGRESS
         $servers = Get-AllServersFromExcel -Config $Config
@@ -538,9 +542,12 @@ try {
     }
     
     Write-ClientLog "Gefundene Server: $($servers.Count)" -Level INFO
-    Write-ClientLog "Abgeschlossen: $(($servers | Where-Object { $_.Status -eq 'Completed' }).Count)" -Level SUCCESS
-    Write-ClientLog "Fehlgeschlagen: $(($servers | Where-Object { $_.Status -eq 'Failed' }).Count)" -Level ERROR
-    Write-ClientLog "Ausstehend: $(($servers | Where-Object { $_.Status -eq 'Pending' }).Count)" -Level WARN
+    $completedServers = @($servers | Where-Object { $_.Status -eq 'Completed' })
+    $failedServers = @($servers | Where-Object { $_.Status -eq 'Failed' })
+    $pendingServers = @($servers | Where-Object { $_.Status -eq 'Pending' })
+    Write-ClientLog "Abgeschlossen: $($completedServers.Count)" -Level SUCCESS
+    Write-ClientLog "Fehlgeschlagen: $($failedServers.Count)" -Level ERROR
+    Write-ClientLog "Ausstehend: $($pendingServers.Count)" -Level WARN
     Write-ClientLog ""
     
     # Main processing loop
@@ -548,7 +555,7 @@ try {
     $pendingServers = $servers | Where-Object { $_.Status -eq "Pending" }
     
     if ($pendingServers.Count -eq 0) {
-        Write-ClientLog "🎉 Alle Server wurden bereits bearbeitet!" -Level SUCCESS
+        Write-ClientLog "[SUCCESS] Alle Server wurden bereits bearbeitet!" -Level SUCCESS
         Write-ClientLog "Abgeschlossen: $(($servers | Where-Object { $_.Status -eq 'Completed' }).Count)" -Level SUCCESS
         Write-ClientLog "Fehlgeschlagen: $(($servers | Where-Object { $_.Status -eq 'Failed' }).Count)" -Level ERROR
         return
@@ -565,57 +572,57 @@ try {
         while ($continue) {
             Show-ServerMenu -Server $server -ReadinessStatus $readinessStatus
             
-            $action = Read-Host "Wählen Sie eine Aktion"
+            $action = Read-Host "Waehlen Sie eine Aktion"
             
             switch ($action.ToLower()) {
                 "1" {
                     $readinessStatus = Test-ServerReadiness -Server $server
                     Write-ClientLog "System-Check abgeschlossen" -Level INFO
-                    Read-Host "Drücken Sie Enter um fortzufahren"
+                    Read-Host "Druecken Sie Enter um fortzufahren"
                 }
                 "2" {
                     if (Install-WebServiceOnServer -Server $server) {
-                        Write-ClientLog "✅ WebService Installation erfolgreich!" -Level SUCCESS
+                        Write-ClientLog "[OK] WebService Installation erfolgreich!" -Level SUCCESS
                     } else {
                         $server.Status = "Failed"
-                        Write-ClientLog "❌ WebService Installation fehlgeschlagen" -Level ERROR
+                        Write-ClientLog "[FAIL] WebService Installation fehlgeschlagen" -Level ERROR
                     }
                     Save-ClientProgress -Servers $servers -ProgressFile $ProgressFile
-                    Read-Host "Drücken Sie Enter um fortzufahren"
+                    Read-Host "Druecken Sie Enter um fortzufahren"
                 }
                 "3" {
                     if (Test-WebServiceOnServer -Server $server) {
-                        Write-ClientLog "✅ WebService funktioniert korrekt!" -Level SUCCESS
+                        Write-ClientLog "[OK] WebService funktioniert korrekt!" -Level SUCCESS
                     } else {
-                        Write-ClientLog "❌ WebService Test fehlgeschlagen" -Level ERROR
+                        Write-ClientLog "[FAIL] WebService Test fehlgeschlagen" -Level ERROR
                     }
-                    Read-Host "Drücken Sie Enter um fortzufahren"
+                    Read-Host "Druecken Sie Enter um fortzufahren"
                 }
                 "4" {
-                    Write-Host "Manuelle Befehle für $($server.FQDN):" -ForegroundColor Yellow
+                    Write-Host "Manuelle Befehle fuer $($server.FQDN):" -ForegroundColor Yellow
                     Write-Host "  Enter-PSSession -ComputerName $($server.FQDN)" -ForegroundColor Cyan
                     Write-Host "  Invoke-Command -ComputerName $($server.FQDN) -ScriptBlock { Get-Service }" -ForegroundColor Cyan
-                    Read-Host "Drücken Sie Enter um fortzufahren"
+                    Read-Host "Druecken Sie Enter um fortzufahren"
                 }
                 "5" {
                     $server.Status = "Completed"
                     $server.LastChecked = Get-Date
                     Save-ClientProgress -Servers $servers -ProgressFile $ProgressFile
-                    Write-ClientLog "✅ Server als abgeschlossen markiert" -Level SUCCESS
+                    Write-ClientLog "[OK] Server als abgeschlossen markiert" -Level SUCCESS
                     $continue = $false
                 }
                 "6" {
                     $server.Status = "Failed"
-                    $server.Notes = "Manuell übersprungen"
+                    $server.Notes = "Manuell uebersprungen"
                     Save-ClientProgress -Servers $servers -ProgressFile $ProgressFile
-                    Write-ClientLog "⚠️ Server übersprungen" -Level WARN
+                    Write-ClientLog "[WARN] Server uebersprungen" -Level WARN
                     $continue = $false
                 }
                 "7" {
-                    $notes = Read-Host "Notizen für $($server.ServerName)"
+                    $notes = Read-Host "Notizen fuer $($server.ServerName)"
                     $server.Notes = $notes
                     Save-ClientProgress -Servers $servers -ProgressFile $ProgressFile
-                    Write-ClientLog "📝 Notizen gespeichert" -Level INFO
+                    Write-ClientLog "[INFO] Notizen gespeichert" -Level INFO
                 }
                 "n" {
                     $continue = $false
@@ -625,23 +632,23 @@ try {
                     return
                 }
                 default {
-                    Write-ClientLog "Ungültige Auswahl" -Level WARN
+                    Write-ClientLog "Unguelltige Auswahl" -Level WARN
                 }
             }
         }
     }
     
-    Write-ClientLog "🎉 Alle ausstehenden Server wurden bearbeitet!" -Level SUCCESS
+    Write-ClientLog "[SUCCESS] Alle ausstehenden Server wurden bearbeitet!" -Level SUCCESS
     
 } catch {
-    Write-ClientLog "❌ Fehler im Client Management Tool: $($_.Exception.Message)" -Level ERROR
+    Write-ClientLog "[FAIL] Fehler im Client Management Tool: $($_.Exception.Message)" -Level ERROR
     throw
     
 } finally {
     if ($servers) {
         Save-ClientProgress -Servers $servers -ProgressFile $ProgressFile
     }
-    Write-ClientLog "=== Client Management Tool beendet ===" -Level INFO
+    Write-ClientLog '=== Client Management Tool beendet ===' -Level 'INFO'
 }
 
-# --- End of script --- v1.1.0 ; Regelwerk: v9.3.1 ---
+# --- End of script --- v1.2.0 ; Regelwerk: v9.4.0 ---

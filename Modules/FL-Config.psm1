@@ -67,14 +67,24 @@ Function Get-ScriptConfiguration {
         throw "FATAL: Configuration file not found at '$configFile'"
     }
 
-    $config = Get-Content -Path $configFile | ConvertFrom-JsonUniversal
+    $config = Get-Content -Path $configFile -Raw | ConvertFrom-Json
     
-    $langFile = Join-Path -Path $configPath -ChildPath "$($config.Language).json"
+    # Get language setting with fallback
+    $language = if ($config.Language -and ![string]::IsNullOrWhiteSpace($config.Language)) {
+        $config.Language
+    } else {
+        Write-Warning "Language property is missing or empty in config. Defaulting to 'de-DE'"
+        "de-DE"
+    }
+    
+    $langFile = Join-Path -Path $configPath -ChildPath "$language.json"
     if (-not (Test-Path $langFile)) {
-        throw "FATAL: Language file not found for '$($config.Language)' at '$langFile'"
+        throw "FATAL: Language file not found for '$language' at '$langFile'"
     }
 
-    $localization = Get-Content -Path $langFile | ConvertFrom-JsonUniversal    return @{
+    $localization = Get-Content -Path $langFile -Raw | ConvertFrom-Json
+    
+    return @{
         Config = $config
         Localization = $localization
     }

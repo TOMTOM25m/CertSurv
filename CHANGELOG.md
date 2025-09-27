@@ -9,6 +9,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 ### 🎯 Major Release: WebService Integration & Extended Modularity
 
 #### Added ✨
+
 - **Zentrale WebService-Integration** auf `itscmgmt03.srv.meduniwien.ac.at:9080/9443`
 - **FL-CertificateAPI.psm1** - Neues Modul für zentrale API-Kommunikation
 - **FL-WebService.psm1** - IIS Certificate Web Service Management
@@ -18,6 +19,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 - **Test-CentralWebServiceIntegration.ps1** - Umfassende Integrationstests
 
 #### Changed 🔄
+
 - **Regelwerk v9.3.0 → v9.3.1**: Hauptskript-Limit von 100 auf **300 Zeilen** erweitert
 - **TestMode.Enabled**: `true → false` (Vollständige Produktionsausführung)
 - **RunMode**: `"DEV" → "PROD"` (Produktionsmodus aktiviert)
@@ -26,6 +28,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 - **Server-Verarbeitung**: Von 1 Test-Server auf alle 151 Server erweitert
 
 #### Fixed 🐛
+
 - **PowerShell 5.1 Emoji-Kompatibilität** - Alle Emojis durch ASCII-Zeichen ersetzt
 - **Count Property Issues** - Measure-Object Pattern für PS 5.1 Kompatibilität
 - **Test-Installation.ps1 Syntax-Fehler** - Ersetzt durch inline HTTP-Test
@@ -33,6 +36,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 - **Path Structure** - Korrekte Trennung: C:\Temp (Download) + C:\Script (Deployment)
 
 #### Technical Improvements 🔧
+
 - **Zentrale Architektur**: Client → itscmgmt03 WebService → Fallback auf lokale SSL-Abfrage
 - **Performance**: 87ms API-Antwortzeit für zentrale Zertifikatsdaten
 - **Robustness**: Automatischer Fallback bei leerer zentraler Datenbank
@@ -45,7 +49,8 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 ### 🚀 Initial Release: Strict Modularity Implementation
 
 #### Added ✨
-- **FL-* Modular Architecture** - Vollständige Trennung von Hauptskript und Funktionslogik
+
+- **FL-\* Modular Architecture** - Vollständige Trennung von Hauptskript und Funktionslogik
 - **FL-CoreLogic.psm1** - Zentrale Workflow-Orchestrierung
 - **FL-Config.psm1** - Externalisierte Konfigurationsverwaltung
 - **FL-Logging.psm1** - Strukturierte Protokollierung
@@ -60,6 +65,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 - **Setup-CertSurv.ps1** - Eigenständige WPF-Setup-GUI
 
 #### Features 🎯
+
 - **Multi-Domain Support** - UVW, NEURO, EX, AD, DGMW, DIAWIN Domain-Integration
 - **Excel Integration** - Automatischer Import aus `Serverliste2025FQDN.xlsx`
 - **Certificate Discovery** - Automatische SSL-Port-Erkennung (443, 8443, 9443, etc.)
@@ -68,11 +74,13 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 - **Test Mode** - Konfigurierbare Test-Einschränkungen für Entwicklung
 
 #### Configuration 📋
+
 - **Config-Cert-Surveillance.json** - Zentrale JSON-Konfiguration
 - **de-DE.json / en-US.json** - Mehrsprachige Lokalisierung
 - **Externalized Settings** - Keine Hard-coded-Werte im Code
 
 #### Compliance ✅
+
 - **Regelwerk v9.3.0** - Vollständige Konformität mit MUW-Standards
 - **PowerShell 5.1+** - Rückwärtskompatibilität gewährleistet
 - **Cross-Platform Ready** - PS7+ Linux/macOS Vorbereitung
@@ -83,6 +91,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 ## [Unreleased] - Geplante Features
 
 ### 🔮 Roadmap
+
 - **FL-Certificate-Enhanced.psm1** - Erweiterte Zertifikatsprüfungen
 - **Dashboard Integration** - Real-time Web-Dashboard
 - **API Extensions** - RESTful API für externe Integrationen
@@ -94,22 +103,24 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 
 ## Version History Summary
 
-| Version | Datum | Beschreibung | Hauptfeatures |
-|---------|-------|--------------|---------------|
+| Version    | Datum      | Beschreibung               | Hauptfeatures                                       |
+| ---------- | ---------- | -------------------------- | --------------------------------------------------- |
 | **v1.1.0** | 2025-09-17 | **WebService Integration** | Zentrale API, Extended Modularity, Production Ready |
-| **v1.0.3** | 2025-09-04 | **Initial Release** | FL-Modules, Strict Modularity, Regelwerk Compliance |
+| **v1.0.3** | 2025-09-04 | **Initial Release**        | FL-Modules, Strict Modularity, Regelwerk Compliance |
 
 ---
 
 ## Breaking Changes
 
 ### v1.1.0
+
 - **Regelwerk Update**: Hauptskript-Limit von 100 auf 300 Zeilen erweitert
 - **Configuration Changes**: WebService.PrimaryServer jetzt erforderlich
 - **TestMode Default**: Standardmäßig deaktiviert (PROD-ready)
 
 ### v1.0.3
-- **Initial Architecture**: Vollständige Umstellung auf FL-* Module
+
+- **Initial Architecture**: Vollständige Umstellung auf FL-\* Module
 - **Configuration Format**: JSON-basierte Konfiguration erforderlich
 - **PowerShell Requirements**: Minimum PowerShell 5.1
 
@@ -118,12 +129,14 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 ## Migration Guide
 
 ### Von v1.0.3 zu v1.1.0
+
 1. **Konfiguration aktualisieren**: WebService-Einstellungen in `Config-Cert-Surveillance.json`
 2. **Module ergänzen**: `FL-CertificateAPI.psm1` und `FL-WebService.psm1` hinzufügen
 3. **TestMode prüfen**: Bei Bedarf TestMode.Enabled auf `true` setzen
 4. **WebService-URL**: PrimaryServer-Einstellung auf zentrale API anpassen
 
 ### Neue Installation
+
 1. **Download**: Latest Release von Network Share oder Repository
 2. **Setup**: `Setup-CertSurv.ps1` für interaktive Konfiguration ausführen
 3. **Test**: `Test-CentralWebServiceIntegration.ps1` für Verbindungsvalidierung
@@ -140,7 +153,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/) 
 
 ---
 
-**Autor**: Flecki (Tom) Garnreiter  
-**Copyright**: © 2025 MedUni Wien  
-**License**: MIT License  
+**Autor**: Flecki (Tom) Garnreiter
+**Copyright**: © 2025 MedUni Wien
+**License**: MIT License
 **PowerShell**: 5.1+ | 7+ (Cross-Platform)

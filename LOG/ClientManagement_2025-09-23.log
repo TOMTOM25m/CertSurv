@@ -1,0 +1,283 @@
+﻿[2025-09-23 07:40:31] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-23 07:40:31] [SUCCESS]     CLIENT SERVER MANAGEMENT TOOL v1.1.0
+[2025-09-23 07:40:31] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-23 07:40:31] [INFO] 
+[2025-09-23 07:40:31] [INFO] Konfiguration geladen: F:\DEV\repositories\CertSurv\Config\Config-Cert-Surveillance.json
+[2025-09-23 07:40:31] [SUCCESS] Fortschritt geladen: 0/151 abgeschlossen
+[2025-09-23 07:40:31] [INFO] Gefundene Server: 151
+[2025-09-23 07:40:31] [SUCCESS] Abgeschlossen: 0
+[2025-09-23 07:40:31] [ERROR] Fehlgeschlagen: 0
+[2025-09-23 07:40:31] [WARN] Ausstehend: 151
+[2025-09-23 07:40:31] [INFO] 
+[2025-09-23 07:40:31] [PROGRESS] Bearbeite Server 1 von 151: SUCCESSXPROD01
+[2025-09-23 07:41:26] [PROGRESS] Bearbeite Server 2 von 151: UVWDC001
+[2025-09-23 07:41:36] [PROGRESS] Bearbeite Server 3 von 151: C-SQL01
+[2025-09-23 07:41:40] [PROGRESS] Bearbeite Server 4 von 151: C-Lic01
+[2025-09-23 07:41:49] [PROGRESS] Bearbeite Server 5 von 151: C-LIC02
+[2025-09-23 07:42:04] [PROGRESS] Bearbeite Server 6 von 151: UVW-FINANZ02
+[2025-09-23 07:42:05] [WARN] UngÃ¼ltige Auswahl
+[2025-09-23 07:42:06] [PROGRESS] Bearbeite Server 7 von 151: C-APP01
+[2025-09-23 07:42:07] [PROGRESS] Bearbeite Server 8 von 151: C-APP02
+[2025-09-23 07:42:07] [PROGRESS] Bearbeite Server 9 von 151: adonisnpappprod
+[2025-09-23 07:42:07] [PROGRESS] Bearbeite Server 10 von 151: adonisnpapptst
+[2025-09-23 07:42:08] [PROGRESS] Bearbeite Server 11 von 151: COORAPPPROD01
+[2025-09-23 07:42:08] [PROGRESS] Bearbeite Server 12 von 151: UVWDC003
+[2025-09-23 07:42:08] [PROGRESS] Bearbeite Server 13 von 151: C-FS01
+[2025-09-23 07:42:09] [PROGRESS] Bearbeite Server 14 von 151: proman
+[2025-09-23 07:42:09] [PROGRESS] Bearbeite Server 15 von 151: COORAPPTEST01
+[2025-09-23 07:42:09] [PROGRESS] Bearbeite Server 16 von 151: UVWPRINT01
+[2025-09-23 07:42:09] [PROGRESS] Bearbeite Server 17 von 151: UVWDC002
+[2025-09-23 07:42:10] [PROGRESS] Bearbeite Server 18 von 151: ZGAAPP01
+[2025-09-23 07:42:10] [PROGRESS] Bearbeite Server 19 von 151: ZGASQL01
+[2025-09-23 07:42:10] [PROGRESS] Bearbeite Server 20 von 151: DAGOBERT
+[2025-09-23 07:42:10] [WARN] UngÃ¼ltige Auswahl
+[2025-09-23 07:42:11] [PROGRESS] Bearbeite Server 21 von 151: UVW-FINANZ01
+[2025-09-23 07:42:11] [PROGRESS] Bearbeite Server 22 von 151: UVWmgmt01
+[2025-09-23 07:42:11] [PROGRESS] Bearbeite Server 23 von 151: uvwlex01
+[2025-09-23 07:42:12] [WARN] UngÃ¼ltige Auswahl
+[2025-09-23 07:42:13] [PROGRESS] Bearbeite Server 24 von 151: MUWDC
+[2025-09-23 07:42:14] [PROGRESS] Bearbeite Server 25 von 151: na0fs1bkp
+[2025-09-23 07:42:14] [PROGRESS] Bearbeite Server 26 von 151: contactcenter-1
+[2025-09-23 07:42:14] [PROGRESS] Bearbeite Server 27 von 151: NEURODC01
+[2025-09-23 07:42:15] [PROGRESS] Bearbeite Server 28 von 151: NEURODC02
+[2025-09-23 07:42:15] [PROGRESS] Bearbeite Server 29 von 151: NEUROFS01
+[2025-09-23 07:42:16] [PROGRESS] Bearbeite Server 30 von 151: EXDC01
+[2025-09-23 07:42:16] [PROGRESS] Bearbeite Server 31 von 151: EXDC02
+[2025-09-23 07:42:17] [PROGRESS] Bearbeite Server 32 von 151: EXDC03
+[2025-09-23 07:42:17] [PROGRESS] Bearbeite Server 33 von 151: EX01
+[2025-09-23 07:42:18] [PROGRESS] Bearbeite Server 34 von 151: EX02
+[2025-09-23 07:42:18] [PROGRESS] Bearbeite Server 35 von 151: EX03
+[2025-09-23 07:42:19] [PROGRESS] Bearbeite Server 36 von 151: EX05
+[2025-09-23 07:42:19] [PROGRESS] Bearbeite Server 37 von 151: veeam-ex-bkp
+[2025-09-23 07:42:20] [PROGRESS] Bearbeite Server 38 von 151: EXMGMT02
+[2025-09-23 07:42:21] [PROGRESS] Bearbeite Server 39 von 151: EXMGMT03
+[2025-09-23 07:42:21] [PROGRESS] Bearbeite Server 40 von 151: DGMWDC001
+[2025-09-23 07:42:21] [PROGRESS] Bearbeite Server 41 von 151: DGMWDC002
+[2025-09-23 07:42:21] [PROGRESS] Bearbeite Server 42 von 151: DGMWAPP001
+[2025-09-23 07:42:22] [PROGRESS] Bearbeite Server 43 von 151: DGMWFS001
+[2025-09-23 07:42:22] [PROGRESS] Bearbeite Server 44 von 151: kyserv
+[2025-09-23 07:42:22] [PROGRESS] Bearbeite Server 45 von 151: ADDC01P
+[2025-09-23 07:42:23] [PROGRESS] Bearbeite Server 46 von 151: ADDC02P
+[2025-09-23 07:42:23] [WARN] UngÃ¼ltige Auswahl
+[2025-09-23 07:42:24] [WARN] UngÃ¼ltige Auswahl
+[2025-09-23 07:42:24] [PROGRESS] Bearbeite Server 47 von 151: ADDC03P
+[2025-09-23 07:42:24] [PROGRESS] Bearbeite Server 48 von 151: ADDC04P
+[2025-09-23 07:42:24] [WARN] UngÃ¼ltige Auswahl
+[2025-09-23 07:42:26] [PROGRESS] Bearbeite Server 49 von 151: mgmtad01p
+[2025-09-23 07:42:27] [PROGRESS] Bearbeite Server 50 von 151: adunifl01p
+[2025-09-23 07:45:04] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-23 07:45:04] [SUCCESS]     CLIENT SERVER MANAGEMENT TOOL v1.1.0
+[2025-09-23 07:45:04] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-23 07:45:04] [INFO] 
+[2025-09-23 07:45:04] [INFO] Konfiguration geladen: F:\DEV\repositories\CertSurv\Config\Config-Cert-Surveillance.json
+[2025-09-23 07:45:04] [SUCCESS] Fortschritt geladen: 0/151 abgeschlossen
+[2025-09-23 07:45:04] [INFO] Gefundene Server: 151
+[2025-09-23 07:45:04] [SUCCESS] Abgeschlossen: 0
+[2025-09-23 07:45:04] [ERROR] Fehlgeschlagen: 0
+[2025-09-23 07:45:04] [WARN] Ausstehend: 151
+[2025-09-23 07:45:04] [INFO] 
+[2025-09-23 07:45:04] [PROGRESS] Bearbeite Server 1 von 151: SUCCESSXPROD01
+[2025-09-23 07:45:13] [PROGRESS] Bearbeite Server 2 von 151: UVWDC001
+[2025-09-23 07:45:22] [PROGRESS] Bearbeite Server 3 von 151: C-SQL01
+[2025-09-23 07:45:23] [PROGRESS] Bearbeite Server 4 von 151: C-Lic01
+[2025-09-23 07:45:24] [PROGRESS] Bearbeite Server 5 von 151: C-LIC02
+[2025-09-23 07:45:25] [PROGRESS] Bearbeite Server 6 von 151: UVW-FINANZ02
+[2025-09-23 07:45:26] [PROGRESS] Bearbeite Server 7 von 151: C-APP01
+[2025-09-23 07:45:27] [PROGRESS] Bearbeite Server 8 von 151: C-APP02
+[2025-09-23 07:45:27] [PROGRESS] Bearbeite Server 9 von 151: adonisnpappprod
+[2025-09-23 07:45:28] [PROGRESS] Bearbeite Server 10 von 151: adonisnpapptst
+[2025-09-23 07:45:29] [PROGRESS] Bearbeite Server 11 von 151: COORAPPPROD01
+[2025-09-23 07:45:38] [PROGRESS] Bearbeite Server 12 von 151: UVWDC003
+[2025-09-23 07:45:39] [PROGRESS] Bearbeite Server 13 von 151: C-FS01
+[2025-09-23 07:45:39] [PROGRESS] Bearbeite Server 14 von 151: proman
+[2025-09-23 07:45:39] [PROGRESS] Bearbeite Server 15 von 151: COORAPPTEST01
+[2025-09-23 07:45:40] [PROGRESS] Bearbeite Server 16 von 151: UVWPRINT01
+[2025-09-23 07:45:40] [PROGRESS] Bearbeite Server 17 von 151: UVWDC002
+[2025-09-23 07:45:40] [PROGRESS] Bearbeite Server 18 von 151: ZGAAPP01
+[2025-09-23 07:45:40] [PROGRESS] Bearbeite Server 19 von 151: ZGASQL01
+[2025-09-23 07:45:41] [PROGRESS] Bearbeite Server 20 von 151: DAGOBERT
+[2025-09-23 07:45:41] [PROGRESS] Bearbeite Server 21 von 151: UVW-FINANZ01
+[2025-09-23 07:45:41] [PROGRESS] Bearbeite Server 22 von 151: UVWmgmt01
+[2025-09-23 07:45:41] [PROGRESS] Bearbeite Server 23 von 151: uvwlex01
+[2025-09-23 07:45:42] [PROGRESS] Bearbeite Server 24 von 151: MUWDC
+[2025-09-23 07:45:42] [PROGRESS] Bearbeite Server 25 von 151: na0fs1bkp
+[2025-09-23 07:45:42] [PROGRESS] Bearbeite Server 26 von 151: contactcenter-1
+[2025-09-23 07:45:43] [PROGRESS] Bearbeite Server 27 von 151: NEURODC01
+[2025-09-23 07:45:43] [PROGRESS] Bearbeite Server 28 von 151: NEURODC02
+[2025-09-23 07:45:43] [PROGRESS] Bearbeite Server 29 von 151: NEUROFS01
+[2025-09-23 07:45:43] [PROGRESS] Bearbeite Server 30 von 151: EXDC01
+[2025-09-23 07:45:44] [PROGRESS] Bearbeite Server 31 von 151: EXDC02
+[2025-09-23 07:45:44] [PROGRESS] Bearbeite Server 32 von 151: EXDC03
+[2025-09-23 07:45:44] [PROGRESS] Bearbeite Server 33 von 151: EX01
+[2025-09-23 07:45:44] [PROGRESS] Bearbeite Server 34 von 151: EX02
+[2025-09-23 07:45:45] [PROGRESS] Bearbeite Server 35 von 151: EX03
+[2025-09-23 07:45:45] [PROGRESS] Bearbeite Server 36 von 151: EX05
+[2025-09-23 07:45:45] [PROGRESS] Bearbeite Server 37 von 151: veeam-ex-bkp
+[2025-09-23 07:45:45] [PROGRESS] Bearbeite Server 38 von 151: EXMGMT02
+[2025-09-23 07:45:46] [PROGRESS] Bearbeite Server 39 von 151: EXMGMT03
+[2025-09-23 07:45:46] [PROGRESS] Bearbeite Server 40 von 151: DGMWDC001
+[2025-09-23 07:45:46] [PROGRESS] Bearbeite Server 41 von 151: DGMWDC002
+[2025-09-23 07:45:46] [PROGRESS] Bearbeite Server 42 von 151: DGMWAPP001
+[2025-09-23 07:45:47] [PROGRESS] Bearbeite Server 43 von 151: DGMWFS001
+[2025-09-23 07:45:47] [PROGRESS] Bearbeite Server 44 von 151: kyserv
+[2025-09-23 07:45:47] [PROGRESS] Bearbeite Server 45 von 151: ADDC01P
+[2025-09-23 07:45:47] [PROGRESS] Bearbeite Server 46 von 151: ADDC02P
+[2025-09-23 07:45:48] [PROGRESS] Bearbeite Server 47 von 151: ADDC03P
+[2025-09-23 07:45:48] [PROGRESS] Bearbeite Server 48 von 151: ADDC04P
+[2025-09-23 07:45:48] [PROGRESS] Bearbeite Server 49 von 151: mgmtad01p
+[2025-09-23 07:45:48] [PROGRESS] Bearbeite Server 50 von 151: adunifl01p
+[2025-09-23 07:45:49] [PROGRESS] Bearbeite Server 51 von 151: aduniflmgmt01p
+[2025-09-23 07:45:49] [PROGRESS] Bearbeite Server 52 von 151: aduniflrpsf01p
+[2025-09-23 07:45:49] [PROGRESS] Bearbeite Server 53 von 151: aduniflrpsc01p
+[2025-09-23 07:45:49] [PROGRESS] Bearbeite Server 54 von 151: aduniflrpsc02p
+[2025-09-23 07:45:50] [PROGRESS] Bearbeite Server 55 von 151: aduniflscan01p
+[2025-09-23 07:45:50] [PROGRESS] Bearbeite Server 56 von 151: syncad
+[2025-09-23 07:45:50] [PROGRESS] Bearbeite Server 57 von 151: DCSYNC01P
+[2025-09-23 07:45:50] [PROGRESS] Bearbeite Server 58 von 151: DCSYNC02P
+[2025-09-23 07:45:51] [PROGRESS] Bearbeite Server 59 von 151: webexconnector1
+[2025-09-23 07:45:51] [PROGRESS] Bearbeite Server 60 von 151: diawindc01
+[2025-09-23 07:45:51] [PROGRESS] Bearbeite Server 61 von 151: diawindc02
+[2025-09-23 07:45:51] [PROGRESS] Bearbeite Server 62 von 151: winlimsfs01
+[2025-09-23 07:45:52] [PROGRESS] Bearbeite Server 63 von 151: winngsfs01
+[2025-09-23 07:45:52] [PROGRESS] Bearbeite Server 64 von 151: diawinprint01
+[2025-09-23 07:45:52] [PROGRESS] Bearbeite Server 65 von 151: SRV
+[2025-09-23 07:45:52] [PROGRESS] Bearbeite Server 66 von 151: inteum01
+[2025-09-23 07:45:53] [PROGRESS] Bearbeite Server 67 von 151: msr-bt01-01
+[2025-09-23 07:45:53] [PROGRESS] Bearbeite Server 68 von 151: admanager
+[2025-09-23 07:45:53] [PROGRESS] Bearbeite Server 69 von 151: campus-script01
+[2025-09-23 07:45:53] [PROGRESS] Bearbeite Server 70 von 151: edmterm01
+[2025-09-23 07:45:54] [PROGRESS] Bearbeite Server 71 von 151: tenem
+[2025-09-23 07:45:54] [PROGRESS] Bearbeite Server 72 von 151: FACMAlert01
+[2025-09-23 07:45:54] [PROGRESS] Bearbeite Server 73 von 151: FACMAlert02
+[2025-09-23 07:45:54] [PROGRESS] Bearbeite Server 74 von 151: itscmgmt03
+[2025-09-23 07:45:55] [PROGRESS] Bearbeite Server 75 von 151: overwatch
+[2025-09-23 07:45:55] [PROGRESS] Bearbeite Server 76 von 151: isdz01
+[2025-09-23 07:45:55] [PROGRESS] Bearbeite Server 77 von 151: itsclic01
+[2025-09-23 07:45:57] [PROGRESS] Bearbeite Server 78 von 151: itsclic02
+[2025-09-23 07:45:57] [WARN] Unguelltige Auswahl
+[2025-09-23 07:45:57] [PROGRESS] Bearbeite Server 79 von 151: itsclic03
+[2025-09-23 07:45:57] [PROGRESS] Bearbeite Server 80 von 151: itsclic04
+[2025-09-23 07:45:58] [PROGRESS] Bearbeite Server 81 von 151: itsclic05
+[2025-09-23 07:45:58] [PROGRESS] Bearbeite Server 82 von 151: itsclic06
+[2025-09-23 07:45:58] [PROGRESS] Bearbeite Server 83 von 151: itsclic07
+[2025-09-23 07:45:59] [PROGRESS] Bearbeite Server 84 von 151: syscanval01
+[2025-09-23 07:45:59] [PROGRESS] Bearbeite Server 85 von 151: rmsapp01
+[2025-09-23 07:45:59] [PROGRESS] Bearbeite Server 86 von 151: sophos01
+[2025-09-23 07:45:59] [PROGRESS] Bearbeite Server 87 von 151: sophos03
+[2025-09-23 07:46:00] [PROGRESS] Bearbeite Server 88 von 151: studprint01
+[2025-09-23 07:46:00] [PROGRESS] Bearbeite Server 89 von 151: studprintweb01
+[2025-09-23 07:46:00] [PROGRESS] Bearbeite Server 90 von 151: Zaida
+[2025-09-23 07:46:00] [PROGRESS] Bearbeite Server 91 von 151: Zenzi
+[2025-09-23 07:46:01] [PROGRESS] Bearbeite Server 92 von 151: zara
+[2025-09-23 07:46:01] [PROGRESS] Bearbeite Server 93 von 151: EVAEXPROD01
+[2025-09-23 07:46:01] [PROGRESS] Bearbeite Server 94 von 151: EVAEXTEST01
+[2025-09-23 07:46:01] [PROGRESS] Bearbeite Server 95 von 151: cafm-prod
+[2025-09-23 07:46:02] [PROGRESS] Bearbeite Server 96 von 151: cafm-test
+[2025-09-23 07:46:02] [PROGRESS] Bearbeite Server 97 von 151: gsizas-prod01
+[2025-09-23 07:46:02] [PROGRESS] Bearbeite Server 98 von 151: gsizas-test01
+[2025-09-23 07:46:02] [PROGRESS] Bearbeite Server 99 von 151: bpc-win12
+[2025-09-23 07:46:03] [PROGRESS] Bearbeite Server 100 von 151: Doxis4aswprod12
+[2025-09-23 07:46:03] [PROGRESS] Bearbeite Server 101 von 151: Doxis4aswdev12
+[2025-09-23 07:46:03] [PROGRESS] Bearbeite Server 102 von 151: Doxis4aswtst12
+[2025-09-23 07:46:03] [PROGRESS] Bearbeite Server 103 von 151: doxis4dcesprod12
+[2025-09-23 07:46:04] [PROGRESS] Bearbeite Server 104 von 151: doxis4dcesdev12
+[2025-09-23 07:46:04] [WARN] Unguelltige Auswahl
+[2025-09-23 07:46:05] [PROGRESS] Bearbeite Server 105 von 151: doxis4dcestst12
+[2025-09-23 07:46:08] [WARN] Beende Client Management Tool...
+[2025-09-23 07:46:08] [WARN] [WARN] Warnung: Fortschritt konnte nicht gespeichert werden: The property 'Count' cannot be found on this object. Verify that the property exists.
+[2025-09-23 07:46:08] [INFO] === Client Management Tool beendet ===
+[2025-09-23 07:51:36] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-23 07:51:36] [SUCCESS]     CLIENT SERVER MANAGEMENT TOOL v1.1.0
+[2025-09-23 07:51:36] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-23 07:51:36] [INFO] 
+[2025-09-23 07:51:36] [INFO] Konfiguration geladen: F:\DEV\repositories\CertSurv\Config\Config-Cert-Surveillance.json
+[2025-09-23 07:51:36] [SUCCESS] Fortschritt geladen: 0/151 abgeschlossen
+[2025-09-23 07:51:36] [INFO] Gefundene Server: 151
+[2025-09-23 07:51:36] [SUCCESS] Abgeschlossen: 0
+[2025-09-23 07:51:36] [ERROR] Fehlgeschlagen: 0
+[2025-09-23 07:51:36] [WARN] Ausstehend: 151
+[2025-09-23 07:51:36] [INFO] 
+[2025-09-23 07:51:36] [PROGRESS] Bearbeite Server 1 von 151: SUCCESSXPROD01
+[2025-09-23 07:51:41] [PROGRESS] Bearbeite Server 2 von 151: UVWDC001
+[2025-09-23 07:51:47] [WARN] Beende Client Management Tool...
+[2025-09-23 07:51:47] [WARN] [WARN] Warnung: Fortschritt konnte nicht gespeichert werden: The property 'Count' cannot be found on this object. Verify that the property exists.
+[2025-09-23 07:51:47] [INFO] === Client Management Tool beendet ===
+[2025-09-23 07:52:26] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-23 07:52:26] [SUCCESS]     CLIENT SERVER MANAGEMENT TOOL v1.1.0
+[2025-09-23 07:52:26] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-23 07:52:26] [INFO] 
+[2025-09-23 07:52:26] [INFO] Konfiguration geladen: F:\DEV\repositories\CertSurv\Config\Config-Cert-Surveillance.json
+[2025-09-23 07:52:26] [SUCCESS] Fortschritt geladen: 0/151 abgeschlossen
+[2025-09-23 07:52:26] [INFO] Gefundene Server: 151
+[2025-09-23 07:52:26] [SUCCESS] Abgeschlossen: 0
+[2025-09-23 07:52:26] [ERROR] Fehlgeschlagen: 0
+[2025-09-23 07:52:26] [WARN] Ausstehend: 151
+[2025-09-23 07:52:26] [INFO] 
+[2025-09-23 07:52:26] [PROGRESS] Bearbeite Server 1 von 151: SUCCESSXPROD01
+[2025-09-23 07:52:44] [PROGRESS] Teste WebService auf SUCCESSXPROD01.uvw.meduniwien.ac.at...
+[2025-09-23 07:52:44] [INFO] Test URL: https://SUCCESSXPROD01.uvw.meduniwien.ac.at:9443/certificates.json
+[2025-09-23 07:52:55] [ERROR] [FAIL] WebService Test fehlgeschlagen: The operation has timed out.
+[2025-09-23 07:52:55] [WARN] Versuche HTTP Fallback: http://SUCCESSXPROD01.uvw.meduniwien.ac.at:9080/certificates.json
+[2025-09-23 07:53:05] [ERROR] âŒ Auch HTTP Test fehlgeschlagen
+[2025-09-23 07:53:05] [ERROR] âŒ WebService Test fehlgeschlagen
+[2025-09-23 07:55:53] [WARN] Beende Client Management Tool...
+[2025-09-23 07:55:53] [WARN] [WARN] Warnung: Fortschritt konnte nicht gespeichert werden: The property 'Count' cannot be found on this object. Verify that the property exists.
+[2025-09-23 07:55:53] [INFO] === Client Management Tool beendet ===
+[2025-09-23 07:56:57] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-23 07:56:57] [SUCCESS]     CLIENT SERVER MANAGEMENT TOOL v1.1.0
+[2025-09-23 07:56:57] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-23 07:56:57] [INFO] 
+[2025-09-23 07:56:57] [INFO] Konfiguration geladen: F:\DEV\repositories\CertSurv\Config\Config-Cert-Surveillance.json
+[2025-09-23 07:56:57] [SUCCESS] Fortschritt geladen: 0/151 abgeschlossen
+[2025-09-23 07:56:57] [INFO] Gefundene Server: 151
+[2025-09-23 07:56:57] [SUCCESS] Abgeschlossen: 0
+[2025-09-23 07:56:57] [ERROR] Fehlgeschlagen: 0
+[2025-09-23 07:56:57] [WARN] Ausstehend: 151
+[2025-09-23 07:56:57] [INFO] 
+[2025-09-23 07:56:57] [PROGRESS] Bearbeite Server 1 von 151: SUCCESSXPROD01
+[2025-09-23 07:57:08] [WARN] Beende Client Management Tool...
+[2025-09-23 07:57:08] [INFO] Fortschritt gespeichert: F:\DEV\repositories\CertSurv\LOG\ClientProgress.json
+[2025-09-23 07:57:08] [INFO] === Client Management Tool beendet ===
+[2025-09-23 07:57:12] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-23 07:57:12] [SUCCESS]     CLIENT SERVER MANAGEMENT TOOL v1.1.0
+[2025-09-23 07:57:12] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-23 07:57:12] [INFO] 
+[2025-09-23 07:57:12] [INFO] Konfiguration geladen: F:\DEV\repositories\CertSurv\Config\Config-Cert-Surveillance.json
+[2025-09-23 07:57:12] [SUCCESS] Fortschritt geladen: 0/151 abgeschlossen
+[2025-09-23 07:57:12] [INFO] Gefundene Server: 151
+[2025-09-23 07:57:12] [SUCCESS] Abgeschlossen: 0
+[2025-09-23 07:57:12] [ERROR] Fehlgeschlagen: 0
+[2025-09-23 07:57:12] [WARN] Ausstehend: 151
+[2025-09-23 07:57:12] [INFO] 
+[2025-09-23 07:57:12] [PROGRESS] Bearbeite Server 1 von 151: SUCCESSXPROD01
+[2025-09-23 07:57:18] [PROGRESS] Bearbeite Server 2 von 151: UVWDC001
+[2025-09-23 07:57:20] [PROGRESS] Bearbeite Server 3 von 151: C-SQL01
+[2025-09-23 07:57:22] [PROGRESS] Bearbeite Server 4 von 151: C-Lic01
+[2025-09-23 07:57:27] [WARN] Beende Client Management Tool...
+[2025-09-23 07:57:27] [INFO] Fortschritt gespeichert: F:\DEV\repositories\CertSurv\LOG\ClientProgress.json
+[2025-09-23 07:57:27] [INFO] === Client Management Tool beendet ===
+[2025-09-23 08:22:57] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-23 08:22:57] [SUCCESS]     CLIENT SERVER MANAGEMENT TOOL v1.1.0
+[2025-09-23 08:22:57] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-23 08:22:57] [INFO] 
+[2025-09-23 08:22:57] [INFO] Konfiguration geladen: F:\DEV\repositories\CertSurv\Config\Config-Cert-Surveillance.json
+[2025-09-23 08:22:57] [SUCCESS] Fortschritt geladen: 0/151 abgeschlossen
+[2025-09-23 08:22:57] [INFO] Gefundene Server: 151
+[2025-09-23 08:22:57] [SUCCESS] Abgeschlossen: 0
+[2025-09-23 08:22:57] [ERROR] Fehlgeschlagen: 0
+[2025-09-23 08:22:57] [WARN] Ausstehend: 151
+[2025-09-23 08:22:57] [INFO] 
+[2025-09-23 08:22:57] [PROGRESS] Bearbeite Server 1 von 151: SUCCESSXPROD01
+[2025-09-23 08:23:09] [PROGRESS] Teste Server-Bereitschaft: SUCCESSXPROD01.uvw.meduniwien.ac.at
+[2025-09-23 08:23:09] [INFO]   -> Teste Netzwerk-Konnektivitaet...
+[2025-09-23 08:23:10] [SUCCESS]   [OK] Server erreichbar
+[2025-09-23 08:23:10] [INFO]   -> Teste WinRM-Verfuegbarkeit...
+[2025-09-23 08:23:18] [INFO] System-Check abgeschlossen
+[2025-09-23 08:24:41] [PROGRESS] Starte WebService Installation auf SUCCESSXPROD01.uvw.meduniwien.ac.at...
+[2025-09-23 08:24:41] [INFO] Deployment-Quelle: \\itscmgmt03.srv.meduniwien.ac.at\iso\CertDeployment
+[2025-09-23 08:24:41] [ERROR] [FAIL] Installation fehlgeschlagen: Connecting to remote server SUCCESSXPROD01.uvw.meduniwien.ac.at failed with the following error message : The WinRM client cannot process the request. If the authentication scheme is different from Kerberos, or if the client computer is not joined to a domain, then HTTPS transport must be used or the destination machine must be added to the TrustedHosts configuration setting. Use winrm.cmd to configure TrustedHosts. Note that computers in the TrustedHosts list might not be authenticated. You can get more information about that by running the following command: winrm help config. For more information, see the about_Remote_Troubleshooting Help topic.
+[2025-09-23 08:24:41] [ERROR] [FAIL] WebService Installation fehlgeschlagen
+[2025-09-23 08:24:41] [INFO] Fortschritt gespeichert: F:\DEV\repositories\CertSurv\LOG\ClientProgress.json
+[2025-09-23 08:24:55] [WARN] Beende Client Management Tool...
+[2025-09-23 08:24:55] [INFO] Fortschritt gespeichert: F:\DEV\repositories\CertSurv\LOG\ClientProgress.json
+[2025-09-23 08:24:55] [INFO] === Client Management Tool beendet ===

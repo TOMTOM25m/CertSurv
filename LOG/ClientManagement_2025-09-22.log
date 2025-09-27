@@ -1,0 +1,10 @@
+﻿[2025-09-22 15:42:21] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-22 15:42:21] [SUCCESS]     CLIENT SERVER MANAGEMENT TOOL v1.1.0
+[2025-09-22 15:42:21] [SUCCESS] â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+[2025-09-22 15:42:21] [INFO] 
+[2025-09-22 15:42:21] [INFO] Konfiguration geladen: F:\DEV\repositories\CertSurv\Config\Config-Cert-Surveillance.json
+[2025-09-22 15:42:21] [SUCCESS] Fortschritt geladen: 0/151 abgeschlossen
+[2025-09-22 15:42:21] [INFO] Gefundene Server: 151
+[2025-09-22 15:42:21] [ERROR] [FAIL] Fehler im Client Management Tool: The property 'Count' cannot be found on this object. Verify that the property exists.
+[2025-09-22 15:42:21] [WARN] [WARN] Warnung: Fortschritt konnte nicht gespeichert werden: The property 'Count' cannot be found on this object. Verify that the property exists.
+[2025-09-22 15:42:21] [INFO] === Client Management Tool beendet ===

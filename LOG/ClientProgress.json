@@ -3,7 +3,7 @@
                     {
                         "ServerName":  "SUCCESSXPROD01",
                         "FQDN":  "SUCCESSXPROD01.uvw.meduniwien.ac.at",
-                        "Status":  "Pending",
+                        "Status":  "Failed",
                         "ServerType":  "Domain (UVW)",
                         "Index":  1
                     },
@@ -1059,8 +1059,8 @@
                     }
                 ],
     "CompletedServers":  0,
-    "PendingServers":  151,
-    "LastUpdated":  "2025-09-17 12:11:13",
+    "PendingServers":  150,
+    "LastUpdated":  "2025-09-23 08:24:55",
     "TotalServers":  151,
-    "FailedServers":  0
+    "FailedServers":  1
 }
